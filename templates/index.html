@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "common.html" %}
+</head>
+<body>
+    <div class="main">
+        <h2>Алгебра</h2>
+        <h4>прості алгоритми</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/euler_function">
+                    Функція Ейлера
+                </a>
+            </li>
+            <li>
+                <a href="page/binary_pow">
+                    [TODO] Бінарне піднесення в степінь за O (log N)
+                </a>
+            </li>
+            <li>
+                <a href="page/euclid_algorithm">
+                    [TODO] Алгоритм Евкліда знаходження НСД (найбільшого спільного дільника)
+                </a>
+            </li>
+            <li>
+                <a href="page/eratosthenes_sieve">
+                    [TODO] Решето Ератосфена
+                </a>
+            </li>
+            <li>
+                <a href="page/extended_euclid_algorithm">
+                    [TODO] Розширений алгоритм Евкліда
+                </a>
+            </li>
+            <li>
+                <a href="page/fibonacci_numbers">
+                    [TODO] Числа Фібоначі та їх швидке обчислення
+                </a>
+            </li>
+            <li>
+                <a href="page/reverse_element">
+                    [TODO] Обернений елемент в кільці за модулем
+                </a>
+            </li>
+            <li>
+                <a href="page/gray_code">
+                    [TODO] Код Грея
+                </a>
+            </li>
+            <li>
+                <a href="page/big_integer">
+                    [TODO] Длинная арифметика
+                </a>
+            </li>
+            <li>
+                <a href="page/discrete_log">
+                    [TODO] Дискретное логарифмирование по модулю M алгоритмом baby-step-giant-step Шэнкса за O (sqrt(M) log M)
+                </a>
+            </li>
+            <li>
+                <a href="page/diofant_2_equation">
+                    [TODO] Диофантовы уравнения с двумя неизвестными: AX+BY=C
+                </a>
+            </li>
+            <li>
+                <a href="page/diofant_1_equation">
+                    [TODO] Модульное линейное уравнение первого порядка: AX=B
+                </a>
+            </li>
+            <li>
+                <a href="page/chinese_theorem">
+                    [TODO] Китайская теорема об остатках. Алгоритм Гарнера
+                </a>
+            </li>
+            <li>
+                <a href="page/factorial_divisors">
+                    [TODO] Нахождение степени делителя факториала
+                </a>
+            </li>
+            <li>
+                <a href="page/balanced_ternary">
+                    [TODO] Троичная сбалансированная система счисления
+                </a>
+            </li>
+            <li>
+                <a href="page/modular_factorial">
+                    [TODO] Вычисление факториала N! по модулю P за O (P log N)
+                </a>
+            </li>
+            <li>
+                <a href="page/all_submasks">
+                    [TODO] Перебор всех подмасок данной маски. Оценка 3<sup>N</sup>
+                    для суммарного количества подмасок всех масок
+                </a>
+            </li>
+            <li>
+                <a href="page/primitive_root">
+                    [TODO] Первообразный корень. Алгоритм нахождения
+                </a>
+            </li>
+            <li>
+                <a href="page/discrete_root">
+                    [TODO] Дискретное извлечение корня
+                </a>
+            </li>
+            <li>
+                <a href="page/prime_sieve_linear">
+                    [TODO] Решето Эратосфена с линейным временем работы
+                </a>
+            </li>
+        </ul>
+        <h4>складні алгоритми</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/bpsw">[TODO] Тест BPSW на простоту чисел за O (log N)</a>
+            </li>
+            <li>
+                <a href="page/factorization">[TODO] Ефективні алгоритми факторизації: Полларда p-1, Полларда p, Бента, Полларда Монте-Карло, Ферма</a>
+            </li>
+            <li>
+                <a href="page/fft_multiply">
+                    [TODO] Быстрое преобразование Фурье за O (N log N). Применение к умножению двух полиномов или длинных чисел
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Графи</h2>
+        <h4>элементарные алгоритмы</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/bfs">
+                    [TODO] Поиск в ширину
+                </a>
+            </li>
+            <li>
+                <a href="page/dfs">[TODO] Поиск в глубину</a>
+            </li>
+            <li>
+                <a href="page/topological_sort">
+                    [TODO] Топологическая сортировка
+                </a>
+            </li>
+            <li>
+                <a href="page/connected_components">
+                    [TODO] Поиск компонент связности
+                </a>
+            </li>
+        </ul>
+        <h4>компоненты сильной связности, мосты и т.д.</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/strong_connected_components">
+                    [TODO] Поиск компонент сильной связности, построение конденсации графа за O (N + M)
+                </a>
+            </li>
+            <li>
+                <a href="page/bridge_searching">
+                    [TODO] Поиск мостов за O (N + M)
+                </a>
+            </li>
+            <li>
+                <a href="page/cutpoints">
+                    [TODO] Поиск точек сочленения за O (N + M)
+                </a>
+            </li>
+            <li>
+                <a href="page/bridge_searching_online">
+                    [TODO] Поиск мостов в режиме онлайн за O(1) в среднем
+                </a>
+            </li>
+        </ul>
+        <h4>кратчайшие пути из одной вершины</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/dijkstra">
+                    [TODO] Алгоритм Дейкстры нахождения кратчайших путей от заданной вершины до всех остальных вершин за O (N<sup>2</sup>
+                    + M)
+                </a>
+            </li>
+            <li>
+                <a href="page/dijkstra_sparse">
+                    [TODO] Алгоритм Дейкстры для разреженного графа нахождения кратчайших путей от заданной вершины до всех остальных вершин за O (M log N)
+                </a>
+            </li>
+            <li>
+                <a href="page/ford_bellman">
+                    [TODO] Алгоритм Форда-Беллмана нахождения кратчайших путей от заданной вершины до всех остальных вершин за O (N M)
+                </a>
+            </li>
+            <li>
+                <a href="page/levit_algorithm">[TODO] Алгоритм Левита нахождения кратчайших путей от заданной вершины до всех остальных вершин за O (N M)</a>
+            </li>
+        </ul>
+        <h4>кратчайшие пути между всеми парами вершин</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/floyd_warshall_algorithm">
+                    [TODO] Нахождение кратчайших путей между всеми парами вершин графа методом Флойда-Уоршелла за O (n<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/fixed_length_paths">
+                    [TODO] Подсчёт количества путей фиксированной длины между всеми парами вершин, нахождение кратчайших путей фиксированной длины за O (n<sup>3</sup>
+                    log k)
+                </a>
+            </li>
+        </ul>
+        <h4>минимальный остов</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/mst_prim">
+                    [TODO] Минимальное остовное дерево. Алгоритм Прима за O (n<sup>2</sup>
+                    ) и за O (m log n)
+                </a>
+            </li>
+            <li>
+                <a href="page/mst_kruskal">
+                    [TODO] Минимальное остовное дерево. Алгоритм Крускала за O (M log N + N<sup>2</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/mst_kruskal_with_dsu">[TODO] Минимальное остовное дерево. Алгоритм Крускала со структурой данных 'система непересекающихся множеств' за O (M log N)</a>
+            </li>
+            <li>
+                <a href="page/kirchhoff_theorem">
+                    [TODO] Матричная теорема Кирхгофа. Нахождение количества остовных деревьев за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/prufer_code_cayley_formula">
+                    [TODO] Код Прюфера. Формула Кэли. Количество способов сделать граф связным
+                </a>
+            </li>
+        </ul>
+        <h4>циклы</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/negative_cycle">
+                    [TODO] Нахождение отрицательного цикла в графе за O (N M)
+                </a>
+            </li>
+            <li>
+                <a href="page/euler_path">[TODO] Нахождение Эйлерова пути или Эйлерова цикла за O (M)</a>
+            </li>
+            <li>
+                <a href="page/finding_cycle">[TODO] Проверка графа на ацикличность и нахождение цикла за O (M)</a>
+            </li>
+        </ul>
+        <h4>наименьший общий предок (LCA)</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/lca">[TODO] Наименьший общий предок. Нахождение за O (sqrt (N)) и O (log N) с препроцессингом O (N)</a>
+            </li>
+            <li>
+                <a href="page/lca_simpler">[TODO] Наименьший общий предок. Нахождение за O (log N) с препроцессингом O (N log N) (метод двоичного подъёма)</a>
+            </li>
+            <li>
+                <a href="page/lca_linear">[TODO] Наименьший общий предок. Нахождение за O с препроцессингом O (N) (алгоритм Фарах-Колтона и Бендера)</a>
+            </li>
+            <li>
+                <a href="page/rmq_linear">[TODO] Задача RMQ (Range Minimum Query - минимум на отрезке). Решение за O с препроцессингом O (N)</a>
+            </li>
+            <li>
+                <a href="page/lca_linear_offline">
+                    [TODO] Наименьший общий предок. Нахождение за O в режиме оффлайн (алгоритм Тарьяна)
+                </a>
+            </li>
+        </ul>
+        <h4>потоки и связанные с ними задачи</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/edmonds_karp">
+                    [TODO] Алгоритм Эдмондса-Карпа нахождения максимального потока за O (N M<sup>2</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/preflow_push">
+                    [TODO] Метод Проталкивания предпотока нахождения максимального потока за O (N<sup>4</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/preflow_push_faster">
+                    [TODO] Модификация метода Проталкивания предпотока за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/flow_with_limits">[TODO] Поток с ограничениями</a>
+            </li>
+            <li>
+                <a href="page/min_cost_flow">
+                    [TODO] Поток минимальной стоимости (min-cost-flow). Алгоритм увеличивающих путей за O (N<sup>3</sup>
+                    M)
+                </a>
+            </li>
+            <li>
+                <a href="page/assignment_mincostflow">
+                    [TODO] Задача о назначениях. Решение с помощью min-cost-flow за O (N<sup>5</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/assignment_hungary">
+                    [TODO] Задача о назначениях. Венгерский алгоритм (алгоритм Куна) за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/stoer_wagner_mincut">
+                    [TODO] Нахождение минимального разреза алгоритмом Штор-Вагнера за O(N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/min_cost_flow_negative_cycles">
+                    [TODO] Поток минимальной стоимости, циркуляция минимальной стоимости. Алгоритм удаления циклов отрицательного веса
+                </a>
+            </li>
+            <li>
+                <a href="page/dinic">
+                    [TODO] Алгоритм Диница нахождения максимального потока
+                </a>
+            </li>
+        </ul>
+        <h4>паросочетания и связанные с ними задачи</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/kuhn_matching">
+                    [TODO] Алгоритм Куна нахождения наибольшего паросочетания за O (N M)
+                </a>
+            </li>
+            <li>
+                <a href="page/bipartite_checking">[TODO] Проверка графа на двудольность и разбиение на две доли за O (M)</a>
+            </li>
+            <li>
+                <a href="page/vertex_weighted_matching">
+                    [TODO] Нахождение наибольшего по весу вершинно-взвешенного паросочетания за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/matching_edmonds">
+                    [TODO] Алгоритм Эдмондса нахождения наибольшего паросочетания в произвольных графах за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/path_cover">
+                    [TODO] Покрытие путями ориентированного ациклического графа
+                </a>
+            </li>
+            <li>
+                <a href="page/tutte_matrix">
+                    [TODO] Матрица Татта. Рандомизированный алгоритм для поиска максимального паросочетания в произвольном графе
+                </a>
+            </li>
+        </ul>
+        <h4>связность</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/rib_connectivity">
+                    [TODO] Рёберная связность. Свойства и нахождение
+                </a>
+            </li>
+            <li>
+                <a href="page/vertex_connectivity">
+                    [TODO] Вершинная связность. Свойства и нахождение
+                </a>
+            </li>
+            <li>
+                <a href="page/connectivity_back_problem">
+                    [TODO] Построение графа с указанными величинами вершинной и рёберной связностей и наименьшей из степеней вершин
+                </a>
+            </li>
+        </ul>
+        <h4>К-ые пути</h4>
+        <h4>обратные задачи</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/inverse_sssp">[TODO] Обратная задача SSSP (inverse-SSSP - обратная задача кратчайших путей из одной вершины) за O (M)</a>
+            </li>
+            <li>
+                <a href="page/inverse_mst">
+                    [TODO] Обратная задача MST (inverse-MST - обратная задача минимального остова) за O (N M<sup>2</sup>
+                    )
+                </a>
+            </li>
+        </ul>
+        <h4>разное</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/tree_painting">[TODO] Покраска рёбер дерева (структуры данных) - решение за O (log N)</a>
+            </li>
+            <li>
+                <a href="page/2_sat">[TODO] Задача 2-SAT (2-CNF). Решение за O (N + M)</a>
+            </li>
+            <li>
+                <a href="page/heavy_light">
+                    [TODO] Heavy-light декомпозиция
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Геометрия</h2>
+        <h4>элементарные алгоритмы</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/length_of_segments_union">[TODO] Длина объединения отрезков на прямой за O (N log N)</a>
+            </li>
+            <li>
+                <a href="page/oriented_area">
+                    [TODO] Знаковая площадь треугольника и предикат 'По часовой стрелке'
+                </a>
+            </li>
+            <li>
+                <a href="page/segments_intersection_checking">
+                    [TODO] Проверка двух отрезков на пересечение
+                </a>
+            </li>
+            <li>
+                <a href="page/segment_to_line">
+                    [TODO] Нахождение уравнения прямой для отрезка
+                </a>
+            </li>
+            <li>
+                <a href="page/lines_intersection">
+                    [TODO] Нахождение точки пересечения двух прямых
+                </a>
+            </li>
+            <li>
+                <a href="page/segments_intersection">
+                    [TODO] Нахождение точки пересечения двух отрезков
+                </a>
+            </li>
+            <li>
+                <a href="page/polygon_area">[TODO] Нахождение площади простого многоугольника за O (N)</a>
+            </li>
+            <li>
+                <a href="page/pick_grid_theorem">
+                    [TODO] Теорема Пика. Нахождение площади решётчатого многоугольника за O
+                </a>
+            </li>
+            <li>
+                <a href="page/covering_segments">[TODO] Задача о покрытии отрезков точками</a>
+            </li>
+            <li>
+                <a href="page/gravity_center">
+                    [TODO] Центры тяжести многоугольников и многогранников
+                </a>
+            </li>
+        </ul>
+        <h4>более сложные алгоритмы</h4>
+        <ul class=catalog>
+            <li>
+                <a href="page/circle_line_intersection">[TODO] Пересечение окружности и прямой</a>
+            </li>
+            <li>
+                <a href="page/circles_intersection">[TODO] Пересечение двух окружностей</a>
+            </li>
+            <li>
+                <a href="page/convex_hull_graham">[TODO] Построение выпуклой оболочки алгоритмом Грэхэма-Эндрю за O (N log N)</a>
+            </li>
+            <li>
+                <a href="page/triangles_union">[TODO] Нахождение площади объединения треугольников. Метод вертикальной декомпозиции</a>
+            </li>
+            <li>
+                <a href="page/pt_in_polygon">[TODO] Проверка точки на принадлежность выпуклому многоугольнику за O (log N)</a>
+            </li>
+            <li>
+                <a href="page/inscribed_circle_ternary">
+                    [TODO] Нахождение вписанной окружности в выпуклом многоугольнике с помощью тернарного поиска за O (N log<sup>2</sup>
+                    C)
+                </a>
+            </li>
+            <li>
+                <a href="page/inscribed_circle">
+                    [TODO] Нахождение вписанной окружности в выпуклом многоугольнике методом сжатия сторон за O (N log N)
+                </a>
+            </li>
+            <li>
+                <a href="page/voronoi_diagram_2d_n4">
+                    [TODO] Диаграмма Вороного в двумерном случае, её свойства, применение. Простейший алгоритм построения за O(N<sup>4</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/facets">
+                    [TODO] Нахождение всех граней, внешней грани планарного графа за O (N log N)
+                </a>
+            </li>
+            <li>
+                <a href="page/nearest_points">
+                    [TODO] Нахождение пары ближайших точек алгоритмом разделяй-и-властвуй за O (N log N)
+                </a>
+            </li>
+            <li>
+                <a href="page/geometric_inversion">
+                    [TODO] Преобразование геометрической инверсии
+                </a>
+            </li>
+            <li>
+                <a href="page/circle_tangents">
+                    [TODO] Поиск общих касательных к двум окружностям
+                </a>
+            </li>
+            <li>
+                <a href="page/intersecting_segments">
+                    [TODO] Поиск пары пересекающихся отрезков алгоритмом заметающей прямой за O (N log N)
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Строки</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/z_function">
+                    [TODO] Z-функция строки и её вычисление за O (N)
+                </a>
+            </li>
+            <li>
+                <a href="page/prefix_function">
+                    [TODO] Префикс-функция, её вычисление и применения. Алгоритм Кнута-Морриса-Пратта
+                </a>
+            </li>
+            <li>
+                <a href="page/string_hashes">[TODO] Алгоритмы хэширования в задачах на строки</a>
+            </li>
+            <li>
+                <a href="page/rabin_karp">[TODO] Алгоритм Рабина-Карпа поиска подстроки в строке за O (N)</a>
+            </li>
+            <li>
+                <a href="page/expressions_parsing">
+                    [TODO] Разбор выражений за O (N). Обратная польская нотация
+                </a>
+            </li>
+            <li>
+                <a href="page/suffix_array">
+                    [TODO] Суффиксный массив. Построение за O (N log N) и применения
+                </a>
+            </li>
+            <li>
+                <a href="page/suffix_automata">
+                    [TODO] Суффиксный автомат. Построение за O (N) и применения
+                </a>
+            </li>
+            <li>
+                <a href="page/palindromes_count">
+                    [TODO] Нахождение всех подпалиндромов за O (N)
+                </a>
+            </li>
+            <li>
+                <a href="page/duval_algorithm">
+                    [TODO] Декомпозиция Линдона. Алгоритм Дюваля. Нахождение наименьшего циклического сдвига за O (N) времени и O памяти
+                </a>
+            </li>
+            <li>
+                <a href="page/aho_corasick">
+                    [TODO] Алгоритм Ахо-Корасик
+                </a>
+            </li>
+            <li>
+                <a href="page/ukkonen">
+                    [TODO] Суффиксное дерево. Алгоритм Укконена
+                </a>
+            </li>
+            <li>
+                <a href="page/string_tandems">
+                    [TODO] Поиск всех тандемных повторов в строке алгоритмом Мейна-Лоренца (разделяй-и-властвуй) за O (N log N)
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Структуры данных</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/sqrt_decomposition">
+                    [TODO] Sqrt-декомпозиция
+                </a>
+            </li>
+            <li>
+                <a href="page/fenwick_tree">[TODO] Дерево Фенвика</a>
+            </li>
+            <li>
+                <a href="page/dsu">
+                    [TODO] Система непересекающихся множеств
+                </a>
+            </li>
+            <li>
+                <a href="page/segment_tree">
+                    [TODO] Дерево отрезков
+                </a>
+            </li>
+            <li>
+                <a href="page/treap">[TODO] Декартово дерево (treap, дерамида)</a>
+            </li>
+            <li>
+                <a href="page/stacks_for_minima">[TODO] Модификация стека и очереди для нахождения минимума за O</a>
+            </li>
+            <li>
+                <a href="page/randomized_heap">
+                    [TODO] Рандомизированная куча
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Алгоритмы на последовательностях</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/rmq">[TODO] Задача RMQ (Range Minimum Query - минимум на отрезке)</a>
+            </li>
+            <li>
+                <a href="page/longest_increasing_subseq_log">
+                    [TODO] Нахождение наидлиннейшей возрастающей подпоследовательности за O (N<sup>2</sup>
+                    ) и O (N log N)
+                </a>
+            </li>
+            <li>
+                <a href="page/kth_order_statistics">[TODO] K-ая порядковая статистика за O (N)</a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Динамика</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/profile_dynamics">[TODO] Динамика по профилю. Задача "паркет"</a>
+            </li>
+            <li>
+                <a href="page/maximum_zero_submatrix">
+                    [TODO] Нахождение наибольшей нулевой подматрицы за O (N M)
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Линейная алгебра</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/linear_systems_gauss">
+                    [TODO] Метод Гаусса решения системы линейных уравнений за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/matrix_rank">
+                    [TODO] Нахождение ранга матрицы за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+            <li>
+                <a href="page/determinant_gauss">
+                    [TODO] Вычисление определителя матрицы методом Гаусса за O (N<sup>3</sup>
+                    )
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Численные методы</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/simpson_integrating">
+                    [TODO] Интегрирование по формуле Симпсона
+                </a>
+            </li>
+            <li>
+                <a href="page/roots_newton">
+                    [TODO] Поиск корней методом Ньютона (касательных)
+                </a>
+            </li>
+            <li>
+                <a href="page/ternary_search">
+                    [TODO] Тернарный поиск
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Комбинаторика</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/binomial_coeff">
+                    [TODO] Биномиальные коэффициенты
+                </a>
+            </li>
+            <li>
+                <a href="page/catalan_numbers">
+                    [TODO] Числа Каталана
+                </a>
+            </li>
+            <li>
+                <a href="page/necklace_colouring">
+                    [TODO] Ожерелья
+                </a>
+            </li>
+            <li>
+                <a href="page/bishops_arrangement">[TODO] Расстановка слонов на шахматной доске</a>
+            </li>
+            <li>
+                <a href="page/bracket_sequences">
+                    [TODO] Правильные скобочные последовательности. Нахождение лексикографически следующей, K-ой, определение номера
+                </a>
+            </li>
+            <li>
+                <a href="page/counting_connected_graphs">
+                    [TODO] Количество помеченных графов, связных помеченных графов, помеченных графов с K компонентами связности
+                </a>
+            </li>
+            <li>
+                <a href="page/generating_combinations">[TODO] Генерация сочетаний из N элементов</a>
+            </li>
+            <li>
+                <a href="page/burnside_polya">
+                    [TODO] Лемма Бернсайда. Теорема Пойа
+                </a>
+            </li>
+            <li>
+                <a href="page/inclusion_exclusion_principle">
+                    [TODO] Принцип включений-исключений
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Теория игр</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/games_on_graphs">[TODO] Игры на произвольных графах. Метод ретроспективного анализа за O (M)</a>
+            </li>
+            <li>
+                <a href="page/sprague_grundy">
+                    [TODO] Теория Шпрага-Гранди. Ним
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Расписания</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/johnson_problem_1">
+                    [TODO] Задача Джонсона с одним станком
+                </a>
+            </li>
+            <li>
+                <a href="page/johnson_problem_2">
+                    [TODO] Задача Джонсона с двумя станками
+                </a>
+            </li>
+            <li>
+                <a href="page/schedule_with_completion_duration">
+                    [TODO] Оптимальный выбор заданий при известных временах завершения и длительностях выполнения
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <h2>Разное</h2>
+        <ul class=catalog>
+            <li>
+                <a href="page/joseph_problem">
+                    [TODO] Задача Иосифа
+                </a>
+            </li>
+            <li>
+                <a href="page/15_puzzle">
+                    [TODO] Игра Пятнашки: существование решения
+                </a>
+            </li>
+            <li>
+                <a href="page/stern_brocot_farey">
+                    [TODO] Дерево Штерна-Броко. Ряд Фарея
+                </a>
+            </li>
+            <li>
+                <a href="page/maximum_average_segment">
+                    [TODO] Поиск подотрезка массива с максимальной/минимальной суммой за O(N)
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+body {
+	font: 17px Arial;
+	line-height: 1.4;
+	margin: 0px;
+	padding: 10px;
+}
+
+.main {
+    background: #ffffff;
+	max-width: 1000px;
+    margin: 10px auto;
+}
+
+a, a:visited {
+	font-size: 12pt;
+	color: #4444aa;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #4444aa;
+	text-decoration: underline;
+}
+
+hr {
+	width: 100%;
+	text-align: center;
+	color: #dddddd;
+	margin: 20px 0px;
+	padding: 0px;
+}
+
+h1, h2, h3, h4 {
+	font-weight: bold;
+	text-align: left;
+	margin: 0px;
+	padding: 5px 0px;
+	color: #660000;
+}
+
+h1 {
+	font-size: 21pt;
+}
+
+h2 {
+	font-size: 18pt;
+}
+
+h3 {
+	font-size: 15pt;
+}
+
+h4 {
+	font-size: 13pt;
+}
+
+p {
+	margin: 10px 0px;
+	padding: 0px;
+}
+
+ul {
+	margin: 10px 0px;
+	padding: 0px 20px;
+}
+
+ul.catalog {
+	margin-top: 0px;
+}
+
+.catalog li {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.highlight pre {
+	padding: 5px 10px;
+	overflow: auto;
+}

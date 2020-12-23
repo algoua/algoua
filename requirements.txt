@@ -1,0 +1,7 @@
+argparse
+flask
+html
+pathlib
+pygments
+re
+requests
