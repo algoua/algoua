@@ -23,7 +23,7 @@ def extract(txt):
     return txt[l:r]
 
 def save(txt, file_path):
-    with open(file_path, 'w', encoding='utf-8') as f:
+    with open(file_path, 'w', encoding='utf-8', newline='\n') as f:
         f.write(txt)
 
 for id in get_ids('http://e-maxx.ru/algo/'):
