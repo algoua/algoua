@@ -5,7 +5,7 @@ from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
-REPOSITORY_URL = 'https://github.com/algorithms-ua/e-maxx'
+REPOSITORY_URL = 'https://github.com/algoua/algorithms'
 TEMPLATES_DIR = Path('templates')
 CODE_STYLE = 'monokai'
 
