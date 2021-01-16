@@ -1,6 +1,6 @@
 int binpow(int a, int n) {
     int res = 1;
-    while (n)
+    while (n) {
         if (n & 1) {
             res *= a;
             --n;
@@ -9,5 +9,6 @@ int binpow(int a, int n) {
             a *= a;
             n >>= 1;
         }
+    }
     return res;
 }

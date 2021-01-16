@@ -3,8 +3,9 @@ int binprod_mod(int a, int b, int m) {
     a %= m;
     b %= m;
     while (a) {
-        if (a & 1)
+        if (a & 1) {
             res = (res + b) % m; 
+        }
         b = (2 * b) % m; 
         a >>= 1;
     }
