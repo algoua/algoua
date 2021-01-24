@@ -8,7 +8,6 @@ parser.add_argument('--port', dest='port', default=8080, help='port number')
 args = parser.parse_args()
 
 REPOSITORY_URL = 'https://github.com/algoua/algorithms'
-BASE_URL = f'http://localhost:{args.port}/'
 SRC_DIR = Path('src')
 TEMPLATES_DIR = Path('templates')
 CODE_STYLE = 'monokai'
@@ -53,11 +52,11 @@ def build_html_from_md(md_file: Path):
 @app.route('/')
 def index():
     content = build_html_from_md(SRC_DIR / 'index.md')
-    return render_template('index.html', title='Алгоритми', base_url=BASE_URL, content=content)
+    return render_template('index.html', title='Алгоритми', content=content)
 
 @app.route('/<category>/<page_name>')
 def page(category, page_name):
     content = build_html_from_md(SRC_DIR / category / f'{page_name}.md')
-    return render_template('page.html', title=page_name, base_url=BASE_URL, content=content)
+    return render_template('page.html', title=page_name, content=content)
 
 app.run(host='localhost', port=args.port)
