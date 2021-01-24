@@ -1,7 +1,6 @@
 argparse
 flask
-html
 pathlib
 pygments
-re
-requests
+markdown
+python-markdown-math
