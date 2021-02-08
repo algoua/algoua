@@ -1,0 +1,181 @@
+<h1>Покраска рёбер дерева</h1>
+
+<p>Это достаточно часто встречающаяся задача. Дано дерево G. Поступают запросы двух видов: первый вид - покрасить некоторое ребро, второй вид - запрос количества покрашенных рёбер между двумя вершинами.</p>
+<p>Здесь будет описано достаточно простое решение (с использованием <algohref=segment_tree>дерева отрезков</algohref>), которое будет отвечать на запросы за O (log N), с препроцессингом (предварительной обработкой дерева) за O (M).</p>
+<h2>Решение</h2>
+<p>Для начала нам придётся реализовать <algohref=lca>LCA</algohref>, чтобы каждый запрос второго вида (i,j) сводить к двум запросам (a,b), где a - предок b.</p>
+<p>Теперь опишем <b>препроцессинг</b> собственно для нашей задачи. Запустим поиск в глубину из корня дерева, этот поиск в глубину составит некоторый список посещения вершин (каждая вершина добавляется в список, когда поиск заходит в неё, и каждый раз после того, как поиск в глубину возвращается из сына текущей вершины) - кстати говоря, этот же список используется алгоритмом LCA. В этом списке будет присутствовать каждое ребро (в том смысле, что если i и j - концы ребра, то в списке обязательно найдётся место, где i и j идут подряд друг за другом), причём присутствовать ровно 2 раза: в прямом направлении (из i в j, где вершина i ближе к корню, чем вершина j) и в обратном (из j в i).</p>
+<p><b>Построим</b> два дерева отрезков (для суммы, с единичной модификацией) по этому списку: T1 и T2. Дерево T1 будет учитывать каждое ребро только в прямом направлении, а дерево T2 - наоборот, только в обратном.</p>
+<p>Пусть поступил очередной <b>запрос</b> вида (i,j), где i - предок j, и требуется определить, сколько рёбер покрашено на пути между i и j. Найдём i и j в списке обхода в глубину (нам обязательно нужны позиции, где они встречаются впервые), пусть это некоторые позиции p и q (это можно сделать за O (1), если вычислить эти позиции заранее во время препроцессинга). Тогда <b>ответом будет сумма T1[p..q-1] - сумма T2[p..q-1]</b>.</p>
+<p>Почему? Рассмотрим отрезок [p;q] в списке обхода в глубину. Он содержит рёбра нужного нам пути из i в j, но также содержит и множество рёбер, которые лежат на других путях из i. Однако между нужными нам рёбрами и остальными рёбрами есть одно большое отличие: нужные рёбра будут содержаться в этом списке только один раз, причём в прямом направлении, а все остальные рёбра будут встречаться дважды: и в прямом, и в обратном направлении. Следовательно, разность T1[p..q-1] - T2[p..q-1] даст нам ответ (минус один нужно, потому что иначе мы захватим ещё лишнее ребро из вершины j куда-то вниз или вверх). Запрос суммы в дереве отрезков выполняется за O (log N).</p>
+<p>Ответ на <b>запрос</b> вида 1 (о покраске какого-либо ребра) ещё проще - нам просто нужно обновить T1 и T2, а именно выполнить единичную модификацию того элемента, который соответствует нашему ребру (найти ребро в списке обхода, опять же, можно за O (1), если выполнить этот поиск в препроцессинге). Единичная модификация в дереве отрезков выполняется за O (log N).</p>
+<h2>Реализация</h2>
+<p>Здесь будет приведена полная реализация решения, включая LCA:</p>
+<code>const int INF = 1000*1000*1000;
+
+typedef vector &lt; vector&lt;int> > graph;
+
+vector&lt;int> dfs_list;
+vector&lt;int> ribs_list;
+vector&lt;int> h;
+
+void dfs (int v, const graph & g, const graph & rib_ids, int cur_h = 1)
+{
+	h[v] = cur_h;
+	dfs_list.push_back (v);
+	for (size_t i=0; i&lt;g[v].size(); ++i)
+		if (h[g[v][i]] == -1)
+		{
+			ribs_list.push_back (rib_ids[v][i]);
+			dfs (g[v][i], g, rib_ids, cur_h+1);
+			ribs_list.push_back (rib_ids[v][i]);
+			dfs_list.push_back (v);
+		}
+}
+
+vector&lt;int> lca_tree;
+vector&lt;int> first;
+
+void lca_tree_build (int i, int l, int r)
+{
+	if (l == r)
+		lca_tree[i] = dfs_list[l];
+	else
+	{
+		int m = (l + r) >> 1;
+		lca_tree_build (i+i, l, m);
+		lca_tree_build (i+i+1, m+1, r);
+		int lt = lca_tree[i+i],  rt = lca_tree[i+i+1];
+		lca_tree[i] = h[lt] &lt; h[rt] ? lt : rt;
+	}
+}
+
+void lca_prepare (int n)
+{
+	lca_tree.assign (dfs_list.size() * 8, -1);
+	lca_tree_build (1, 0, (int)dfs_list.size()-1);
+
+	first.assign (n, -1);
+	for (int i=0; i &lt; (int)dfs_list.size(); ++i)
+	{
+		int v = dfs_list[i];
+		if (first[v] == -1)  first[v] = i;
+	}
+}
+
+int lca_tree_query (int i, int tl, int tr, int l, int r)
+{
+	if (tl == l && tr == r)
+		return lca_tree[i];
+	int m = (tl + tr) >> 1;
+	if (r &lt;= m)
+		return lca_tree_query (i+i, tl, m, l, r);
+	if (l > m)
+		return lca_tree_query (i+i+1, m+1, tr, l, r);
+	int lt = lca_tree_query (i+i, tl, m, l, m);
+	int rt = lca_tree_query (i+i+1, m+1, tr, m+1, r);
+	return h[lt] &lt; h[rt] ? lt : rt;
+}
+
+int lca (int a, int b)
+{
+	if (first[a] > first[b])  swap (a, b);
+	return lca_tree_query (1, 0, (int)dfs_list.size()-1, first[a], first[b]);
+}
+
+
+vector&lt;int> first1, first2;
+vector&lt;char> rib_used;
+vector&lt;int> tree1, tree2;
+
+void query_prepare (int n)
+{
+	first1.resize (n-1, -1);
+	first2.resize (n-1, -1);
+	for (int i = 0; i &lt; (int) ribs_list.size(); ++i)
+	{
+		int j = ribs_list[i];
+		if (first1[j] == -1)
+			first1[j] = i;
+		else
+			first2[j] = i;
+	}
+
+	rib_used.resize (n-1);
+	tree1.resize (ribs_list.size() * 8);
+	tree2.resize (ribs_list.size() * 8);
+}
+
+void sum_tree_update (vector&lt;int> & tree, int i, int l, int r, int j, int delta)
+{
+	tree[i] += delta;
+	if (l &lt; r)
+	{
+		int m = (l + r) >> 1;
+		if (j &lt;= m)
+			sum_tree_update (tree, i+i, l, m, j, delta);
+		else
+			sum_tree_update (tree, i+i+1, m+1, r, j, delta);
+	}
+}
+
+int sum_tree_query (const vector&lt;int> & tree, int i, int tl, int tr, int l, int r)
+{
+	if (l > r || tl > tr)  return 0;
+	if (tl == l && tr == r)
+		return tree[i];
+	int m = (tl + tr) >> 1;
+	if (r &lt;= m)
+		return sum_tree_query (tree, i+i, tl, m, l, r);
+	if (l > m)
+		return sum_tree_query (tree, i+i+1, m+1, tr, l, r);
+	return sum_tree_query (tree, i+i, tl, m, l, m)
+		+ sum_tree_query (tree, i+i+1, m+1, tr, m+1, r);
+}
+
+int query (int v1, int v2)
+{
+	return sum_tree_query (tree1, 1, 0, (int)ribs_list.size()-1, first[v1], first[v2]-1)
+		- sum_tree_query (tree2, 1, 0, (int)ribs_list.size()-1, first[v1], first[v2]-1);
+}
+
+
+int main()
+{
+	// чтение графа
+	int n;
+	scanf ("%d", &n);
+	graph g (n), rib_ids (n);
+	for (int i=0; i&lt;n-1; ++i)
+	{
+		int v1, v2;
+		scanf ("%d%d", &v1, &v2);
+		--v1, --v2;
+		g[v1].push_back (v2);
+		g[v2].push_back (v1);
+		rib_ids[v1].push_back (i);
+		rib_ids[v2].push_back (i);
+	}
+
+	h.assign (n, -1);
+	dfs (0, g, rib_ids);
+	lca_prepare (n);
+	query_prepare (n);
+
+	for (;;) {
+		if () {
+			// запрос о покраске ребра с номером x;
+			//    если start=true, то ребро красится, иначе покраска снимается
+			rib_used[x] = start;
+			sum_tree_update (tree1, 1, 0, (int)ribs_list.size()-1, first1[x], start?1:-1);
+			sum_tree_update (tree2, 1, 0, (int)ribs_list.size()-1, first2[x], start?1:-1);
+		}
+		else {
+			// запрос кол-ва покрашенных рёбер на пути между v1 и v2
+			int l = lca (v1, v2);
+			int result = query (l, v1) + query (l, v2);
+			// result - ответ на запрос
+		}
+	}
+
+}</code>
