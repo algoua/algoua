@@ -205,4 +205,4 @@ int binprod_mod(int a, int b, int m) {
 
 * [Online Judge - 374 - **Big Mod**](https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=310) | Розв'язки: [C++](https://shareablecode.com/snippets/c-solution-for-uva-problem-big-mod-374-cpp-kRwC-KkY6), [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-374-big-mod-apju-qnrD), [Python](https://shareablecode.com/snippets/python-solution-for-uva-online-judge-374-big-mod-tuPc-cpvZ)
 
-* [Spoj - LASTDIG - **The last digit**](https://www.spoj.com/problems/LASTDIG)
+* [Spoj - LASTDIG - **The last digit**](https://www.spoj.com/problems/LASTDIG) | Розв'язки: [C++](https://github.com/tr0j4n034/SPOJ/blob/master/LASTDIG.cpp), [Python](https://github.com/tr0j4n034/SPOJ/blob/master/LASTDIG2.py)

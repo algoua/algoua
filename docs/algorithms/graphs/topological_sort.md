@@ -74,9 +74,9 @@ void topological_sort() {
 
 * [*e-olymp* - 1948 - **Топологічне сортування**](https://www.e-olymp.com/uk/problems/1948) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/1000-1999/1948%20-%20Topological%20Sort%20-%20Топологическая%20сортировка%20-%20Topoloji%20sıralama%20-%20Топологічне%20сортування.cpp)
 
-* [Spoj - TOPOSORT - **Topological Sorting**](https://www.spoj.com/problems/TOPOSORT)
+* [Spoj - TOPOSORT - **Topological Sorting**](https://www.spoj.com/problems/TOPOSORT) | Розв'язки: [C++](https://github.com/CNatka/Algorithms/blob/master/Graph-Theory/Topological%20Sort/spoj_toposort.cpp)
 
-* [Spoj - RPLA - **Answer the boss!**](https://www.spoj.com/problems/RPLA)
+* [Spoj - RPLA - **Answer the boss!**](https://www.spoj.com/problems/RPLA) | Розв'язки: [C++](https://github.com/pedropaiola/unesp-progcomp/blob/527969dc54a0bf47c556d4060e63f666c053b4a6/Solu%C3%A7%C3%B5es/spoj/RPLA.cpp)
 
 * [Online Judge - 124 - **Following Orders**](https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=60) | Розв'язки: [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-124-following-orders-tFfX-K4c2)
 
