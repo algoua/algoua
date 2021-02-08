@@ -5,9 +5,9 @@ const rehypeKatex = require('rehype-katex');
 module.exports = {
   title: 'Algoua',
   tagline: 'Алгоритмічні навчальні матеріали',
-  url: 'https://algoua.com',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
+  url: 'https://algoua.github.io',
+  baseUrl: '/algoua/',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'algoua',
