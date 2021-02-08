@@ -39,10 +39,18 @@ h1, h2, h3, h4 {
     color: #333;
 }
 
+h1:hover a.headerlink,
+h2:hover a.headerlink,
+h3:hover a.headerlink,
+h4:hover a.headerlink {
+    visibility: visible;
+}
+
 a.headerlink {
     color: #333;
     font-size: 0.75em;
     margin-left: 5px;
+    visibility: hidden;
 }
 
 h1 {
