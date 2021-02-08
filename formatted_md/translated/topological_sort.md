@@ -26,7 +26,7 @@
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int n; // число вершин
+int n; // кількість вершин
 vector<int> g[MAXN]; // граф
 bool used[MAXN];
 vector<int> ans;

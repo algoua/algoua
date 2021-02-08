@@ -8,20 +8,41 @@
 
 Выпишем этот "модифицированный" факториал в явном виде:
 
-$$ n!_{\%p} = $$
-$$ = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \cdot (2p+1) \cdot \ldots \cdot $$
-$$ \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2+1) \cdot \ldots \cdot n = $$
-$$ = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot $$
-$$ \cdot 1 \cdot 2 \cdot \ldots \cdot (n\%p) \pmod p. $$
+$$
+n!_{\%p} =
+$$
+
+$$
+= 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \cdot (2p+1) \cdot \ldots \cdot
+$$
+
+$$
+\cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2+1) \cdot \ldots \cdot n =
+$$
+
+$$
+= 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot
+$$
+
+$$
+\cdot 1 \cdot 2 \cdot \ldots \cdot (n\%p) \pmod p.
+$$
 
 При такой записи видно, что "модифицированный" факториал распадается на несколько блоков длины $p$ (последний блок, возможно, короче), которые все одинаковы, за исключением последнего элемента:
 
-$$ n!_{\%p} = \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1st} \cdot \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot 2 }_{2nd} \cdot \ldots \cdot \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot 1 }_{p-th} \cdot \ldots \cdot $$
-$$ \cdot \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (n\%p)}_{tail} \pmod p. $$
+$$
+n!_{\%p} = \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1st} \cdot \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot 2 }_{2nd} \cdot \ldots \cdot \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot 1 }_{p-th} \cdot \ldots \cdot
+$$
+
+$$
+\cdot \underbrace{ 1 \cdot 2 \cdot \ldots \cdot (n\%p)}_{tail} \pmod p.
+$$
 
 Общую часть блоков посчитать легко - это просто $(p-1)!\ \rm{mod}\ p$, которую можно посчитать программно или по теореме Вильсона (Wilson) сразу найти $(p-1)!\ {\rm mod}\ p = p-1$. Чтобы перемножить эти общие части всех блоков, надо найденную величину возвести в степень по модулю $p$, что можно сделать за $O(\log n)$ операций (см. [Бинарное возведение в степень](binary_pow); впрочем, можно заметить, что мы фактически возводим минус единицу в какую-то степень, а потому результатом всегда будет либо $1$, либо $p-1$, в зависимости от чётности показателя. Значение в последнем, неполном блоке тоже можно посчитать отдельно за $O(p)$. Остались только последние элементы блоков, рассмотрим их внимательнее:
 
-$$ n!_{\%p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2 } \cdot \underbrace{ \ldots \cdot 3 } \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1) } \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2 } \ldots $$
+$$
+n!_{\%p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2 } \cdot \underbrace{ \ldots \cdot 3 } \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1) } \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2 } \ldots
+$$
 
 И мы снова пришли к "модифицированному" факториалу, но уже меньшей размерности (столько, сколько было полных блоков, а их было $\left\lfloor n / p \right\rfloor$). Таким образом, вычисление "модифицированного" факториала $n!_{\%p}$ мы свели за $O(p)$ операций к вычислению уже $(n/p)!_{\%p}$. Раскрывая эту рекуррентную зависимость, мы получаем, что глубина рекурсии будет $O(\log_p n)$, итого **асимптотика** алгоритма получается $O(p \log_p n)$.
 

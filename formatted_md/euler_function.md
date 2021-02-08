@@ -6,11 +6,25 @@
 
 Несколько первых значений этой функции ([A000010 в энциклопедии OEIS](http://oeis.org/A000010)):
 
-$$ \phi (1)=1, $$
-$$ \phi (2)=1, $$
-$$ \phi (3)=2, $$
-$$ \phi (4)=2, $$
-$$ \phi (5)=4. $$
+$$
+\phi (1)=1,
+$$
+
+$$
+\phi (2)=1,
+$$
+
+$$
+\phi (3)=2,
+$$
+
+$$
+\phi (4)=2,
+$$
+
+$$
+\phi (5)=4.
+$$
 
 ## Свойства
 
@@ -32,13 +46,23 @@ $$ \phi (5)=4. $$
 
 если
 
-$$ n = p_1^{a_1} \cdot p_2^{a_2} \cdot \ldots \cdot p_k^{a_k} $$
+$$
+n = p_1^{a_1} \cdot p_2^{a_2} \cdot \ldots \cdot p_k^{a_k}
+$$
 
 (где все $p_i$ - простые), то
 
-$$ \phi(n) = \phi(p_1^{a_1}) \cdot \phi(p_2^{a_2}) \cdot \ldots \cdot \phi(p_k^{a_k}) = $$
-$$ = (p_1^{a_1} - p_1^{a_1-1}) \cdot (p_2^{a_2} - p_2^{a_2-1}) \cdot \ldots \cdot (p_k^{a_k} - p_k^{a_k-1}) = $$
-$$ = n \cdot \left( 1-{1\over p_1} \right) \cdot \left( 1-{1\over p_2} \right) \cdot \ldots \cdot \left( 1-{1\over p_k} \right). $$
+$$
+\phi(n) = \phi(p_1^{a_1}) \cdot \phi(p_2^{a_2}) \cdot \ldots \cdot \phi(p_k^{a_k}) =
+$$
+
+$$
+= (p_1^{a_1} - p_1^{a_1-1}) \cdot (p_2^{a_2} - p_2^{a_2-1}) \cdot \ldots \cdot (p_k^{a_k} - p_k^{a_k-1}) =
+$$
+
+$$
+= n \cdot \left( 1-{1\over p_1} \right) \cdot \left( 1-{1\over p_2} \right) \cdot \ldots \cdot \left( 1-{1\over p_k} \right).
+$$
 
 ## Реализация
 
@@ -65,11 +89,18 @@ int phi (int n) {
 ## Приложения функции Эйлера
 
 Самое известное и важное свойство функции Эйлера выражается в **теореме Эйлера**:
-$$ a^{\phi(m)} \equiv 1 \pmod m, $$
+
+$$
+a^{\phi(m)} \equiv 1 \pmod m,
+$$
+
 где $\it a$ и $\it m$ взаимно просты.
 
 В частном случае, когда $\it m$ простое, теорема Эйлера превращается в так называемую **малую теорему Ферма**:
-$$ a^{m-1} \equiv 1  \pmod m $$
+
+$$
+a^{m-1} \equiv 1  \pmod m
+$$
 
 Теорема Эйлера достаточно часто встречается в практических приложениях, например, см. [Обратный элемент в поле по модулю](reverse_element).
 

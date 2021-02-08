@@ -18,7 +18,9 @@
 
 **Співвідношення Вітні (Whitney)** (1932 г). між реберної зв'язністю $\lambda$, [вершинної зв'язністю](vertex_connectivity) $\kappa$ і найменшою з степеней вершин $\delta$:
 
-$$ \kappa \le \lambda \le \delta. $$
+$$
+\kappa \le \lambda \le \delta.
+$$
 
 **Доведемо** це твердження.
 

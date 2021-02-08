@@ -179,20 +179,29 @@ bool miller_rabin (T n, T2 b)
 
 **Последовательности Лукаса** - це послідовності U<sub>k</sub> і V<sub>k</sub>, определяемые наступним чином:
 
-$$ U<sub>0</sub> = 0
+$$
+U<sub>0</sub> = 0
 U<sub>1</sub> = 1
 **U<sub>k</sub> = P U<sub>k-1</sub> - Q U<sub>k-2</sub>**
 V<sub>0</sub> = 2
 V<sub>1</sub> = P
-**V<sub>k</sub> = P V<sub>k-1</sub> - Q V<sub>k-2</sub>** $$
+**V<sub>k</sub> = P V<sub>k-1</sub> - Q V<sub>k-2</sub>**
+$$
+
 Далі, нехай M = N - J (D, N).
 
 Якщо N просте, і gcd (N, Q) = 1, то маємо:
 
-$$ **U<sub>M</sub> = 0 (mod N)** $$
+$$
+**U<sub>M</sub> = 0 (mod N)**
+$$
+
 В зокрема, коли параметри D, P, Q обчислені алгоритмом Селфрідж, маємо:
 
-$$ U<sub>N+1</sub> = 0 (mod N)** $$
+$$
+U<sub>N+1</sub> = 0 (mod N)**
+$$
+
 Зворотне, взагалі кажучи, невірно. Тим не менш, псевдопростих чисел при даному алгоритмі виявляється не дуже багато, на чому, власне, і базується алгоритм Лукаса.
 
 Отже, **алгоритм Лукаса полягає в обчисленні U<sub>M</sub> і порівняно його з нулем**.
@@ -201,17 +210,26 @@ $$ U<sub>N+1</sub> = 0 (mod N)** $$
 
 Маємо:
 
-$$ U<sub>k</sub> = (a<sup>k</sup> - b<sup>k</sup>) / (a - b),
-V<sub>k</sub> = a<sup>k</sup> + b<sup>k</sup>, $$
+$$
+U<sub>k</sub> = (a<sup>k</sup> - b<sup>k</sup>) / (a - b),
+V<sub>k</sub> = a<sup>k</sup> + b<sup>k</sup>,
+$$
+
 де a і b - різні коріння квадратного рівняння x<sup>2</sup> - P x + Q = 0.
 
 Тепер наступні рівності можна довести элементарно:
 
-$$ U<sub>2k</sub> = U<sub>k</sub> V<sub>k</sub> (mod N)
-V<sub>2k</sub> = V<sub>k</sub><sup>2</sup> - 2 Q<sup>k</sup> (mod N) $$
+$$
+U<sub>2k</sub> = U<sub>k</sub> V<sub>k</sub> (mod N)
+V<sub>2k</sub> = V<sub>k</sub><sup>2</sup> - 2 Q<sup>k</sup> (mod N)
+$$
+
 Тепер, якщо уявити M = E 2<sup>T</sup>, де E - непарне число, то легко получити:
 
-$$ **U<sub>M</sub> = U<sub>E</sub> V<sub>E</sub> V<sub>2E</sub> V<sub>4E</sub> ... V<sub>2<sup>T-2</sup>E</sub> V<sub>2<sup>T-1</sup>E</sub> = 0 (mod N)**, $$
+$$
+**U<sub>M</sub> = U<sub>E</sub> V<sub>E</sub> V<sub>2E</sub> V<sub>4E</sub> ... V<sub>2<sup>T-2</sup>E</sub> V<sub>2<sup>T-1</sup>E</sub> = 0 (mod N)**,
+$$
+
 і хоча б один з множителей рівний нулю за модулем N.
 
 Зрозуміло, що **достатньо обчислити U<sub>E</sub> і V<sub>E</sub>**, а всі наступні множники V<sub>2E</sub> V<sub>4E</sub> ... V<sub>2<sup>T-2</sup>E</sub> V<sub>2<sup>T-1</sup>E</sub> можна **получити вже з них**.
@@ -220,8 +238,11 @@ $$ **U<sub>M</sub> = U<sub>E</sub> V<sub>E</sub> V<sub>2E</sub> V<sub>4E</sub> .
 
 Спочатку розглянемо наступні формули для складання членів послідовностей Лукаса:
 
-$$ U<sub>i+j</sub> = (U<sub>i</sub> V<sub>j</sub> + U<sub>j</sub> V<sub>i</sub>) / 2 (mod N)
-V<sub>i+j</sub> = (V<sub>i</sub> V<sub>j</sub> + D U<sub>i</sub> U<sub>j</sub>) / 2 (mod N) $$
+$$
+U<sub>i+j</sub> = (U<sub>i</sub> V<sub>j</sub> + U<sub>j</sub> V<sub>i</sub>) / 2 (mod N)
+V<sub>i+j</sub> = (V<sub>i</sub> V<sub>j</sub> + D U<sub>i</sub> U<sub>j</sub>) / 2 (mod N)
+$$
+
 Слід звернути увага, що поділ виконується в поле (mod N).
 
 Формулы ці доказываются дуже просто, і тут їх доведення опущено.
@@ -238,8 +259,11 @@ V<sub>i+j</sub> = (V<sub>i</sub> V<sub>j</sub> + D U<sub>i</sub> U<sub>j</sub>) 
 
 Нагадаємо базовые требования до параметрам:
 
-$$ **P > 0**,
-**D = P<sup>2</sup> - 4*Q ? 0**. $$
+$$
+**P > 0**,
+**D = P<sup>2</sup> - 4*Q ? 0**.
+$$
+
 Тепер продовжимо вивчення цих параметрів.
 
 **D не має бути точним квадратом (mod N)**.
@@ -587,10 +611,16 @@ void prime_init() { // викликати до першого виклику pri
 
 Позначимо через Q<sub>1</sub> добуток простих q < T, для яких q = 1 (mod 4), а через Q<sub>3</sub> - добуток простих q < T, для яких q = 3 (mod 4). Значить gcd (Q<sub>1</sub>, Q<sub>3</sub>) = 1 і Q<sub>1</sub> Q<sub>3</sub> ? e<sup>T</sup>. Таким чином, кількість способів вибрати n **з дополнительными условиями**
 
-$$ n = 1 (mod Q<sub>1</sub>), n = -1 (mod Q<sub>3</sub>) $$
+$$
+n = 1 (mod Q<sub>1</sub>), n = -1 (mod Q<sub>3</sub>)
+$$
+
 має бути, эвристически, як мінімум
 
-$$ e<sup>T<sup> 2</sup> (1 - 3 / k)</sup> / e<sup> 2T</sup> > **e<sup>T<sup> 2</sup> (1 - 4 / k)</sup>** $$
+$$
+e<sup>T<sup> 2</sup> (1 - 3 / k)</sup> / e<sup> 2T</sup> > **e<sup>T<sup> 2</sup> (1 - 4 / k)</sup>**
+$$
+
 для великого T.
 
 Але **кожне таке n - це контрприклад до тесту BPSW**. Дійсно, n буде числом Кармайкла (тобто числом, на якому тест Міллера-Рабіна буде ошибаться при будь-якому основании), тому воно автоматично буде псевдопростым по основи 2. Оскільки n = 3 (mod 8) і кожне p | n рівне 3 (mod 8), очевидно, що n також буде сильным псевдопростым по основи 2. Оскільки J(5,n) = -1, то кожне просте p | n задовольняє J(5,p) = -1, і так як p+1 | n+1 для будь-якого простого p | n, звідси випливає, що n - псевдопросте Лукаса для будь-якого тесту Лукаса з дискриминантом 5.

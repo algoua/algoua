@@ -26,7 +26,7 @@
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-const int MAXN = максимальне число вершин в графі;
+const int MAXN = максимальне кількість вершин в графі;
 vector<int> g[MAXN], q[MAXN]; // граф і всі запити
 int dsu[MAXN], ancestor[MAXN];
 bool u[MAXN];

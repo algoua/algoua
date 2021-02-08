@@ -32,25 +32,35 @@ for (int i=2; i<=n; ++i)
 
 Отже, для кожного простого $p \le n$ буде виконуватися внутрішній цикл, який зробить $\frac{n}{p}$ дій. Отже, нам потрібно оцінити наступну величину:
 
-$$ \sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{n}{p} = n \cdot \sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{1}{p}. $$
+$$
+\sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{n}{p} = n \cdot \sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{1}{p}.
+$$
 
 Згадаймо тут два відомих факту: що число простих, менше або рівних $n$, приблизно рівне $\frac{n}{\ln n}$, і що $k$-е просте число приблизно рівне $k \ln k$ (це випливає з першого затвердження). Значить суму можна записати таким чином:
 
-$$ \sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{1}{p} \approx \frac{1}{2} + \sum_{k=2}^{\frac{n}{\ln n}} \frac{1}{k \ln k}. $$
+$$
+\sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{1}{p} \approx \frac{1}{2} + \sum_{k=2}^{\frac{n}{\ln n}} \frac{1}{k \ln k}.
+$$
 
 Тут ми выделили перший просте з суми, оскільки при $k = 1$ згідно приближению $k \ln k$ вийде $0$, що приведе до делению на нуль.
 
 Тепер оцінимо таку суму з допомогою интеграла від тією ж функції по $k$ від $2$ до $\frac{n}{\ln n}$ (ми можемо виробляти таке наближення, оскільки, фактично, сума відноситься до интегралу як його наближення по формулою прямоугольников):
 
-$$ \sum_{k=2}^{\frac{n}{\ln n}} \frac{1}{k \ln k} \approx \int\limits_2^{\frac{n}{\ln n}} \frac{1}{k \ln k}\ dk. $$
+$$
+\sum_{k=2}^{\frac{n}{\ln n}} \frac{1}{k \ln k} \approx \int\limits_2^{\frac{n}{\ln n}} \frac{1}{k \ln k}\ dk.
+$$
 
 Первообразная для подынтегральной функції є $\ln \ln k$. Выполняя подстановку і убирая члены меншого порядку, отримуємо:
 
-$$ \int\limits_2^{\frac{n}{\ln n}} \frac{1}{k \ln k}\ dk = \ln \ln \frac{n}{\ln n} - \ln \ln 2 = \ln (\ln n - \ln \ln n) - \ln \ln 2 \approx \ln \ln n. $$
+$$
+\int\limits_2^{\frac{n}{\ln n}} \frac{1}{k \ln k}\ dk = \ln \ln \frac{n}{\ln n} - \ln \ln 2 = \ln (\ln n - \ln \ln n) - \ln \ln 2 \approx \ln \ln n.
+$$
 
 Тепер, возвращаясь до первоначальной сумі, отримуємо її приближённую оцінку:
 
-$$ \sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{n}{p} \approx n \ln \ln n + o(n), $$
+$$
+\sum_{ \scriptstyle p \le n, \atop\scriptstyle p~is~prime } \frac{n}{p} \approx n \ln \ln n + o(n),
+$$
 
 що і потрібно довести.
 

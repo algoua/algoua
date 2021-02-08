@@ -18,7 +18,9 @@
 
 **Соотношение Уитни (Whitney)** (1932 г). между рёберной связностью $\lambda$, [вершинной связностью](vertex_connectivity) $\kappa$ и наименьшей из степеней вершин $\delta$:
 
-$$ \kappa \le \lambda \le \delta. $$
+$$
+\kappa \le \lambda \le \delta.
+$$
 
 **Докажем** это утверждение.
 

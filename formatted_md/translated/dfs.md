@@ -26,7 +26,7 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 vector < vector<int> > g; // граф
-int n; // число вершин
+int n; // кількість вершин
 
 vector<int> color; // колір вершини (0, 1, або 2)
 
@@ -48,7 +48,7 @@ void dfs (int v) {
 <!--- TODO: specify code snippet id -->
 ``` cpp
 vector < vector<int> > g; // граф
-int n; // число вершин
+int n; // кількість вершин
 
 vector<char> used;
 

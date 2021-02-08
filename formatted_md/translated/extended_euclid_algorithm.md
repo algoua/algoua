@@ -2,7 +2,9 @@
 
 В то час як ["звичайний" алгоритм Евкліда](euclid_algorithm) просто знаходить найбільший загальний дільник двох чисел $a$ і $b$, расширенный алгоритм Евкліда знаходить крім НСД також коефіцієнти $x$ і $y$ такі, що:
 
-$$a \cdot x + b \cdot y = {\rm gcd} (a, b).$$
+$$
+a \cdot x + b \cdot y = {\rm gcd} (a, b).
+$$
 
 тобто. він знаходить коефіцієнти, з допомогою яких НСД двох чисел виражається через самі ці числа.
 
@@ -12,30 +14,42 @@ $$a \cdot x + b \cdot y = {\rm gcd} (a, b).$$
 
 Отже, нехай ми знайшли розв'язок $(x_1,y_1)$ задачі для нової пари $(b\%a,a)$:
 
-$$ (b \% a) \cdot x_1 + a \cdot y_1 = g, $$
+$$
+(b \% a) \cdot x_1 + a \cdot y_1 = g,
+$$
 
 і хочемо получити розв'язок $(x,y)$ для нашій пари $(a,b)$:
 
-$$ a \cdot x + b \cdot y = g. $$
+$$
+a \cdot x + b \cdot y = g.
+$$
 
 Для цього перетворимо величину $b \% a$:
 
-$$ b \% a = b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a. $$
+$$
+b \% a = b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a.
+$$
 
 Підставами це в приведённое вище вираз з $x_1$ і $y_1$ і отримаємо:
 
-$$ g = (b \% a) \cdot x_1 + a \cdot y_1 = \left( b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a \right) \cdot x_1 + a \cdot y_1, $$
+$$
+g = (b \% a) \cdot x_1 + a \cdot y_1 = \left( b - \left\lfloor \frac{b}{a} \right\rfloor \cdot a \right) \cdot x_1 + a \cdot y_1,
+$$
 
 і, выполняя перегруппировку доданків, отримуємо:
 
-$$ g = b \cdot x_1 + a \cdot \left( y_1 - \left\lfloor \frac{b}{a} \right\rfloor \cdot x_1 \right). $$
+$$
+g = b \cdot x_1 + a \cdot \left( y_1 - \left\lfloor \frac{b}{a} \right\rfloor \cdot x_1 \right).
+$$
 
 Порівнюючи це з исходным выражением над невідомими $x$ і $y$, отримуємо необхідні вираження:
 
-$$ \cases{
+$$
+\cases{
 x = y_1 - \left\lfloor \frac{b}{a} \right\rfloor \cdot x_1, \cr
 y = x_1.
-} $$
+}
+$$
 
 ## Реалізація
 
