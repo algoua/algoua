@@ -21,6 +21,7 @@ module.exports = {
     },
   ],
   themeConfig: {
+    hideableSidebar: true,
     navbar: {
       title: 'Algoua',
       logo: {
