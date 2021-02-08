@@ -8,46 +8,41 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: 'TODO',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
-    description: (
-      <>
-        TODO
-      </>
-    ),
+    title: 'Безкоштовно',
+    imageUrl: 'img/feature_free.svg',
   },
   {
-    title: 'TODO',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
-    description: (
-      <>
-        TODO
-      </>
-    ),
-  },
-  {
-    title: 'TODO',
-    imageUrl: 'img/undraw_docusaurus_react.svg',
-    description: (
-      <>
-        TODO
-      </>
-    ),
+    title: 'Доступно',
+    imageUrl: 'img/feature_open.svg',
   },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({imageUrl, title}) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={clsx('col col--4', styles.feature)}>
+    <div className={clsx('col col--6', styles.feature)}>
       {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
       )}
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <div className="text--center">
+        <h3>{title}</h3>
+      </div>
     </div>
+  );
+}
+
+function CategoryButton({url, name}) {
+  return (
+    <Link
+      className={clsx(
+        'button button--secondary button--lg',
+        styles.button,
+      )}
+      to={useBaseUrl(url)}>
+      {name}
+    </Link>
   );
 }
 
@@ -58,19 +53,14 @@ function Home() {
     <Layout
       title={`${siteConfig.title}`}
       description="Алгоритмічні навчальні матеріали <head />">
-      <header className={clsx('hero hero--primary', styles.heroBanner)}>
+      <header className={clsx('hero hero--secondary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
-            <Link
-              className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
-              )}
-              to={useBaseUrl('algorithms/')}>
-              Get Started
-            </Link>
+            {siteConfig.themeConfig.navbar.items.filter((props) => props.position === 'left').map((props) => (
+              <CategoryButton name={props.label} url={props.to} />
+            ))}
           </div>
         </div>
       </header>

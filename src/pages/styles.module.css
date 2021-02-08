@@ -12,16 +12,25 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 966px) {
+.buttons {
+  display: none;
+}
+
+@media screen and (max-width: 997px) {
   .heroBanner {
     padding: 2rem;
   }
-}
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .button {
+    margin: 5px;
+  }
 }
 
 .features {

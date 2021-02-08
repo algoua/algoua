@@ -16,8 +16,7 @@ module.exports = {
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css',
       type: 'text/css',
-      integrity:
-        'sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X',
+      integrity: 'sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X',
       crossorigin: 'anonymous',
     },
   ],
@@ -58,20 +57,6 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Категорії',
-          items: [
-            {
-              label: 'Алгоритми',
-              to: 'algorithms/',
-            },
-            {
-              label: 'Курси',
-              to: 'courses/',
-            },
-          ],
-        },
-        {
-          title: 'Більше',
           items: [
             {
               label: 'Зв\'язатися',
@@ -84,7 +69,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Logo is based on icon made by <a href="https://www.flaticon.com/authors/becris" title="Becris" class="footer__link-item">Becris</a><br/>
+      copyright: `Logo is based on icon made by <a href="https://www.flaticon.com/authors/becris" title="Becris" class="copyright-link">Becris</a><br/>
                   Copyright © ${new Date().getFullYear()} Algoua`,
     },
   },
