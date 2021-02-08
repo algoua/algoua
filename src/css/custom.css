@@ -26,24 +26,30 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+/* Doc page: Font for title */
 .docTitle_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem- {
   font-size: 2.5rem !important;
 }
 
+/* Doc page: Font for sidebar */
 a.menu__link {
   font-size: 14px;
 }
 
+/* KaTeX: font for text{} */
 .mord.text {
   font-family: system-ui;
   font-size: 0.9em;
 }
 
+/* KaTeX: show scrollbar when a formula overflows */
 .katex-display > .katex {
-  display: inline-block;
-  white-space: nowrap;
+  max-width: 100%;
+}
+.katex-display > .katex > .katex-html {
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  text-align: initial;
+  padding-left: 2px;
+  padding-right: 2px;
 }
