@@ -1,6 +1,0 @@
-argparse
-flask
-pathlib
-pygments
-markdown
-python-markdown-math

@@ -1,6 +1,8 @@
-# Пошук в глибину за O(n+m)
-
-[TOC]
+---
+id: dfs
+title: Пошук в глибину за O(n+m)
+sidebar_label: Пошук в глибину за O(n+m)
+---
 
 *[DFS]: Depth-First Search
 

@@ -1,6 +1,9 @@
-# Алгоритми
+# Algoua
 
-Збірка алгоритмічних статей по-українськи.
+Алгоритмічні матеріали по-українськи.
+
+## Алгоритми
+Збірка алгоритмічних статей.
 
 Структура кожної статті:
 
@@ -9,21 +12,23 @@
 * Застосування.
 * Задачі.
 
-Статті написані у форматі Markdown з використанням MathJax та знаходяться у папці `src`.
+Статті написані у форматі Markdown з використанням LaTeX та знаходяться у папці `docs/algorithms`.
+
+## Курси
+
+TODO
 
 ## Тестовий сервер
 
 1. Клонування репозиторію із GitHub.
 
-        $ git clone https://github.com/algoua/algorithms.git
+        $ git clone https://github.com/algoua/algoua.git
 
-1. Встановлення необхідних пакетів Python 3, які зазначено у файлі `requirements.txt`. На даному етапі потрібно мати програми Python 3 та pip (рекомендується для цього завантажити [Miniconda](https://docs.conda.io/en/latest/miniconda.html)).
+1. Встановлення [Node.js](https://nodejs.org/en/download/) та [Yarn](https://yarnpkg.com/en/)
 
-        $ pip install -r requirements.txt
+2. Запуск серверу. Він буде доступним за посиланням [http://localhost:3000](http://localhost:3000).
 
-1. Запуск серверу. Він буде доступним за посиланням [http://localhost:8080](http://localhost:8080). За бажанням можна змінити порт використовуючи параметр `--port`.
-
-        $ python app.py
+        $ yarn start
 
 ## Внесення змін
 
@@ -31,8 +36,9 @@
 
 Будь ласка, пропонуйте зміни (виправлення помилок, нова стаття, тощо) у вигляді `pull request`. З інструкціями як створити `pull request` із своїми змінами можна почитати [тут](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
 
-Файли із статтями повинні бути відформатовані використовуючи soft-wrap, а не hard-wrap. Іншими словами немає обмеження на довжину рядків. GitHub підтримує soft-wrap, а для локального редагування використовуйте редактор, який теж його підтримує, наприклад, Visual Studio Code.
+Файли із статтями повинні бути відформатовані використовуючи soft-wrap, а не hard-wrap. Іншими словами немає обмеження на довжину рядків та не потрібно його вводити. GitHub підтримує soft-wrap, а для локального редагування використовуйте редактор, який теж його підтримує, наприклад, [VS Code](https://code.visualstudio.com/).
 
 ## Джерела
 
-1. [e-maxx](http://e-maxx.ru) (LICENSE - Public Domain).
+* [e-maxx](http://e-maxx.ru) (LICENSE - Public Domain).
+* Різні матеріали з інтернету із сумісними ліцензіями, що не потребують згадування.

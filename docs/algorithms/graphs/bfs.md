@@ -1,6 +1,8 @@
-# Пошук в ширину за O(n+m)
-
-[TOC]
+---
+id: bfs
+title: Пошук в ширину за O(n+m)
+sidebar_label: Пошук в ширину за O(n+m)
+---
 
 *[BFS]: Breadth-First Search
 
