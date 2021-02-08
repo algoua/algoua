@@ -1,7 +1,11 @@
 ---
 id: bfs
 title: Пошук в ширину
-sidebar_label: Пошук в ширину
+description: Алгоритм пошуку в ширину
+keywords:
+  - Алгоритм
+  - Пошук
+  - Графи
 ---
 
 *[BFS]: Breadth-First Search

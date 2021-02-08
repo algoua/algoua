@@ -1,8 +1,11 @@
 ---
 id: intro
 title: Курси
-sidebar_label: Курси
 slug: /courses
+description: Алгоритмічні курси
+keywords:
+  - Алгоритми
+  - Курси
 ---
 
 ## Вступ

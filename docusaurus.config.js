@@ -42,6 +42,12 @@ module.exports = {
           position: 'left',
         },
         {
+          to: 'books/',
+          activeBasePath: 'books',
+          label: 'Література',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/algoua/algoua',
           label: 'GitHub',
           position: 'right',

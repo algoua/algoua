@@ -1,7 +1,11 @@
 ---
 id: dfs
 title: Пошук в глибину
-sidebar_label: Пошук в глибину
+description: Алгоритм пошуку в глибину
+keywords:
+  - Алгоритм
+  - Пошук
+  - Графи
 ---
 
 *[DFS]: Depth-First Search
