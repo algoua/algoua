@@ -20,6 +20,7 @@ module.exports = {
       items: [
         'algorithms/graphs/dfs',
         'algorithms/graphs/bfs',
+        'algorithms/graphs/topological_sort',
       ],
     },
   ],

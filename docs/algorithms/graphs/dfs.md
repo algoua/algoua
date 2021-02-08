@@ -10,7 +10,7 @@ sidebar_label: Пошук в глибину
 
 В результаті пошуку в глибину знаходиться лексикографічно перший шлях в графі.
 
-Алгоритм працює за $O(n+m)$, де $n$ - число вершин, $m$ - число ребер.
+Алгоритм працює за $O(n+m)$, де $n$ - кількість вершин, $m$ - кількість ребер.
 
 ## Опис алгоритму
 
@@ -22,7 +22,7 @@ TODO: add detailed description for DFS.
 
 <!--- dfs -->
 ``` cpp
-vector<vector<int>> g; // граф
+vector<vector<int>> g; // граф у вигляді списків суміжності
 int n; // кількість вершин
 
 vector<char> used;
@@ -93,11 +93,19 @@ void dfs(int v) {
 ## Задачі
 
 * [*e-olymp* - 122 - **Маршрути в горах**](https://www.e-olymp.com/uk/problems/122) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/0000-0999/0122%20-%20Mountain%20routes%20-%20Горные%20маршруты%20-%20Dağlıq%20marşrutlar%20-%20Маршрути%20в%20горах.cpp)
+
 * [*e-olymp* - 977 - **Дерево?**](https://www.e-olymp.com/uk/problems/977) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/0000-0999/0977%20-%20Is%20it%20a%20Tree%3F%20-%20Дерево%3F.cpp)
+
 * [*e-olymp* - 978 - **Отримай дерево**](https://www.e-olymp.com/uk/problems/978) | Розв'язки: [C#](https://github.com/memo735/e-olymp/blob/master/0000-0999/Problem0978_C%23)
+
 * [*e-olymp* - 1941 - **Предок**](https://www.e-olymp.com/uk/problems/1941) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/1000-1999/1941%20-%20Parent%20-%20Предок.cpp)
+
 * [*e-olymp* - 2270 - **Пошук циклу**](https://www.e-olymp.com/uk/problems/2270) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/2000-2999/2270%20-%20Find%20a%20cycle%20-%20Поиск%20цикла%20-%20Пошук%20циклу.cpp)
+
 * [*e-olymp* - 2382 - **Графічна маска**](https://www.e-olymp.com/uk/problems/2382) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/2000-2999/2382%20-%20Grafix%20Mask%20-%20Графическая%20маска%20-%20Графічна%20маска.cpp)
+
 * [*e-olymp* - 2383 - **Електричні провода**](https://www.e-olymp.com/uk/problems/2383) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/2000-2999/2383%20-%20Electrical%20Wires%20-%20Электрические%20провода%20-%20Електричні%20провода.cpp)
+
 * [*e-olymp* - 3165 - **Двокольоровість**](https://www.e-olymp.com/uk/problems/3165) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/3000-3999/3165%20-%20Bicoloring%20-%20Двухцветность%20-%20Двокольоровість.cpp)
+
 * [*e-olymp* - 4077 - **Зарплата в корпорації**](https://www.e-olymp.com/uk/problems/4077) | Розв'язки: [C++](https://github.com/memo735/e-olymp/blob/master/4000-4999/4077%20-%20Corporation%20Salary%20-%20Зарплата%20в%20корпорации%20-%20Şirkətdəki%20əmək%20haqqı%20-%20Зарплата%20в%20корпорації.cpp)
