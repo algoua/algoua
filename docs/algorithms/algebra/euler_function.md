@@ -97,6 +97,6 @@ $$
 
 ## Задачі
 
-* [Online Judge - 10179 - **Irreducible Basic Fractions**](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1120)
+* [Online Judge - 10179 - **Irreducible Basic Fractions**](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1120) | Розв'язки: [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-10179-irreducable-basic-fractions-ukBe-agkg)
 * [Online Judge - 11327 - **Enumerating Rational Numbers**](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2302)
 * [Timus - 1673 - **Admission to Exam**](http://acm.timus.ru/problem.aspx?space=1&num=1673&locale=en)

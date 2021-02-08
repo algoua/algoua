@@ -157,7 +157,7 @@ $$
 **Розв'язок**. Більш детально цю задачу розглянуто у [окремій статті](../graphs/fixed_length_paths). Тут лише описано суть цього розв'язку: ми підносимо в $k$-у степінь матрицю суміжності цього графа, і елементи цієї матриці будуть мати шукані значення. Асимптотика - $O(n^3 \log k)$.
 
 :::note
-У [згаданій статті](../graphs/fixed_length_paths) розглядається також й інший варіант цієї задачі: коли граф зважений, і потрібно знайти шлях мінімальної ваги, що містить рівно $k$ ребер. Дана задача також вирішується з допомогою бінарного піднесення у степінь матриці суміжності графа, однак замість звичайної операції перемноження двох матриць використовують модифіковану: замість множень береться сума, а замість підсумовування - взяття мінімуму.
+У [згаданій статті](../graphs/fixed_length_paths) розглядається також й інший варіант цієї задачі: коли граф зважений, і потрібно знайти шлях мінімальної ваги, що містить рівно $k$ ребер. Дана задача також вирішується за допомогою бінарного піднесення у степінь матриці суміжності графа, однак замість звичайної операції перемноження двох матриць використовують модифіковану: замість множень береться сума, а замість підсумовування - взяття мінімуму.
 :::
 
 ### Добуток двох чисел за модулем
@@ -202,5 +202,5 @@ int binprod_mod(int a, int b, int m) {
 ## Задачі
 
 * [Codeforces - 630 - **Parking Lot**](https://codeforces.com/problemset/problem/630/I?locale=en)
-* [Online Judge - 374 - **Big Mod**](https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=310)
+* [Online Judge - 374 - **Big Mod**](https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=310) | Розв'язки: [C++](https://shareablecode.com/snippets/c-solution-for-uva-problem-big-mod-374-cpp-kRwC-KkY6), [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-374-big-mod-apju-qnrD), [Python](https://shareablecode.com/snippets/python-solution-for-uva-online-judge-374-big-mod-tuPc-cpvZ)
 * [Spoj - LASTDIG - **The last digit**](https://www.spoj.com/problems/LASTDIG)
