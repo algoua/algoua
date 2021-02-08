@@ -36,7 +36,7 @@ keywords:
 <!--- topological_sort -->
 ``` cpp
 int n; // кількість вершин
-vector<int> g[MAXN]; // граф у вигляді списків суміжності
+vector<int> g[MAXN]; // граф, список суміжності
 bool used[MAXN];
 vector<int> ans;
 

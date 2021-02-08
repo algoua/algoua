@@ -26,7 +26,7 @@ TODO: add detailed description for DFS.
 
 <!--- dfs -->
 ``` cpp
-vector<vector<int>> g; // граф у вигляді списків суміжності
+vector<vector<int>> g; // граф, список суміжності
 int n; // кількість вершин
 
 vector<char> used;
