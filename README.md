@@ -1,6 +1,6 @@
 # Algoua
 
-![deploy](https://github.com/algoua/algoua/workflows/deploy/badge.svg)
+![deploy](https://github.com/algoua/algoua/workflows/deploy/badge.svg?branch=main)
 
 Алгоритмічні навчальні матеріали.
 
