@@ -73,7 +73,7 @@ module.exports = {
             },
             {
               label: 'Як запропонувати зміни чи додати нову статтю?',
-              href: 'https://github.com/algoua/algoua',
+              href: 'https://github.com/algoua/algoua#внесення-змін',
             },
           ],
         },
