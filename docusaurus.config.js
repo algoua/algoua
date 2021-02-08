@@ -4,7 +4,7 @@ const rehypeKatex = require('rehype-katex');
 
 module.exports = {
   title: 'Algoua',
-  tagline: 'Алгоритмічні матеріали по-українськи',
+  tagline: 'Алгоритмічні навчальні матеріали',
   url: 'https://algoua.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -68,11 +68,11 @@ module.exports = {
           title: 'Більше',
           items: [
             {
-              label: 'Зв\'язатися на GitHub',
+              label: 'Зв\'язатися',
               href: 'https://github.com/algoua/algoua/issues/new',
             },
             {
-              label: 'Запропонувати зміни на GitHub',
+              label: 'Як запропонувати зміни чи додати нову статтю?',
               href: 'https://github.com/algoua/algoua',
             },
           ],

@@ -57,7 +57,7 @@ function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Алгоритми по-українськи <head />">
+      description="Алгоритмічні навчальні матеріали <head />">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>

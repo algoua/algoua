@@ -1,7 +1,7 @@
 ---
 id: euler_function
-title: Функція Ейлера за O(sqrt n)
-sidebar_label: Функція Ейлера за O(sqrt n)
+title: Функція Ейлера
+sidebar_label: Функція Ейлера
 ---
 
 ## Визначення

@@ -1,7 +1,7 @@
 ---
 id: bfs
-title: Пошук в ширину за O(n+m)
-sidebar_label: Пошук в ширину за O(n+m)
+title: Пошук в ширину
+sidebar_label: Пошук в ширину
 ---
 
 *[BFS]: Breadth-First Search

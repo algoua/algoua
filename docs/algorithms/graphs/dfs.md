@@ -1,7 +1,7 @@
 ---
 id: dfs
-title: Пошук в глибину за O(n+m)
-sidebar_label: Пошук в глибину за O(n+m)
+title: Пошук в глибину
+sidebar_label: Пошук в глибину
 ---
 
 *[DFS]: Depth-First Search
