@@ -11,6 +11,7 @@ module.exports = {
         'algorithms/algebra/binary_pow',
         'algorithms/algebra/euclid_algorithm',
         'algorithms/algebra/euler_function',
+        'algorithms/algebra/extended_euclid_algorithm',
       ],
     },
     {
