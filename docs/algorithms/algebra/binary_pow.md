@@ -202,5 +202,5 @@ int binprod_mod(int a, int b, int m) {
 ## Задачі
 
 * [Codeforces - 630 - **Parking Lot**](https://codeforces.com/problemset/problem/630/I?locale=en)
-* [Online Judge - 374 - **Big Mod**](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=310)
+* [Online Judge - 374 - **Big Mod**](https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=310)
 * [Spoj - LASTDIG - **The last digit**](https://www.spoj.com/problems/LASTDIG)
