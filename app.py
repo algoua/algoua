@@ -1,44 +1,63 @@
 import argparse
-from flask import Flask, render_template, Markup, redirect, abort
+from flask import Flask, render_template, Markup, abort
 from pathlib import Path
-from pygments import highlight
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters import HtmlFormatter
-
-REPOSITORY_URL = 'https://github.com/algoua/algorithms'
-TEMPLATES_DIR = Path('templates')
-CODE_STYLE = 'monokai'
+import markdown
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--port', dest='port', default=8080, help='port number')
 args = parser.parse_args()
 
+REPOSITORY_URL = 'https://github.com/algoua/algorithms'
+BASE_URL = f'http://localhost:{args.port}/'
+SRC_DIR = Path('src')
+TEMPLATES_DIR = Path('templates')
+CODE_STYLE = 'monokai'
+
 app = Flask(__name__, template_folder=str(TEMPLATES_DIR))
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-lexer = get_lexer_by_name("cpp", stripall=True)
-formatter = HtmlFormatter(noclasses=True, linenos=False, style=CODE_STYLE, linewrap=True)
+md = markdown.Markdown(
+    extensions=[
+        'abbr',
+        'attr_list',
+        'codehilite',
+        'fenced_code',
+        'footnotes',
+        'mdx_math',
+        'sane_lists',
+        'tables',
+        'toc',
+    ],
+    extension_configs={
+        'codehilite': {
+            'pygments_style': CODE_STYLE,
+            'noclasses': True
+        },
+        'mdx_math': {
+            'enable_dollar_delimiter': True
+        },
+        'toc': {
+            'permalink': True,
+            'slugify': lambda val, sep : val,
+            'title': 'Зміст',
+            'toc_depth': "2-6",
+        },
+    }
+)
 
-def format_code(name):
-    path = Path('code') / name
-    if path.is_file():
-        txt = path.read_text()
-        code = highlight(txt, lexer, formatter)
-        code = Markup(code)
-        return code
-    else:
-        return Markup(f'<b><span style="color:red">Код відсутній.</span> Будь ласка повідомте про несправність або виправте самі на <a href="{REPOSITORY_URL}">GitHub</a>.</b>')
+def build_html_from_md(md_file: Path):
+    if not md_file.is_file():
+        return abort(404)
+    return Markup(md.convert(md_file.read_text(encoding='utf-8')))
 
 @app.route('/')
 def index():
-    return render_template('index.html', title='Алгоритми')
+    content = build_html_from_md(SRC_DIR / 'index.md')
+    return render_template('index.html', title='Алгоритми', base_url=BASE_URL, content=content)
 
-@app.route('/page/<page_name>')
-def page(page_name):
-    page_file = 'pages/' + page_name + '.html'
-    if not (TEMPLATES_DIR / page_file).is_file():
-        return abort(404)
-
-    return render_template('page.html', title=page_name, page_file=page_file, format_code=format_code)
+@app.route('/<category>/<page_name>')
+def page(category, page_name):
+    content = build_html_from_md(SRC_DIR / category / f'{page_name}.md')
+    return render_template('page.html', title=page_name, base_url=BASE_URL, content=content)
 
 app.run(host='localhost', port=args.port)
