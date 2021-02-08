@@ -46,7 +46,7 @@ void dfs(int v) {
 
 <!--- dfs_detailed -->
 ``` cpp
-vector < vector<int> > g; // граф
+vector<vector<int>> g; // граф, список суміжності
 int n; // кількість вершин
 
 vector<int> color; // кольори вершин (0, 1, або 2)
