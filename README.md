@@ -20,11 +20,11 @@ TODO
 
 ## Тестовий сервер
 
-1. Клонування репозиторію із GitHub.
+1. Клонування репозиторію.
 
         $ git clone https://github.com/algoua/algoua.git
 
-1. Встановлення [Node.js](https://nodejs.org/en/download/) та [Yarn](https://yarnpkg.com/en/)
+1. Встановлення [Node.js](https://nodejs.org/en/download/) та [Yarn](https://yarnpkg.com/en/).
 
 1. Запуск серверу. Він буде доступним за посиланням [http://localhost:3000](http://localhost:3000).
 
@@ -34,7 +34,7 @@ TODO
 
 Потрібно мати налаштований локальний тестовий сервер.
 
-Будь ласка, пропонуйте зміни з виправленнями помилок, новою статтею тощо у вигляді `pull request`. З інструкціями як створити `pull request` можна ознайомитися [тут](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
+Пропонуйте зміни у вигляді `pull request` з вашого `fork` репозиторію. З інструкціями як створити `pull request` можна ознайомитися [тут](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
 
 Markdown статті повинні бути відформатовані використовуючи soft-wrap, а не hard-wrap. Іншими словами немає обмеження на довжину рядків та не потрібно його вводити. GitHub підтримує soft-wrap, а для локального редагування використовуйте редактор, який теж його підтримує, наприклад, [VS Code](https://code.visualstudio.com/).
 

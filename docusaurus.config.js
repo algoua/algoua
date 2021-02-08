@@ -78,8 +78,8 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Algoua<br/>
-                  Logo icon made by <a href="https://www.flaticon.com/authors/becris" title="Becris" class="footer__link-item">Becris</a>`,
+      copyright: `Logo is based on icon made by <a href="https://www.flaticon.com/authors/becris" title="Becris" class="footer__link-item">Becris</a><br/>
+                  Copyright © ${new Date().getFullYear()} Algoua`,
     },
   },
   presets: [
