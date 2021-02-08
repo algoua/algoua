@@ -1,5 +1,7 @@
 # Algoua
 
+![deploy](https://github.com/algoua/algoua/workflows/deploy/badge.svg)
+
 Алгоритмічні навчальні матеріали.
 
 Усі статті написані у форматі Markdown з використанням LaTeX та знаходяться у папці `docs`.
