@@ -26,12 +26,12 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-/* Doc page: Font for title */
-.docTitle_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem- {
+/* Doc page: font for title */
+[class*='docTitle'] {
   font-size: 2.5rem !important;
 }
 
-/* Doc page: Font for sidebar */
+/* Doc page: font for sidebar */
 a.menu__link {
   font-size: 14px;
 }
