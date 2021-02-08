@@ -33,3 +33,8 @@
 a.menu__link {
   font-size: 14px;
 }
+
+.mord.text {
+  font-family: system-ui;
+  font-size: 0.9em;
+}
