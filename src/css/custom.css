@@ -38,3 +38,12 @@ a.menu__link {
   font-family: system-ui;
   font-size: 0.9em;
 }
+
+.katex-display > .katex {
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  text-align: initial;
+}

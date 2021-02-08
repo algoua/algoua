@@ -10,7 +10,9 @@ sidebar_label: Функція Ейлера
 
 Декілька перших значення цієї функції ([A000010 в енциклопедії OEIS](https://oeis.org/A000010)):
 
-$$\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} \hline n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\ \hline \phi(n) & 1 & 1 & 2 & 2 & 4 & 2 & 6 & 4 & 6 & 4 & 10 & 4 & 12 & 6 & 8 \\ \hline \end{array}$$
+$$
+\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} \hline n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\ \hline \phi(n) & 1 & 1 & 2 & 2 & 4 & 2 & 6 & 4 & 6 & 4 & 10 & 4 & 12 & 6 & 8 \\ \hline \end{array}
+$$
 
 ## Властивості
 
@@ -32,15 +34,23 @@ $$\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|} \hline n & 1 & 2 & 3 & 4 & 5 
 
 якщо
 
-$$n = p_1^{a_1} \cdot p_2^{a_2} \cdot \ldots \cdot p_k^{a_k}$$
+$$
+n = p_1^{a_1} \cdot p_2^{a_2} \cdot \ldots \cdot p_k^{a_k}
+$$
 
 (де всі $p_i$ - прості), то
 
-$$\phi(n) = \phi(p_1^{a_1}) \cdot \phi(p_2^{a_2}) \cdot \ldots \cdot \phi(p_k^{a_k}) =$$
+$$
+\phi(n) = \phi(p_1^{a_1}) \cdot \phi(p_2^{a_2}) \cdot \ldots \cdot \phi(p_k^{a_k}) =
+$$
 
-$$= (p_1^{a_1} - p_1^{a_1-1}) \cdot (p_2^{a_2} - p_2^{a_2-1}) \cdot \ldots \cdot (p_k^{a_k} - p_k^{a_k-1}) =$$
+$$
+= (p_1^{a_1} - p_1^{a_1-1}) \cdot (p_2^{a_2} - p_2^{a_2-1}) \cdot \ldots \cdot (p_k^{a_k} - p_k^{a_k-1}) =
+$$
 
-$$= n \cdot \left( 1-{1\over p_1} \right) \cdot \left( 1-{1\over p_2} \right) \cdot \ldots \cdot \left( 1-{1\over p_k} \right).$$
+$$
+= n \cdot \left( 1-{1\over p_1} \right) \cdot \left( 1-{1\over p_2} \right) \cdot \ldots \cdot \left( 1-{1\over p_k} \right).
+$$
 
 ## Реалізація
 
@@ -71,13 +81,17 @@ int phi(int n) {
 
 Найважливіша і найвідоміша властивість функції Ейлера виражається у **теоремі Ейлера**:
 
-$$a^{\phi(m)} \equiv 1 \pmod m,$$
+$$
+a^{\phi(m)} \equiv 1 \pmod m,
+$$
 
 де $\it a$ і $\it m$ взаємно прості.
 
 Зокрема, коли $\it m$ просте, теорема Ейлера перетворюється у так звану **малу теорему Ферма**:
 
-$$a^{m-1} \equiv 1  \pmod m$$
+$$
+a^{m-1} \equiv 1  \pmod m
+$$
 
 Теорема Ейлера достатньо часто зустрічається на практиці, наприклад, див. [Обернений елемент в кільці за модулем](../algebra/reverse_element).
 
