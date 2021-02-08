@@ -2,6 +2,7 @@ import argparse
 from flask import Flask, render_template, Markup, abort
 from pathlib import Path
 import markdown
+import re
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--port', dest='port', default=8080, help='port number')
@@ -47,16 +48,20 @@ md = markdown.Markdown(
 def build_html_from_md(md_file: Path):
     if not md_file.is_file():
         return abort(404)
-    return Markup(md.convert(md_file.read_text(encoding='utf-8')))
+    txt = md_file.read_text(encoding='utf-8')
+    html = Markup(md.convert(txt))
+    title_match = re.match(r'^#\s*([^#][^\n]+)', txt)
+    title = '' if title_match is None else title_match.group(1)
+    return html, title
 
 @app.route('/')
 def index():
-    content = build_html_from_md(SRC_DIR / 'index.md')
-    return render_template('index.html', title='Алгоритми', content=content)
+    content, title = build_html_from_md(SRC_DIR / 'index.md')
+    return render_template('index.html', title=title, content=content)
 
 @app.route('/<category>/<page_name>')
 def page(category, page_name):
-    content = build_html_from_md(SRC_DIR / category / f'{page_name}.md')
-    return render_template('page.html', title=page_name, content=content)
+    content, title = build_html_from_md(SRC_DIR / category / f'{page_name}.md')
+    return render_template('page.html', title=title, content=content)
 
 app.run(host='localhost', port=args.port)
