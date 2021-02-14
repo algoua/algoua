@@ -10,6 +10,6 @@ keywords:
 
 TODO
 
-import {CategoryContents} from '../../CategoryContents.js';
+import {CategoryContents} from '/src/CategoryContents.js';
 
 <CategoryContents category="courses"/>
