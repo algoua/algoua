@@ -58,8 +58,8 @@ function Home() {
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
-            {siteConfig.themeConfig.navbar.items.filter((props) => props.position === 'left').map((props) => (
-              <CategoryButton name={props.label} url={props.to} />
+            {siteConfig.themeConfig.navbar.items.filter((props) => props.position === 'left').map((props, idx) => (
+              <CategoryButton key={idx} name={props.label} url={props.to} />
             ))}
           </div>
         </div>
