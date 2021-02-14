@@ -9,3 +9,7 @@ keywords:
 ---
 
 TODO
+
+import {CategoryContents} from '../../CategoryContents.js';
+
+<CategoryContents category="courses"/>

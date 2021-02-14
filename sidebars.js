@@ -1,5 +1,5 @@
 module.exports = {
-  algorithmsSidebar: [
+  algorithms: [
     {
       type: 'doc',
       id: 'algorithms/intro',
@@ -24,7 +24,7 @@ module.exports = {
       ],
     },
   ],
-  coursesSidebar: [
+  courses: [
     {
       type: 'doc',
       id: 'courses/intro',
