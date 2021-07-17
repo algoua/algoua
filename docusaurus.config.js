@@ -7,7 +7,7 @@ const rehypeKatex = require('rehype-katex');
 const sidebars = require('./sidebars.js');
 
 function extractTitleFromMarkdown(docPath) {
-  const content = fs.readFileSync(path.join(__dirname, 'docs', docPath), { encoding: 'utf8'});
+  const content = fs.readFileSync(path.join(__dirname, 'docs', docPath), { encoding: 'utf8' });
   const found = content.match(/title:\s*([^\r\n]+)/);
   if (found === null) {
     throw new Error(`Couldn't find title in ${docPath}`);
@@ -58,6 +58,11 @@ module.exports = {
   ],
   themeConfig: {
     hideableSidebar: true,
+    announcementBar: {
+      id: 'announcementBar-1', // Increment on change
+      content:
+        '⭐️ If you like Algoua, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/algoua/algoua">GitHub</a>! ⭐',
+    },
     navbar: {
       title: 'Algoua',
       logo: {
