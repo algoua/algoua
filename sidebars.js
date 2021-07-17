@@ -16,6 +16,13 @@ module.exports = {
     },
     {
       type: 'category',
+      label: 'Геометрія',
+      items: [
+        'algorithms/geometry/length_of_segments_union',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Графи',
       items: [
         'algorithms/graphs/dfs',

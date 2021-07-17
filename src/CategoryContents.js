@@ -3,7 +3,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 
-export const CategoryContents = ({category}) => {
+export const CategoryContents = ({ category }) => {
   const sitemap = useDocusaurusContext().siteConfig.customFields.sitemap;
   return (
     <>
