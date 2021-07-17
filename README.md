@@ -20,15 +20,23 @@
 
 TODO
 
+## Література
+
+TODO
+
 ## Тестовий сервер
 
 1. Клонування репозиторію.
 
         $ git clone https://github.com/algoua/algoua.git
 
-1. Встановлення [Node.js](https://nodejs.org/en/download/) та [Yarn](https://yarnpkg.com/en/).
+2. Встановлення [Node.js](https://nodejs.org/en/download/) та [Yarn](https://yarnpkg.com/en/).
 
-1. Запуск серверу. Він буде доступним за посиланням [http://localhost:3000](http://localhost:3000).
+3. Встановлення необхідних пакетів.
+
+        $ yarn install
+
+4. Запуск серверу. Він буде доступним за посиланням [http://localhost:3000](http://localhost:3000).
 
         $ yarn start
 
