@@ -16,7 +16,7 @@ keywords:
 
 Алгоритм працює за $O(n+m)$, де $n$ - кількість вершин, $m$ - кількість ребер.
 
-## Опис алгоритму
+## Алгоритм
 
 TODO: add detailed description for DFS.
 
@@ -28,8 +28,7 @@ TODO: add detailed description for DFS.
 ``` cpp
 vector<vector<int>> g; // граф, список суміжності
 int n; // кількість вершин
-
-vector<char> used;
+vector<bool> used(n); // відвідані вершини
 
 void dfs(int v) {
     used[v] = true;

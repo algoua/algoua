@@ -28,6 +28,7 @@ module.exports = {
         'algorithms/graphs/dfs',
         'algorithms/graphs/bfs',
         'algorithms/graphs/topological_sort',
+        'algorithms/graphs/connected_components',
       ],
     },
   ],
