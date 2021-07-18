@@ -15,27 +15,45 @@ function extractTitleFromMarkdown(docPath) {
   return found[1];
 }
 
-const sitemap = lodash.cloneDeep(sidebars)
-for (const category of Object.values(sitemap)) {
-  for (const item of Object.values(category)) {
+function process_items(items) {
+  if (!items) {
+    return [];
+  }
+  let result = [];
+  for (const item of items) {
+    if (typeof item === 'string' || item instanceof String) {
+      result.push({
+        type: 'doc',
+        label: extractTitleFromMarkdown(item + '.md'),
+        id: item,
+      });
+      continue;
+    }
     switch (item.type) {
       case 'doc': {
-        item.label = extractTitleFromMarkdown(item.id + '.md');
+        result.push({
+          type: 'doc',
+          label: extractTitleFromMarkdown(item.id + '.md'),
+          id: item.id,
+        });
         break;
       }
       case 'category': {
-        itemsWithLabels = [];
-        for (const subItemID of item.items) {
-          itemsWithLabels.push({
-            id: subItemID,
-            label: extractTitleFromMarkdown(subItemID + '.md'),
-          })
-        }
-        item.items = itemsWithLabels;
+        result.push({
+          type: 'category',
+          label: item.label,
+          items: process_items(item.items),
+        });
         break;
       }
     }
   }
+  return result;
+}
+
+const sitemap = {}
+for (const [category, categoryItems] of Object.entries(sidebars)) {
+  sitemap[category] = process_items(categoryItems);
 }
 
 module.exports = {

@@ -25,10 +25,25 @@ module.exports = {
       type: 'category',
       label: 'Графи',
       items: [
-        'algorithms/graphs/dfs',
-        'algorithms/graphs/bfs',
-        'algorithms/graphs/topological_sort',
-        'algorithms/graphs/connected_components',
+        {
+          type: 'category',
+          label: 'Базові алгоритми',
+          collapsed: false,
+          items: [
+            'algorithms/graphs/dfs',
+            'algorithms/graphs/bfs',
+            'algorithms/graphs/topological_sort',
+            'algorithms/graphs/connected_components',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Мінімальнe каркасне дерево',
+          collapsed: false,
+          items: [
+            'algorithms/graphs/mst/kruskal',
+          ],
+        },
       ],
     },
   ],
