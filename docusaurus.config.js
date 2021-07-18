@@ -81,6 +81,10 @@ module.exports = {
       content:
         '⭐️ If you like Algoua, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/algoua/algoua">GitHub</a>! ⭐',
     },
+    prism: {
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/paleNight'),
+    },
     navbar: {
       title: 'Algoua',
       logo: {
