@@ -6,6 +6,7 @@ keywords:
   - Алгоритм
   - Пошук
   - Графи
+  - DFS
 ---
 
 *[DFS]: Depth-First Search
@@ -32,7 +33,7 @@ vector<bool> used(n); // відвідані вершини
 
 void dfs(int v) {
     used[v] = true;
-    for (size_t i = 0; i < g[v].size(); i++) {
+    for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
         if (!used[to]) {
             dfs(to);
@@ -56,7 +57,7 @@ int dfs_timer = 0; // "таймер" для визначення "часів"
 void dfs(int v) {
     time_in[v] = dfs_timer++;
     color[v] = 1;
-    for (size_t i = 0; i < g[v].size(); i++) {
+    for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
         if (color[to] == 0) {
             dfs(to);

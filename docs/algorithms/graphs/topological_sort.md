@@ -42,7 +42,7 @@ vector<int> ans;
 
 void dfs(int v) {
     used[v] = true;
-    for (size_t i = 0; i < g[v].size(); i++) {
+    for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
         if (!used[to]) {
             dfs(to);

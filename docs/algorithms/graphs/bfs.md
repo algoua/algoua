@@ -6,6 +6,7 @@ keywords:
   - Алгоритм
   - Пошук
   - Графи
+  - BFS
 ---
 
 *[BFS]: Breadth-First Search
@@ -59,7 +60,7 @@ p[s] = -1;
 while (!q.empty()) {
     int v = q.front();
     q.pop();
-    for (size_t i = 0; i < g[v].size(); i++) {
+    for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
         if (!used[to]) {
             used[to] = true;
@@ -84,7 +85,7 @@ if (!used[to]) {
     }
     reverse(path.begin(), path.end());
     cout << "Path: ";
-    for (size_t i = 0; i < path.size(); i++) {
+    for (int i = 0; i < path.size(); i++) {
         cout << path[i] + 1 << " ";
     }
 }

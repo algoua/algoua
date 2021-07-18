@@ -32,7 +32,7 @@ void find_connected_components_dfs(int v,
                                    vector<int>& component) {
     used[v] = true;
     component.push_back(v);
-    for (size_t i = 0; i < g[v].size(); i++) {
+    for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
         if (!used[to]) {
             find_connected_components_dfs(to, g, used, component);
@@ -41,11 +41,11 @@ void find_connected_components_dfs(int v,
 }
 
 vector<vector<int>> find_connected_components(const vector<vector<int>>& g) {
-    size_t n = g.size(); // кількість вершин
+    int n = g.size(); // кількість вершин
     vector<bool> used(n); // відвідані вершини
     vector<vector<int>> components; // знайдені компоненти зв'язності
 
-    for (size_t i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         if (!used[i]) {
             components.emplace_back(); // додаємо нову пусту компоненту в кінець масиву
             find_connected_components_dfs(i, g, used, components.back());
