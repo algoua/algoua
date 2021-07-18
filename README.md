@@ -29,17 +29,17 @@ TODO
 
 1. Клонування репозиторію.
 
-        $ git clone https://github.com/algoua/algoua.git
+        git clone https://github.com/algoua/algoua.git
 
 2. Встановлення [Node.js](https://nodejs.org/en/download/) та [Yarn](https://yarnpkg.com/en/).
 
 3. Встановлення необхідних пакетів.
 
-        $ yarn install
+        yarn install
 
 4. Запуск серверу. Він буде доступним за посиланням [http://localhost:3000](http://localhost:3000).
 
-        $ yarn start
+        yarn start
 
 Пошук у тестовому сервері не працює і може видавати помилки.
 
