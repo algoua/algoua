@@ -1,6 +1,7 @@
 # Algoua
 
 ![deploy](https://github.com/algoua/algoua/workflows/deploy/badge.svg?branch=main)
+![GitHub](https://img.shields.io/github/license/algoua/algoua)
 
 Алгоритмічні навчальні матеріали.
 
