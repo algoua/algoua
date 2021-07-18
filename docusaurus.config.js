@@ -83,7 +83,7 @@ module.exports = {
     },
     prism: {
       theme: require('prism-react-renderer/themes/github'),
-      darkTheme: require('prism-react-renderer/themes/paleNight'),
+      darkTheme: require('prism-react-renderer/themes/palenight'),
     },
     navbar: {
       title: 'Algoua',
