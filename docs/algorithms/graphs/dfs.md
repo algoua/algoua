@@ -29,13 +29,13 @@ TODO: add detailed description for DFS.
 ``` cpp
 vector<vector<int>> g; // граф, список суміжності
 int n; // кількість вершин
-vector<bool> used(n); // відвідані вершини
+vector<bool> visited(n); // відвідані вершини
 
 void dfs(int v) {
-    used[v] = true;
+    visited[v] = true;
     for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
-        if (!used[to]) {
+        if (!visited[to]) {
             dfs(to);
         }
     }

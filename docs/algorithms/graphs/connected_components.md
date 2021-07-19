@@ -28,27 +28,27 @@ keywords:
 ``` cpp
 void find_connected_components_dfs(int v,
                                    const vector<vector<int>>& g,
-                                   vector<bool>& used,
+                                   vector<bool>& visited,
                                    vector<int>& component) {
-    used[v] = true;
+    visited[v] = true;
     component.push_back(v);
     for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
-        if (!used[to]) {
-            find_connected_components_dfs(to, g, used, component);
+        if (!visited[to]) {
+            find_connected_components_dfs(to, g, visited, component);
         }
     }
 }
 
 vector<vector<int>> find_connected_components(const vector<vector<int>>& g) {
     int n = g.size(); // кількість вершин
-    vector<bool> used(n); // відвідані вершини
+    vector<bool> visited(n); // відвідані вершини
     vector<vector<int>> components; // знайдені компоненти зв'язності
 
     for (int i = 0; i < n; i++) {
-        if (!used[i]) {
+        if (!visited[i]) {
             components.emplace_back(); // додаємо нову пусту компоненту в кінець масиву
-            find_connected_components_dfs(i, g, used, components.back());
+            find_connected_components_dfs(i, g, visited, components.back());
         }
     }
     return components;

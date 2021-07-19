@@ -37,14 +37,14 @@ keywords:
 ``` cpp
 int n; // кількість вершин
 vector<int> g[MAXN]; // граф, список суміжності
-bool used[MAXN];
+bool visited[MAXN];
 vector<int> ans;
 
 void dfs(int v) {
-    used[v] = true;
+    visited[v] = true;
     for (int i = 0; i < g[v].size(); i++) {
         int to = g[v][i];
-        if (!used[to]) {
+        if (!visited[to]) {
             dfs(to);
         }
     }
@@ -53,11 +53,11 @@ void dfs(int v) {
 
 void topological_sort() {
     for (int i = 0; i < n; i++) {
-        used[i] = false;
+        visited[i] = false;
     }
     ans.clear();
     for (int i = 0; i < n; i++) {
-        if (!used[i]) {
+        if (!visited[i]) {
             dfs(i);
         }
     }
@@ -67,7 +67,7 @@ void topological_sort() {
 
 Тут константа `MAXN` задає максимально можливу кількість вершин у графі.
 
-Основна функція розв'язку - це `topological_sort`. Вона ініціалізує допоміжний масив `used` пошуку в глибину, запускає його, і у кінці масив `ans` містить шукане топологічне сортування.
+Основна функція розв'язку - це `topological_sort`. Вона ініціалізує допоміжний масив `visited` пошуку в глибину, запускає його, і у кінці масив `ans` містить шукане топологічне сортування.
 
 ## Застосування
 
