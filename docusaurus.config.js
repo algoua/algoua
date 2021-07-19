@@ -15,7 +15,7 @@ function extractTitleFromMarkdown(docPath) {
   return found[1];
 }
 
-function process_items(items) {
+function process_category_items(items) {
   if (!items) {
     return [];
   }
@@ -42,7 +42,7 @@ function process_items(items) {
         result.push({
           type: 'category',
           label: item.label,
-          items: process_items(item.items),
+          items: process_category_items(item.items),
         });
         break;
       }
@@ -53,7 +53,7 @@ function process_items(items) {
 
 const sitemap = {}
 for (const [category, categoryItems] of Object.entries(sidebars)) {
-  sitemap[category] = process_items(categoryItems);
+  sitemap[category] = process_category_items(categoryItems);
 }
 
 module.exports = {

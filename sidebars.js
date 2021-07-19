@@ -8,6 +8,11 @@ module.exports = {
       type: 'category',
       label: 'Алгебра',
       items: [
+        {
+          type: 'category',
+          label: 'Основи',
+          collapsed: false,
+          items: [
         'algorithms/algebra/binary_pow',
         'algorithms/algebra/euler_function',
         'algorithms/algebra/euclid_algorithm',
@@ -27,12 +32,18 @@ module.exports = {
       items: [
         {
           type: 'category',
-          label: 'Базові алгоритми',
+          label: 'Обходи',
           collapsed: false,
           items: [
             'algorithms/graphs/dfs',
             'algorithms/graphs/bfs',
-            'algorithms/graphs/topological_sort',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Зв\'язність',
+          collapsed: false,
+          items: [
             'algorithms/graphs/connected_components',
           ],
         },
@@ -41,7 +52,15 @@ module.exports = {
           label: 'Мінімальнe каркасне дерево',
           collapsed: false,
           items: [
-            'algorithms/graphs/mst/kruskal',
+            'algorithms/graphs/mst_kruskal',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Інше',
+          collapsed: false,
+          items: [
+            'algorithms/graphs/topological_sort',
           ],
         },
       ],
