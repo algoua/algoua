@@ -21,6 +21,16 @@ module.exports = {
     },
     {
       type: 'category',
+          label: 'Комбінаторика',
+          collapsed: false,
+          items: [
+            'algorithms/algebra/binomial_coefficients',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Геометрія',
       items: [
         'algorithms/geometry/length_of_segments_union',
