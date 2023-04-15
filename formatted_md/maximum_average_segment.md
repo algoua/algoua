@@ -42,13 +42,11 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int ans = a[0],
-    sum = 0,
-    min_sum = 0;
-for (int r=0; r<n; ++r) {
+int ans = a[0], sum = 0, min_sum = 0;
+for (int r = 0; r < n; ++r) {
     sum += a[r];
-    ans = max (ans, sum - min_sum);
-    min_sum = min (min_sum, sum);
+    ans = max(ans, sum - min_sum);
+    min_sum = min(min_sum, sum);
 }
 ```
 
@@ -56,13 +54,8 @@ for (int r=0; r<n; ++r) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int ans = a[0],
-    ans_l = 0,
-    ans_r = 0,
-    sum = 0,
-    min_sum = 0,
-    min_pos = -1;
-for (int r=0; r<n; ++r) {
+int ans = a[0], ans_l = 0, ans_r = 0, sum = 0, min_sum = 0, min_pos = -1;
+for (int r = 0; r < n; ++r) {
     sum += a[r];
 
     int cur = sum - min_sum;
@@ -103,12 +96,11 @@ for (int r=0; r<n; ++r) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int ans = a[0],
-    sum = 0;
-for (int r=0; r<n; ++r) {
+int ans = a[0], sum = 0;
+for (int r = 0; r < n; ++r) {
     sum += a[r];
-    ans = max (ans, sum);
-    sum = max (sum, 0);
+    ans = max(ans, sum);
+    sum = max(sum, 0);
 }
 ```
 
@@ -116,12 +108,8 @@ for (int r=0; r<n; ++r) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int ans = a[0],
-    ans_l = 0,
-    ans_r = 0,
-    sum = 0,
-    minus_pos = -1;
-for (int r=0; r<n; ++r) {
+int ans = a[0], ans_l = 0, ans_r = 0, sum = 0, minus_pos = -1;
+for (int r = 0; r < n; ++r) {
     sum += a[r];
 
     if (sum > ans) {

@@ -372,7 +372,7 @@ $$
 ``` cpp
 int mex(vector<int> a) {
     set<int> b(a.begin(), a.end());
-    for (int i=0; ; ++i)
+    for (int i = 0;; ++i)
         if (!b.count(i))
             return i;
 }
@@ -384,22 +384,22 @@ int mex(vector<int> a) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int mex (const vector<int> & a) {
-    static bool used[D+1] = { 0 };
-    int c = (int) a.size();
+int mex(const vector<int> &a) {
+    static bool used[D + 1] = {0};
+    int c = (int)a.size();
 
-    for (int i=0; i<c; ++i)
+    for (int i = 0; i < c; ++i)
         if (a[i] <= D)
             used[a[i]] = true;
 
     int result;
-    for (int i=0; ; ++i)
+    for (int i = 0;; ++i)
         if (!used[i]) {
             result = i;
-             2 break;
+            2 break;
         }
 
-    for (int  1 i=0; i<c; ++i)
+    for (int 1 i = 0; i < c; ++i)
         if (a[i] <= D)
             used[a[i]] = false;
 

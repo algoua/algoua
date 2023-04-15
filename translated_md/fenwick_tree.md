@@ -30,8 +30,7 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int sum (int r)
-{
+int sum(int r) {
     int result = 0;
     while (r >= 0) {
         result += t[r];
@@ -40,12 +39,8 @@ int sum (int r)
     return result;
 }
 
-void inc (int i, int delta)
-{
-    для всіх j, для яких F(j) <= i <= j
-    {
-        t[j] += delta;
-    }
+void inc(int i, int delta) {
+    для всіх j, для яких F(j) <= i <= j { t[j] += delta; }
 }
 ```
 Функція sum працює наступним чином. Замість того аби йти по всім елементам масиву A, вона рухається по масиву T, роблячи "прыжки" через відрізки там, де це можливо. Спочатку вона додає до відповіді значення суми на відрізку [F(R); R], потім бере суму на відрізку [F(F(R)-1); F(R)-1], і так далі, поки не дійде до нуля.
@@ -87,36 +82,29 @@ $$
 vector<int> t;
 int n;
 
-void init (int nn)
-{
+void init(int nn) {
     n = nn;
-    t.assign (n, 0);
+    t.assign(n, 0);
 }
 
-int sum (int r)
-{
+int sum(int r) {
     int result = 0;
-    for (; r >= 0; r = (r & (r+1)) - 1)
+    for (; r >= 0; r = (r & (r + 1)) - 1)
         result += t[r];
     return result;
 }
 
-void inc (int i, int delta)
-{
-    for (; i < n; i = (i | (i+1)))
+void inc(int i, int delta) {
+    for (; i < n; i = (i | (i + 1)))
         t[i] += delta;
 }
 
-int sum (int l, int r)
-{
-    return sum (r) - sum (l-1);
-}
+int sum(int l, int r) { return sum(r) - sum(l - 1); }
 
-void init (vector<int> a)
-{
-    init ((int) a.size());
+void init(vector<int> a) {
+    init((int)a.size());
     for (unsigned i = 0; i < a.size(); i++)
-        inc (i, a[i]);
+        inc(i, a[i]);
 }
 ```
 
@@ -129,33 +117,29 @@ void init (vector<int> a)
 vector<int> t;
 int n;
 
-const int INF = 1000*1000*1000;
+const int INF = 1000 * 1000 * 1000;
 
-void init (int nn)
-{
+void init(int nn) {
     n = nn;
-    t.assign (n, INF);
+    t.assign(n, INF);
 }
 
-int getmin (int r)
-{
+int getmin(int r) {
     int result = INF;
-    for (; r >= 0; r = (r & (r+1)) - 1)
-        result = min (result, t[r]);
+    for (; r >= 0; r = (r & (r + 1)) - 1)
+        result = min(result, t[r]);
     return result;
 }
 
-void update (int i, int new_val)
-{
-    for (; i < n; i = (i | (i+1)))
-        t[i] = min (t[i], new_val);
+void update(int i, int new_val) {
+    for (; i < n; i = (i | (i + 1)))
+        t[i] = min(t[i], new_val);
 }
 
-void init (vector<int> a)
-{
-    init ((int) a.size());
+void init(vector<int> a) {
+    init((int)a.size());
     for (unsigned i = 0; i < a.size(); i++)
-        update (i, a[i]);
+        update(i, a[i]);
 }
 ```
 
@@ -165,22 +149,20 @@ void init (vector<int> a)
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector <vector <int> > t;
+vector<vector<int>> t;
 int n, m;
 
-int sum (int x, int y)
-{
+int sum(int x, int y) {
     int result = 0;
-    for (int i = x; i >= 0; i = (i & (i+1)) - 1)
-        for (int j = y; j >= 0; j = (j & (j+1)) - 1)
+    for (int i = x; i >= 0; i = (i & (i + 1)) - 1)
+        for (int j = y; j >= 0; j = (j & (j + 1)) - 1)
             result += t[i][j];
     return result;
 }
 
-void inc (int x, int y, int delta)
-{
-    for (int i = x; i < n; i = (i | (i+1)))
-        for (int j = y; j < m; j = (j | (j+1)))
+void inc(int x, int y, int delta) {
+    for (int i = x; i < n; i = (i | (i + 1)))
+        for (int j = y; j < m; j = (j | (j + 1)))
             t[i][j] += delta;
 }
 ```

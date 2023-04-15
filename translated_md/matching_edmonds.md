@@ -59,23 +59,17 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 void edmonds() {
-    for (int i=0; i<n; ++i)
+    for (int i = 0; i < n; ++i)
         if (вершина i не в паросполуці) {
-            int last_v = find_augment_path (i);
+            int last_v = find_augment_path(i);
             if (last_v != -1)
                 виконати чергування уздовж шляхи з i в last_v;
         }
 }
 
-int find_augment_path (int root) {
-    обхід в ширину:
-        int v = поточна_вершина;
-        перебрати всі ребра з v
-            якщо виявили цикл непарної довжини, стиснути його
-            якщо прийшли в вільну вершину, return
-            якщо прийшли в несвободную вершину, то додати
-                в чергу суміжну їй в паросполуці
-    return -1;
+int find_augment_path(int root) {
+    обхід в ширину : int v = поточна_вершина;
+    перебрати всі ребра з v якщо виявили цикл непарної довжини, стиснути його якщо прийшли в вільну вершину, return якщо прийшли в несвободную вершину, то додати в чергу суміжну їй в паросполуці return -1;
 }
 ```
 
@@ -95,19 +89,21 @@ int find_augment_path (int root) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int lca (int a, int b) {
-    bool used[MAXN] = { 0 };
+int lca(int a, int b) {
+    bool used[MAXN] = {0};
     // піднімаємося від вершини a до кореня, помечая всі парні вершини
     for (;;) {
         a = base[a];
         used[a] = true;
-        if (match[a] == -1)  break; // дійшли до кореня
+        if (match[a] == -1)
+            break; // дійшли до кореня
         a = p[match[a]];
     }
     // піднімаємося від вершини b, поки не найдемо позначену вершину
     for (;;) {
         b = base[b];
-        if (used[b])  return b;
+        if (used[b])
+            return b;
         b = p[match[b]];
     }
 }
@@ -124,17 +120,17 @@ int lca (int a, int b) {
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int v, u; // ребро (v,u), при розгляді якого був обнаружен квітка
-int b = lca (v, u);
-memset (blossom, 0, sizeof blossom);
-mark_path (v, b, u);
-mark_path (u, b, v);
+int b = lca(v, u);
+memset(blossom, 0, sizeof blossom);
+mark_path(v, b, u);
+mark_path(u, b, v);
 ```
 
 де функція $\rm mark\_path()$ проходити по шляхи від вершини до бази квітки, проставляє в специальном масиві $\rm blossom[]$ для них $\rm true$ і проставляє предків для парних вершин. Параметр $\rm children$ - син для самою вершини $v$ (з допомогою цього параметра ми замкнём цикл в предках).
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void mark_path (int v, int b, int children) {
+void mark_path(int v, int b, int children) {
     while (base[v] != b) {
         blossom[base[v]] = blossom[base[match[v]]] = true;
         p[v] = children;
@@ -150,10 +146,10 @@ void mark_path (int v, int b, int children) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int find_path (int root) {
-    memset (used, 0, sizeof used);
-    memset (p, -1, sizeof p);
-    for (int i=0; i<n; ++i)
+int find_path(int root) {
+    memset(used, 0, sizeof used);
+    memset(p, -1, sizeof p);
+    for (int i = 0; i < n; ++i)
         base[i] = i;
 ```
 
@@ -163,25 +159,25 @@ int find_path (int root) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-if (base[v] == base[to] || match[v] == to)  continue;
+if (base[v] == base[to] || match[v] == to)
+    continue;
 ```
 
 * Ребро замыкает цикл непарної довжини, тобто обнаруживается квітка. Як вже згадувалося вище, цикл непарної довжини обнаруживается при виконанні умови:
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-if (to == root || match[to] != -1 && p[match[to]] != -1)
-```
+if (to == root || match[to] != -1 && p[match[to]] != -1)```
 
 В цим випадку потрібно виконати стиснення квітки. Вище вже детально разбирался цей процес, тут наведемо його реалізацію:
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int curbase = lca (v, to);
-memset (blossom, 0, sizeof blossom);
-mark_path (v, curbase, to);
-mark_path (to, curbase, v);
-for (int i=0; i<n; ++i)
+int curbase = lca(v, to);
+memset(blossom, 0, sizeof blossom);
+mark_path(v, curbase, to);
+mark_path(to, curbase, v);
+for (int i = 0; i < n; ++i)
     if (blossom[base[i]]) {
         base[i] = curbase;
         if (!used[i]) {
@@ -209,10 +205,10 @@ if (p[to] == -1) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int find_path (int root) {
-    memset (used, 0, sizeof used);
-    memset (p, -1, sizeof p);
-    for (int i=0; i<n; ++i)
+int find_path(int root) {
+    memset(used, 0, sizeof used);
+    memset(p, -1, sizeof p);
+    for (int i = 0; i < n; ++i)
         base[i] = i;
 
     used[root] = true;
@@ -222,8 +218,9 @@ int find_path (int root) {
         int v = q[qh++];
         for (size_t i=0; i<g[v].size(); ++i) {
             int to = g[v][i];
-            if (base[v] == base[to] || match[v] == to)  continue;
-            if (to == root || match[to] != -1 && p[match[to]] != -1) {
+            if (base[v] == base[to] || match[v] == to)
+    continue;
+            if (to == root || match[to] != -1 && p[match[to]] != -1){
                 int curbase = lca (v, to);
                 memset (blossom, 0, sizeof blossom);
                 mark_path (v, curbase, to);
@@ -264,16 +261,17 @@ bool used[MAXN], blossom[MAXN];
 
 ...
 
-int main() {
-    ... читання графа ...
+    int
+    main() {
+    ... читання графа...
 
-    memset (match, -1, sizeof match);
-    for (int i=0; i<n; ++i)
+        memset(match, -1, sizeof match);
+    for (int i = 0; i < n; ++i)
         if (match[i] == -1) {
-            int v = find_path (i);
+            int v = find_path(i);
             while (v != -1) {
-                int pv = p[v],  ppv = match[pv];
-                match[v] = pv,  match[pv] = v;
+                int pv = p[v], ppv = match[pv];
+                match[v] = pv, match[pv] = v;
                 v = ppv;
             }
         }
@@ -285,9 +283,9 @@ int main() {
 Як і в випадку [Алгоритма Куна](kuhn_matching), перед виконанням алгоритму Едмондса можна яким-нибудь простим алгоритмом побудувати предварительное паросполука. Наприклад, таким жадібним алгоритмом:
 <!--- TODO: specify code snippet id -->
 ``` cpp
-for (int i=0; i<n; ++i)
+for (int i = 0; i < n; ++i)
     if (match[i] == -1)
-        for (size_t j=0; j<g[i].size(); ++j)
+        for (size_t j = 0; j < g[i].size(); ++j)
             if (match[g[i][j]] == -1) {
                 match[g[i][j]] = i;
                 match[i] = g[i][j];

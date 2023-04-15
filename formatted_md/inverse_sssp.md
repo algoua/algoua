@@ -25,34 +25,32 @@ R += P[B] - P[A] - R.
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-const int INF = 1000*1000*1000;
+const int INF = 1000 * 1000 * 1000;
 int n, m;
-vector<int> p (n);
+vector<int> p(n);
 
 bool ok = true;
-vector<int> cost (m), cost_ch (m), decrease (n, INF), decrease_id (n, -1);
+vector<int> cost(m), cost_ch(m), decrease(n, INF), decrease_id(n, -1);
 decrease[0] = 0;
-for (int i=0; i<m; ++i) {
+for (int i = 0; i < m; ++i) {
     int a, b, c; // текущее ребро (a,b) с ценой c
     cost[i] = c;
 
-    for (int j=0; j<=1; ++j) {
+    for (int j = 0; j <= 1; ++j) {
         int diff = p[b] - p[a] - c;
         if (diff > 0) {
             ok &= cost_ch[i] == 0 || cost_ch[i] == diff;
             cost_ch[i] = diff;
             decrease[b] = 0;
+        } else if (-diff <= c && -diff < decrease[b]) {
+            decrease[b] = -diff;
+            decrease_id[b] = i;
         }
-        else
-            if (-diff <= c && -diff < decrease[b]) {
-                decrease[b] = -diff;
-                decrease_id[b] = i;
-            }
-        swap (a, b);
+        swap(a, b);
     }
 }
 
-for (int i=0; i<n; ++i) {
+for (int i = 0; i < n; ++i) {
     ok &= decrease[i] != INF;
     int r_id = decrease_id[i];
     if (r_id != -1) {
@@ -65,9 +63,8 @@ if (!ok)
     cout << "No solution";
 else {
     long long sum = 0;
-    for (int i=0; i<m; ++i)  sum += abs (cost_ch[i]);
-    cout << sum << \'\n\';
-    for (int i=0; i<m; ++i)
-        printf ("%d ", cost[i] + cost_ch[i]);
+    for (int i = 0; i < m; ++i)
+        sum += abs(cost_ch[i]);
+    cout << sum << \'\n\'; for (int i = 0; i < m; ++i) printf("%d ", cost[i] + cost_ch[i]);
 }
 ```

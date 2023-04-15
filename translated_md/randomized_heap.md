@@ -21,7 +21,7 @@
 ``` cpp
 struct tree {
     T value;
-    tree * l, * r;
+    tree *l, *r;
 };
 ```
 В вершині дерева зберігається значення $\rm value$ деякого типу $\rm T$, для якого визначений оператор порівняння ($\rm operator\ <$). Крім того, зберігаються вказівники на лівого і правого синів (які рівні 0, якщо відповідний син відсутній).
@@ -38,14 +38,14 @@ struct tree {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-tree * merge (tree * t1, tree * t2) {
+tree *merge(tree *t1, tree *t2) {
     if (!t1 || !t2)
         return t1 ? t1 : t2;
     if (t2->value < t1->value)
-        swap (t1, t2);
+        swap(t1, t2);
     if (rand() & 1)
-        swap (t1->l, t1->r);
-    t1->l = merge (t1->l, t2);
+        swap(t1->l, t1->r);
+    t1->l = merge(t1->l, t2);
     return t1;
 }
 ```

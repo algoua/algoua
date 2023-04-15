@@ -49,10 +49,9 @@ $$
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int ans = INF;
-for (int s=0; s<n; ++s)
-    for (int t=s+1; t<n; ++t) {
-        int flow = ... величина максимального потоку з s в t ...
-        ans = min (ans, flow);
+for (int s = 0; s < n; ++s)
+    for (int t = s + 1; t < n; ++t) {
+        int flow = ... величина максимального потоку з s в t... ans = min(ans, flow);
     }
 ```
 

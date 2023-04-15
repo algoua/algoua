@@ -15,15 +15,15 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int n;
-vector < vector<int> > g (n);
-vector<char> used (n);
-vector<int> order (n); // список вершин, відсортований по вазі
-... читання ...
+vector<vector<int>> g(n);
+vector<char> used(n);
+vector<int> order(n); // список вершин, відсортований по вазі
+... читання...
 
-for (int i=0; i<n; ++i) {
+    for (int i = 0; i < n; ++i) {
     int v = order[i];
-    used.assign (n, false);
-    try_kuhn (v);
+    used.assign(n, false);
+    try_kuhn(v);
 }
 ```
 Функція try_kuhn() береться безо всяких змін з алгоритму Куна.
@@ -50,8 +50,9 @@ for (int i=0; i<n; ++i) {
 відсортувати множину S по невозрастанию ваги;
 ans = [];
 foreach (x in S)
-    if (ans &cup; x &isin; I)
-        ans = ans &cup; x;
+    if (ans & cup; x & isin; I)
+        ans = ans & cup;
+x;
 ```
 Стверджується, що по закінченні цього процесу ми отримаємо підмножина з найбільшим вагою.
 

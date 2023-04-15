@@ -11,12 +11,12 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int n;
-vector<char> prime (n+1, true);
+vector<char> prime(n + 1, true);
 prime[0] = prime[1] = false;
-for (int i=2; i<=n; ++i)
+for (int i = 2; i <= n; ++i)
     if (prime[i])
         if (i * 1ll * i <= n)
-            for (int j=i*i; j<=n; j+=i)
+            for (int j = i * i; j <= n; j += i)
                 prime[j] = false;
 ```
 
@@ -82,8 +82,7 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-for (int i=2; i*i<=n; ++i)
-```
+for (int i = 2; i * i <= n; ++i)```
 
 На асимптотику така оптимізація не впливає (дійсно, повторив приведённое вище доведення, ми отримаємо оцінку $n \ln \ln \sqrt{n} + o(n)$, що, по свойствам логарифма, асимптотично є то ж саме), хоча число операцій помітно зменшиться.
 
@@ -119,36 +118,34 @@ bool nprime[SQRT_MAXN], bl[S];
 int primes[SQRT_MAXN], cnt;
 
 int main() {
-
     int n;
     cin >> n;
-    int nsqrt = (int) sqrt (n + .0);
-    for (int i=2; i<=nsqrt; ++i)
+    int nsqrt = (int)sqrt(n + .0);
+    for (int i = 2; i <= nsqrt; ++i)
         if (!nprime[i]) {
             primes[cnt++] = i;
             if (i * 1ll * i <= nsqrt)
-                for (int j=i*i; j<=nsqrt; j+=i)
+                for (int j = i * i; j <= nsqrt; j += i)
                     nprime[j] = true;
         }
 
     int result = 0;
-    for (int k=0, maxk=n/S; k<=maxk; ++k) {
-        memset (bl, 0, sizeof bl);
+    for (int k = 0, maxk = n / S; k <= maxk; ++k) {
+        memset(bl, 0, sizeof bl);
         int start = k * S;
-        for (int i=0; i<cnt; ++i) {
+        for (int i = 0; i < cnt; ++i) {
             int start_idx = (start + primes[i] - 1) / primes[i];
-            int j = max(start_idx,2) * primes[i] - start;
-            for (; j<S; j+=primes[i])
+            int j = max(start_idx, 2) * primes[i] - start;
+            for (; j < S; j += primes[i])
                 bl[j] = true;
         }
         if (k == 0)
             bl[0] = bl[1] = true;
-        for (int i=0; i<S && start+i<=n; ++i)
+        for (int i = 0; i < S && start + i <= n; ++i)
             if (!bl[i])
                 ++result;
     }
     cout << result;
-
 }
 ```
 

@@ -51,12 +51,12 @@ $$
 Разом отримуємо приблизно такий код:
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int d[n+1][k+1]; // спершу заполнен нулями
+int d[n + 1][k + 1]; // спершу заполнен нулями
 d[0][0][0] = 1;
-for (int i=1; i<=n; ++i)
-    for (int j=1; j<=i && j<=k; ++j)
-        for (int s=1; s<=i; ++s)
-            d[i][j] += C[i-1][s-1] * conn[s] * d[i-s][j-1];
+for (int i = 1; i <= n; ++i)
+    for (int j = 1; j <= i && j <= k; ++j)
+        for (int s = 1; s <= i; ++s)
+            d[i][j] += C[i - 1][s - 1] * conn[s] * d[i - s][j - 1];
 cout << d[n][k][n];
 ```
 

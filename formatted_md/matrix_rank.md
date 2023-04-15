@@ -16,22 +16,22 @@
 ``` cpp
 const double EPS = 1E-9;
 
-int rank = max(n,m);
-vector<char> line_used (n);
-for (int i=0; i<m; ++i) {
+int rank = max(n, m);
+vector<char> line_used(n);
+for (int i = 0; i < m; ++i) {
     int j;
-    for (j=0; j<n; ++j)
+    for (j = 0; j < n; ++j)
         if (!line_used[j] && abs(a[j][i]) > EPS)
             break;
     if (j == n)
         --rank;
     else {
         line_used[j] = true;
-        for (int p=i+1; p<m; ++p)
+        for (int p = i + 1; p < m; ++p)
             a[j][p] /= a[j][i];
-        for (int k=0; k<n; ++k)
-            if (k != j && abs (a[k][i]) > EPS)
-                for (int p=i+1; p<m; ++p)
+        for (int k = 0; k < n; ++k)
+            if (k != j && abs(a[k][i]) > EPS)
+                for (int p = i + 1; p < m; ++p)
                     a[k][p] -= a[j][p] * a[k][i];
     }
 }

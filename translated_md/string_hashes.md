@@ -26,8 +26,7 @@ $$
 ``` cpp
 const int p = 31;
 long long hash = 0, p_pow = 1;
-for (size_t i=0; i<s.length(); ++i)
-{
+for (size_t i = 0; i < s.length(); ++i) {
     // бажано віднімати 'a' від коду букви
     // одиницю додаємо, аби у стрічки увазі 'aaaaa' хеш був ненульовий
     hash += (s[i] - 'a' + 1) * p_pow;
@@ -48,34 +47,32 @@ for (size_t i=0; i<s.length(); ++i)
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector<string> s (n);
+vector<string> s(n);
 // ... зчитування стрічок ...
 
 // припустимо всі степені p, допустим, до 10000 - максимальної довжини стрічок
 const int p = 31;
-vector<long long> p_pow (10000);
+vector<long long> p_pow(10000);
 p_pow[0] = 1;
-for (size_t i=1; i<p_pow.size(); ++i)
-    p_pow[i] = p_pow[i-1] * p;
+for (size_t i = 1; i < p_pow.size(); ++i)
+    p_pow[i] = p_pow[i - 1] * p;
 
 // припустимо хеші від всіх стрічок
 // в масиві зберігаємо значення хеша і номер стрічки в масиві s
-vector < pair<long long, int> > hashes (n);
-for (int i=0; i<n; ++i)
-{
+vector<pair<long long, int>> hashes(n);
+for (int i = 0; i < n; ++i) {
     long long hash = 0;
-    for (size_t j=0; j<s[i].length(); ++j)
+    for (size_t j = 0; j < s[i].length(); ++j)
         hash += (s[i][j] - 'a' + 1) * p_pow[j];
-    hashes[i] = make_pair (hash, i);
+    hashes[i] = make_pair(hash, i);
 }
 
 // сортуємо по хэшам
-sort (hashes.begin(), hashes.end());
+sort(hashes.begin(), hashes.end());
 
 // виводимо відповідь
-for (int i=0, group=0; i<n; ++i)
-{
-    if (i == 0 || hashes[i].first != hashes[i-1].first)
+for (int i = 0, group = 0; i < n; ++i) {
+    if (i == 0 || hashes[i].first != hashes[i - 1].first)
         cout << "\nGroup " << ++group << ":";
     cout << ' ' << hashes[i].second;
 }
@@ -114,32 +111,34 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-string s;  int i1, i2, len; // вхідні дані
+string s;
+int i1, i2, len; // вхідні дані
 
 // припустимо всі степені p
 const int p = 31;
-vector<long long> p_pow (s.length());
+vector<long long> p_pow(s.length());
 p_pow[0] = 1;
-for (size_t i=1; i<p_pow.size(); ++i)
-    p_pow[i] = p_pow[i-1] * p;
+for (size_t i = 1; i < p_pow.size(); ++i)
+    p_pow[i] = p_pow[i - 1] * p;
 
 // припустимо хеші від всіх префіксів
-vector<long long> h (s.length());
-for (size_t i=0; i<s.length(); ++i)
-{
+vector<long long> h(s.length());
+for (size_t i = 0; i < s.length(); ++i) {
     h[i] = (s[i] - 'a' + 1) * p_pow[i];
-    if (i)  h[i] += h[i-1];
+    if (i)
+        h[i] += h[i - 1];
 }
 
 // отримуємо хеші двох підстрічок
-long long h1 = h[i1+len-1];
-if (i1)  h1 -= h[i1-1];
-long long h2 = h[i2+len-1];
-if (i2)  h2 -= h[i2-1];
+long long h1 = h[i1 + len - 1];
+if (i1)
+    h1 -= h[i1 - 1];
+long long h2 = h[i2 + len - 1];
+if (i2)
+    h2 -= h[i2 - 1];
 
 // порівнюємо їх
-if (i1 < i2 && h1 * p_pow[i2-i1] == h2 ||
-    i1 > i2 && h1 == h2 * p_pow[i1-i2])
+if (i1 < i2 && h1 * p_pow[i2 - i1] == h2 || i1 > i2 && h1 == h2 * p_pow[i1 - i2])
     cout << "equal";
 else
     cout << "different";
@@ -166,45 +165,44 @@ else
 <!--- TODO: specify code snippet id -->
 ``` cpp
 string s; // вхідні стрічка
-int n = (int) s.length();
+int n = (int)s.length();
 
 // припустимо всі степені p
 const int p = 31;
-vector<long long> p_pow (s.length());
+vector<long long> p_pow(s.length());
 p_pow[0] = 1;
-for (size_t i=1; i<p_pow.size(); ++i)
-    p_pow[i] = p_pow[i-1] * p;
+for (size_t i = 1; i < p_pow.size(); ++i)
+    p_pow[i] = p_pow[i - 1] * p;
 
 // припустимо хеші від всіх префіксів
-vector<long long> h (s.length());
-for (size_t i=0; i<s.length(); ++i)
-{
+vector<long long> h(s.length());
+for (size_t i = 0; i < s.length(); ++i) {
     h[i] = (s[i] - 'a' + 1) * p_pow[i];
-    if (i)  h[i] += h[i-1];
+    if (i)
+        h[i] += h[i - 1];
 }
 
 int result = 0;
 
 // перебираємо довжину підстрічки
-for (int l=1; l<=n; ++l)
-{
+for (int l = 1; l <= n; ++l) {
     // шукаємо відповідь для поточній довжини
 
     // отримуємо хеші для всіх підстрічок довжини l
-    vector<long long> hs (n-l+1);
-    for (int i=0; i<n-l+1; ++i)
-    {
-        long long cur_h = h[i+l-1];
-        if (i)  cur_h -= h[i-1];
+    vector<long long> hs(n - l + 1);
+    for (int i = 0; i < n - l + 1; ++i) {
+        long long cur_h = h[i + l - 1];
+        if (i)
+            cur_h -= h[i - 1];
         // наводимо всі хеші до однієї степені
-        cur_h *= p_pow[n-i-1];
+        cur_h *= p_pow[n - i - 1];
         hs[i] = cur_h;
     }
 
     // припустимо кількість різних хеш
-    sort (hs.begin(), hs.end());
-    hs.erase (unique (hs.begin(), hs.end()), hs.end());
-    result += (int) hs.size();
+    sort(hs.begin(), hs.end());
+    hs.erase(unique(hs.begin(), hs.end()), hs.end());
+    result += (int)hs.size();
 }
 
 cout << result;

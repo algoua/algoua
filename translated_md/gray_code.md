@@ -14,9 +14,7 @@
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int g (int n) {
-    return n ^ (n >> 1);
-}
+int g(int n) { return n ^ (n >> 1); }
 ```
 
 ## Знаходження зворотнього коду Грея
@@ -49,9 +47,9 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int rev_g (int g) {
+int rev_g(int g) {
     int n = 0;
-    for (; g; g>>=1)
+    for (; g; g >>= 1)
         n ^= g;
     return n;
 }

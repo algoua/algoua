@@ -56,16 +56,16 @@
 ``` cpp
 // входные данные
 int n;
-vector < vector<int> > g;
+vector<vector<int>> g;
 const int INF = 1000000000; // значение "бесконечность"
 
 // алгоритм
-vector<bool> used (n);
-vector<int> min_e (n, INF), sel_e (n, -1);
+vector<bool> used(n);
+vector<int> min_e(n, INF), sel_e(n, -1);
 min_e[0] = 0;
-for (int i=0; i<n; ++i) {
+for (int i = 0; i < n; ++i) {
     int v = -1;
-    for (int j=0; j<n; ++j)
+    for (int j = 0; j < n; ++j)
         if (!used[j] && (v == -1 || min_e[j] < min_e[v]))
             v = j;
     if (min_e[v] == INF) {
@@ -77,7 +77,7 @@ for (int i=0; i<n; ++i) {
     if (sel_e[v] != -1)
         cout << v << " " << sel_e[v] << endl;
 
-    for (int to=0; to<n; ++to)
+    for (int to = 0; to < n; ++to)
         if (g[v][to] < min_e[to]) {
             min_e[to] = g[v][to];
             sel_e[to] = v;
@@ -101,33 +101,32 @@ for (int i=0; i<n; ++i) {
 ``` cpp
 // входные данные
 int n;
-vector < vector < pair<int,int> > > g;
+vector<vector<pair<int, int>>> g;
 const int INF = 1000000000; // значение "бесконечность"
 
 // алгоритм
-vector<int> min_e (n, INF), sel_e (n, -1);
+vector<int> min_e(n, INF), sel_e(n, -1);
 min_e[0] = 0;
-set < pair<int,int> > q;
-q.insert (make_pair (0, 0));
-for (int i=0; i<n; ++i) {
+set<pair<int, int>> q;
+q.insert(make_pair(0, 0));
+for (int i = 0; i < n; ++i) {
     if (q.empty()) {
         cout << "No MST!";
         exit(0);
     }
     int v = q.begin()->second;
-    q.erase (q.begin());
+    q.erase(q.begin());
 
     if (sel_e[v] != -1)
         cout << v << " " << sel_e[v] << endl;
 
-    for (size_t j=0; j<g[v].size(); ++j) {
-        int to = g[v][j].first,
-            cost = g[v][j].second;
+    for (size_t j = 0; j < g[v].size(); ++j) {
+        int to = g[v][j].first, cost = g[v][j].second;
         if (cost < min_e[to]) {
-            q.erase (make_pair (min_e[to], to));
+            q.erase(make_pair(min_e[to], to));
             min_e[to] = cost;
             sel_e[to] = v;
-            q.insert (make_pair (min_e[to], to));
+            q.insert(make_pair(min_e[to], to));
         }
     }
 }

@@ -262,7 +262,7 @@ $$
 ``` cpp
 struct state {
     int len, link;
-    map<char,int> next;
+    map<char, int> next;
 };
 ```
 
@@ -271,7 +271,7 @@ struct state {
 <!--- TODO: specify code snippet id -->
 ``` cpp
 const int MAXLEN = 100000;
-state st[MAXLEN*2];
+state st[MAXLEN * 2];
 int sz, last;
 ```
 
@@ -296,11 +296,11 @@ void sa_init() {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void sa_extend (char c) {
+void sa_extend(char c) {
     int cur = sz++;
     st[cur].len = st[last].len + 1;
     int p;
-    for (p=last; p!=-1 && !st[p].next.count(c); p=st[p].link)
+    for (p = last; p != -1 && !st[p].next.count(c); p = st[p].link)
         st[p].next[c] = cur;
     if (p == -1)
         st[cur].link = 0;
@@ -313,7 +313,7 @@ void sa_extend (char c) {
             st[clone].len = st[p].len + 1;
             st[clone].next = st[q].next;
             st[clone].link = st[q].link;
-            for (; p!=-1 && st[p].next[c]==q; p=st[p].link)
+            for (; p != -1 && st[p].next[c] == q; p = st[p].link)
                 st[p].next[c] = clone;
             st[q].link = st[cur].link = clone;
         }
@@ -615,23 +615,21 @@ $$
 <!--- TODO: specify code snippet id -->
 ``` cpp
 struct state {
-    ...
-    bool is_clon;
+    ... bool is_clon;
     int first_pos;
     vector<int> inv_link;
 };
 
-... после построения автомата ...
-for (int v=1; v<sz; ++v)
-    st[st[v].link].inv_link.push_back (v);
+... после построения автомата... for (int v = 1; v < sz; ++v) st[st[v].link].inv_link.push_back(v);
 ...
 
-// ответ на запрос - вывод всех вхождений (возможно, с повторами)
-void output_all_occurences (int v, int P_length) {
-    if (! st[v].is_clon)
+    // ответ на запрос - вывод всех вхождений (возможно, с повторами)
+    void
+    output_all_occurences(int v, int P_length) {
+    if (!st[v].is_clon)
         cout << st[v].first_pos - P_length + 1 << endl;
-    for (size_t i=0; i<st[v].inv_link.size(); ++i)
-        output_all_occurences (st[v].inv_link[i], P_length);
+    for (size_t i = 0; i < st[v].inv_link.size(); ++i)
+        output_all_occurences(st[v].inv_link[i], P_length);
 }
 ```
 
@@ -695,15 +693,14 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-string lcs (string s, string t) {
+string lcs(string s, string t) {
     sa_init();
-    for (int i=0; i<(int)s.length(); ++i)
-        sa_extend (s[i]);
+    for (int i = 0; i < (int)s.length(); ++i)
+        sa_extend(s[i]);
 
-    int v = 0,  l = 0,
-        best = 0,  bestpos = 0;
-    for (int i=0; i<(int)t.length(); ++i) {
-        while (v && ! st[v].next.count(t[i])) {
+    int v = 0, l = 0, best = 0, bestpos = 0;
+    for (int i = 0; i < (int)t.length(); ++i) {
+        while (v && !st[v].next.count(t[i])) {
             v = st[v].link;
             l = st[v].length;
         }
@@ -712,9 +709,9 @@ string lcs (string s, string t) {
             ++l;
         }
         if (l > best)
-            best = l,  bestpos = i;
+            best = l, bestpos = i;
     }
-    return t.substr (bestpos-best+1, best);
+    return t.substr(bestpos - best + 1, best);
 }
 ```
 

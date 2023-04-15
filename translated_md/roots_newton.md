@@ -46,10 +46,11 @@ const double EPS = 1E-15;
 double x = 1;
 for (;;) {
     double nx = (x + n / x) / 2;
-    if (abs (x - nx) < EPS)  break;
+    if (abs(x - nx) < EPS)
+        break;
     x = nx;
 }
-printf ("%.15lf", x);
+printf("%.15lf", x);
 ```
 
 Інший распространённый різновид задачі - коли потрібно порахувати целочисленный корінь (для даного $n$ знайти найбільше $x$ таке, що $x^2 \le n$). Тут доводиться трохи змінювати умова останова алгоритму, оскільки можливо случиться, що $x$ начнёт "скакать" возле відповіді. Тому ми додаємо умова, що якщо значення $x$ на попередньому кроці уменьшилось, а на поточному кроці намагається збільшитися, то алгоритм треба зупинити.
@@ -62,7 +63,8 @@ int x = 1;
 bool decreased = false;
 for (;;) {
     int nx = (x + n / x) >> 1;
-    if (x == nx || nx > x && decreased)  break;
+    if (x == nx || nx > x && decreased)
+        break;
     decreased = nx < x;
     x = nx;
 }
@@ -75,11 +77,12 @@ cout << x;
 ``` cpp
 BigInteger n; // вхідні дані
 
-BigInteger a = BigInteger.ONE.shiftLeft (n.bitLength() / 2);
+BigInteger a = BigInteger.ONE.shiftLeft(n.bitLength() / 2);
 boolean p_dec = false;
 for (;;) {
     BigInteger b = n.divide(a).add(a).shiftRight(1);
-    if (a.compareTo(b) == 0 || a.compareTo(b) < 0 && p_dec)  break;
+    if (a.compareTo(b) == 0 || a.compareTo(b) < 0 && p_dec)
+        break;
     p_dec = a.compareTo(b) > 0;
     a = b;
 }

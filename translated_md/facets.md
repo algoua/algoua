@@ -60,27 +60,29 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int n; // кількість вершин
-vector < vector<int> > g; // граф
+int n;                 // кількість вершин
+vector<vector<int>> g; // граф
 
-vector < vector<char> > used (n);
-for (int i=0; i<n; ++i)
-    used[i].resize (g[i].size());
-for (int i=0; i<n; ++i)
-    for (size_t j=0; j<g[i].size(); ++j)
+vector<vector<char>> used(n);
+for (int i = 0; i < n; ++i)
+    used[i].resize(g[i].size());
+for (int i = 0; i < n; ++i)
+    for (size_t j = 0; j < g[i].size(); ++j)
         if (!used[i][j]) {
             used[i][j] = true;
-            int v = g[i][j],  pv = i;
+            int v = g[i][j], pv = i;
             vector<int> facet;
             for (;;) {
-                facet.push_back (v);
-                vector<int>::iterator it = find (g[v].begin(), g[v].end(), pv);
-                if (++it == g[v].end())  it = g[v].begin();
-                if (used[v][it-g[v].begin()])  break;
-                used[v][it-g[v].begin()] = true;
-                pv = v,  v = *it;
+                facet.push_back(v);
+                vector<int>::iterator it = find(g[v].begin(), g[v].end(), pv);
+                if (++it == g[v].end())
+                    it = g[v].begin();
+                if (used[v][it - g[v].begin()])
+                    break;
+                used[v][it - g[v].begin()] = true;
+                pv = v, v = *it;
             }
-            ... висновок facet - поточній грані ...
+            ... висновок facet - поточній грані...
         }
 ```
 
@@ -90,37 +92,35 @@ for (int i=0; i<n; ++i)
 ``` cpp
 class cmp_ang {
     int center;
-public:
-    cmp_ang (int center) : center(center)
-        { }
-    bool operator() (int a, int b) const {
-        ... повинна повертати true, якщо точка a має
-        менший ніж b полярний кут щодо center ...
-    }
+
+  public:
+    cmp_ang(int center) : center(center) {}
+    bool operator()(int a, int b) const { ... повинна повертати true, якщо точка a має менший ніж b полярний кут щодо center... }
 };
 
-int n; // кількість вершин
-vector < vector<int> > g; // граф
+int n;                 // кількість вершин
+vector<vector<int>> g; // граф
 
-vector < vector<char> > used (n);
-for (int i=0; i<n; ++i)
-    used[i].resize (g[i].size());
-for (int i=0; i<n; ++i)
-    for (size_t j=0; j<g[i].size(); ++j)
+vector<vector<char>> used(n);
+for (int i = 0; i < n; ++i)
+    used[i].resize(g[i].size());
+for (int i = 0; i < n; ++i)
+    for (size_t j = 0; j < g[i].size(); ++j)
         if (!used[i][j]) {
             used[i][j] = true;
-            int v = g[i][j],  pv = i;
+            int v = g[i][j], pv = i;
             vector<int> facet;
             for (;;) {
-                facet.push_back (v);
-                vector<int>::iterator it = lower_bound (g[v].begin(), g[v].end(),
-                    pv, cmp_ang(v));
-                if (++it == g[v].end())  it = g[v].begin();
-                if (used[v][it-g[v].begin()])  break;
-                used[v][it-g[v].begin()] = true;
-                pv = v,  v = *it;
+                facet.push_back(v);
+                vector<int>::iterator it = lower_bound(g[v].begin(), g[v].end(), pv, cmp_ang(v));
+                if (++it == g[v].end())
+                    it = g[v].begin();
+                if (used[v][it - g[v].begin()])
+                    break;
+                used[v][it - g[v].begin()] = true;
+                pv = v, v = *it;
             }
-            ... висновок facet - поточній грані ...
+            ... висновок facet - поточній грані...
         }
 ```
 
@@ -146,19 +146,17 @@ for (int i=0; i<n; ++i)
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-            ... звичайний код по обнаружению граней ...
-            ... зразу після циклу, обнаруживающего чергову грань: ...
+... звичайний код по обнаружению граней...... зразу після циклу, обнаруживающего чергову грань : ...
 
-            // припустимо площа
-            double area = 0;
-            // додаємо фиктивную точку для простоти підрахунку площі
-            facet.push_back (facet[0]);
-            for (size_t k=0; k+1<facet.size(); ++k)
-                area += (p[facet[k]].first + p[facet[k+1]].first)
-                    * (p[facet[k]].second - p[facet[k+1]].second);
-            if (area < EPS)
-                ... грань є зовнішньої ...
-        }
+                                                                                                 // припустимо площа
+                                                                                                 double area = 0;
+// додаємо фиктивную точку для простоти підрахунку площі
+facet.push_back(facet[0]);
+for (size_t k = 0; k + 1 < facet.size(); ++k)
+    area += (p[facet[k]].first + p[facet[k + 1]].first) * (p[facet[k]].second - p[facet[k + 1]].second);
+if (area < EPS)
+    ... грань є зовнішньої...
+}
 ```
 
 ## Побудова планарного графа
@@ -175,54 +173,49 @@ const double EPS = 1E-9;
 
 struct point {
     double x, y;
-    bool operator< (const point & p) const {
-        return x < p.x - EPS || abs (x - p.x) < EPS && y < p.y - EPS;
-    }
+    bool operator<(const point &p) const { return x < p.x - EPS || abs(x - p.x) < EPS && y < p.y - EPS; }
 };
 
-map<point,int> ids;
+map<point, int> ids;
 vector<point> p;
-vector < vector<int> > g;
+vector<vector<int>> g;
 
-int get_point_id (point pt) {
+int get_point_id(point pt) {
     if (!ids.count(pt)) {
         ids[pt] = (int)p.size();
-        p.push_back (pt);
-        g.resize (g.size() + 1);
+        p.push_back(pt);
+        g.resize(g.size() + 1);
     }
     return ids[p];
 }
 
-void intersect (pair<point,point> a, pair<point,point> b, vector<point> & res) {
-    ... стандартна процедура, перетинає два відрузку a і b і закидывает результат в res ...
-    ... якщо відрізки перекрываются, то закидывает ті кінці, які потрапили всередину першого відрузку ...
-}
+void intersect(pair<point, point> a, pair<point, point> b, vector<point> &res) { ... стандартна процедура, перетинає два відрузку a і b і закидывает результат в res...... якщо відрізки перекрываются, то закидывает ті кінці, які потрапили всередину першого відрузку... }
 
 int main() {
     // вхідні дані
     int m;
-    vector < pair<point,point> > a (m);
-    ... читання ...
+    vector<pair<point, point>> a(m);
+    ... читання...
 
-    // побудова графа
-    for (int i=0; i<m; ++i) {
+        // побудова графа
+        for (int i = 0; i < m; ++i) {
         vector<point> cur;
-        for (int j=0; j<m; ++j)
-            intersect (a[i], a[j], cur);
-        sort (cur.begin(), cur.end());
-        for (size_t j=0; j+1<cur.size(); ++j) {
-            int x = get_id (cur[j]),  y = get_id (cur[j+1]);
+        for (int j = 0; j < m; ++j)
+            intersect(a[i], a[j], cur);
+        sort(cur.begin(), cur.end());
+        for (size_t j = 0; j + 1 < cur.size(); ++j) {
+            int x = get_id(cur[j]), y = get_id(cur[j + 1]);
             if (x != y) {
-                g[x].push_back (y);
-                g[y].push_back (x);
+                g[x].push_back(y);
+                g[y].push_back(x);
             }
         }
     }
-    int n = (int) g.size();
+    int n = (int)g.size();
     // сортування по розі і видалення кратних ребер
-    for (int i=0; i<n; ++i) {
-        sort (g[i].begin(), g[i].end(), cmp_ang (i));
-        g[i].erase (unique (g[i].begin(), g[i].end()), g[i].end());
+    for (int i = 0; i < n; ++i) {
+        sort(g[i].begin(), g[i].end(), cmp_ang(i));
+        g[i].erase(unique(g[i].begin(), g[i].end()), g[i].end());
     }
 }
 ```

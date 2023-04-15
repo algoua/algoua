@@ -25,20 +25,20 @@
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector < vector<int> > g; // граф
-int n; // кількість вершин
+vector<vector<int>> g; // граф
+int n;                 // кількість вершин
 
 vector<int> color; // колір вершини (0, 1, або 2)
 
 vector<int> time_in, time_out; // "часи" заходу і виходу з вершини
-int dfs_timer = 0; // "таймер" для визначення часів
+int dfs_timer = 0;             // "таймер" для визначення часів
 
-void dfs (int v) {
+void dfs(int v) {
     time_in[v] = dfs_timer++;
     color[v] = 1;
-    for (vector<int>::iterator i=g[v].begin(); i!=g[v].end(); ++i)
+    for (vector<int>::iterator i = g[v].begin(); i != g[v].end(); ++i)
         if (color[*i] == 0)
-            dfs (*i);
+            dfs(*i);
     color[v] = 2;
     time_out[v] = dfs_timer++;
 }
@@ -47,15 +47,15 @@ void dfs (int v) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector < vector<int> > g; // граф
-int n; // кількість вершин
+vector<vector<int>> g; // граф
+int n;                 // кількість вершин
 
 vector<char> used;
 
-void dfs (int v) {
+void dfs(int v) {
     used[v] = true;
-    for (vector<int>::iterator i=g[v].begin(); i!=g[v].end(); ++i)
+    for (vector<int>::iterator i = g[v].begin(); i != g[v].end(); ++i)
         if (!used[*i])
-            dfs (*i);
+            dfs(*i);
 }
 ```

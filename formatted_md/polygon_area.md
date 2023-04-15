@@ -14,17 +14,13 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-double sq (const vector<point> & fig)
-{
+double sq(const vector<point> &fig) {
     double res = 0;
-    for (unsigned i=0; i<fig.size(); i++)
-    {
-        point
-            p1 = i ? fig[i-1] : fig.back(),
-            p2 = fig[i];
+    for (unsigned i = 0; i < fig.size(); i++) {
+        point p1 = i ? fig[i - 1] : fig.back(), p2 = fig[i];
         res += (p1.x - p2.x) * (p1.y + p2.y);
     }
-    return fabs (res) / 2;
+    return fabs(res) / 2;
 }
 ```
 

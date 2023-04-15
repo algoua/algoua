@@ -41,7 +41,7 @@ $$
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int x, y;
-int g = gcdex (a, m, x, y);
+int g = gcdex(a, m, x, y);
 if (g != 1)
     cout << "no solution";
 else {
@@ -105,8 +105,8 @@ $$
 <!--- TODO: specify code snippet id -->
 ``` cpp
 r[1] = 1;
-for (int i=2; i<m; ++i)
-    r[i] = (m - (m/i) * r[m%i] % m) % m;
+for (int i = 2; i < m; ++i)
+    r[i] = (m - (m / i) * r[m % i] % m) % m;
 ```
 
 **Доведення** цього розв'язку представляє з собі ланцюжок простих перетворень:

@@ -15,15 +15,15 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int n;
-vector < vector<int> > g (n);
-vector<char> used (n);
-vector<int> order (n); // список вершин, отсортированный по весу
-... чтение ...
+vector<vector<int>> g(n);
+vector<char> used(n);
+vector<int> order(n); // список вершин, отсортированный по весу
+... чтение...
 
-for (int i=0; i<n; ++i) {
+    for (int i = 0; i < n; ++i) {
     int v = order[i];
-    used.assign (n, false);
-    try_kuhn (v);
+    used.assign(n, false);
+    try_kuhn(v);
 }
 ```
 Функция try_kuhn() берётся безо всяких изменений из алгоритма Куна.
@@ -50,8 +50,9 @@ for (int i=0; i<n; ++i) {
 отсортировать множество S по невозрастанию веса;
 ans = [];
 foreach (x in S)
-    if (ans &cup; x &isin; I)
-        ans = ans &cup; x;
+    if (ans & cup; x & isin; I)
+        ans = ans & cup;
+x;
 ```
 Утверждается, что по окончании этого процесса мы получим подмножество с наибольшим весом.
 

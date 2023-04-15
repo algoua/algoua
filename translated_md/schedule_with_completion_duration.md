@@ -15,31 +15,30 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int n;
-vector < pair<int,int> > a; // завдання в вигляді пар (крайний срок, длительность)
-... читання n і a ...
+vector<pair<int, int>> a; // завдання в вигляді пар (крайний срок, длительность)
+... читання n і a...
 
-sort (a.begin(), a.end());
+    sort(a.begin(), a.end());
 
-typedef set < pair<int,int> > t_s;
+typedef set<pair<int, int>> t_s;
 t_s s;
 vector<int> result;
-for (int i=n-1; i>=0; --i) {
-    int t = a[i].first - (i ? a[i-1].first : 0);
-    s.insert (make_pair (a[i].second, i));
+for (int i = n - 1; i >= 0; --i) {
+    int t = a[i].first - (i ? a[i - 1].first : 0);
+    s.insert(make_pair(a[i].second, i));
     while (t && !s.empty()) {
         t_s::iterator it = s.begin();
         if (it->first <= t) {
             t -= it->first;
-            result.push_back (it->second);
-        }
-        else {
-            s.insert (make_pair (it->first - t, it->second));
+            result.push_back(it->second);
+        } else {
+            s.insert(make_pair(it->first - t, it->second));
             t = 0;
         }
-        s.erase (it);
+        s.erase(it);
     }
 }
 
-for (size_t i=0; i<result.size(); ++i)
+for (size_t i = 0; i < result.size(); ++i)
     cout << result[i] << ' ';
 ```

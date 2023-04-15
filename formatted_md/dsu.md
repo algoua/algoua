@@ -40,19 +40,17 @@
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void make_set (int v) {
-    parent[v] = v;
-}
+void make_set(int v) { parent[v] = v; }
 
-int find_set (int v) {
+int find_set(int v) {
     if (v == parent[v])
         return v;
-    return find_set (parent[v]);
+    return find_set(parent[v]);
 }
 
-void union_sets (int a, int b) {
-    a = find_set (a);
-    b = find_set (b);
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
     if (a != b)
         parent[b] = a;
 }
@@ -78,10 +76,10 @@ void union_sets (int a, int b) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int find_set (int v) {
+int find_set(int v) {
     if (v == parent[v])
         return v;
-    return parent[v] = find_set (parent[v]);
+    return parent[v] = find_set(parent[v]);
 }
 ```
 
@@ -125,17 +123,17 @@ int find_set (int v) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void make_set (int v) {
+void make_set(int v) {
     parent[v] = v;
     size[v] = 1;
 }
 
-void union_sets (int a, int b) {
-    a = find_set (a);
-    b = find_set (b);
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
     if (a != b) {
         if (size[a] < size[b])
-            swap (a, b);
+            swap(a, b);
         parent[b] = a;
         size[a] += size[b];
     }
@@ -146,17 +144,17 @@ void union_sets (int a, int b) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void make_set (int v) {
+void make_set(int v) {
     parent[v] = v;
     rank[v] = 0;
 }
 
-void union_sets (int a, int b) {
-    a = find_set (a);
-    b = find_set (b);
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
     if (a != b) {
         if (rank[a] < rank[b])
-            swap (a, b);
+            swap(a, b);
         parent[b] = a;
         if (rank[a] == rank[b])
             ++rank[a];
@@ -211,10 +209,10 @@ void make_set (int v) {
     rank[v] = 0;
 }
 
-int find_set (int v) {
+int find_set(int v) {
     if (v == parent[v])
         return v;
-    return parent[v] = find_set (parent[v]);
+    return parent[v] = find_set(parent[v]);
 }
 
 void union_sets (int a, int b) {
@@ -279,16 +277,17 @@ void union_sets (int a, int b) {
 <!--- TODO: specify code snippet id -->
 ``` cpp
 void init() {
-    for (int i=0; i<L; ++i)
-        make_set (i);
+    for (int i = 0; i < L; ++i)
+        make_set(i);
 }
 
-void process_query (int l, int r, int c) {
-    for (int v=l; ; ) {
-        v = find_set (v);
-        if (v >= r)  break;
+void process_query(int l, int r, int c) {
+    for (int v = l;;) {
+        v = find_set(v);
+        if (v >= r)
+            break;
         answer[v] = c;
-        parent[v] = v+1;
+        parent[v] = v + 1;
     }
 }
 ```
@@ -307,27 +306,27 @@ void process_query (int l, int r, int c) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void make_set (int v) {
-    parent[v] = make_pair (v, 0);
+void make_set(int v) {
+    parent[v] = make_pair(v, 0);
     rank[v] = 0;
 }
 
-pair<int,int> find_set (int v) {
+pair<int, int> find_set(int v) {
     if (v != parent[v].first) {
         int len = parent[v].second;
-        parent[v] = find_set (parent[v].first);
+        parent[v] = find_set(parent[v].first);
         parent[v].second += len;
     }
     return parent[v];
 }
 
-void union_sets (int a, int b) {
-    a = find_set (a) .first;
-    b = find_set (b) .first;
+void union_sets(int a, int b) {
+    a = find_set(a).first;
+    b = find_set(b).first;
     if (a != b) {
         if (rank[a] < rank[b])
-            swap (a, b);
-        parent[b] = make_pair (a, 1);
+            swap(a, b);
+        parent[b] = make_pair(a, 1);
         if (rank[a] == rank[b])
             ++rank[a];
     }
@@ -364,47 +363,44 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void make_set (int v) {
-    parent[v] = make_pair (v, 0);
+void make_set(int v) {
+    parent[v] = make_pair(v, 0);
     rank[v] = 0;
     bipartite[v] = true;
 }
 
-pair<int,int> find_set (int v) {
+pair<int, int> find_set(int v) {
     if (v != parent[v].first) {
         int parity = parent[v].second;
-        parent[v] = find_set (parent[v].first);
+        parent[v] = find_set(parent[v].first);
         parent[v].second ^= parity;
     }
     return parent[v];
 }
 
-void add_edge (int a, int b) {
-    pair<int,int> pa = find_set (a);
+void add_edge(int a, int b) {
+    pair<int, int> pa = find_set(a);
     a = pa.first;
     int x = pa.second;
 
-    pair<int,int> pb = find_set (b);
+    pair<int, int> pb = find_set(b);
     b = pb.first;
     int y = pb.second;
 
     if (a == b) {
         if (x == y)
             bipartite[a] = false;
-    }
-    else {
+    } else {
         if (rank[a] < rank[b])
-            swap (a, b);
-        parent[b] = make_pair (a, x ^ y ^ 1);
+            swap(a, b);
+        parent[b] = make_pair(a, x ^ y ^ 1);
         bipartite[a] &= bipartite[b];
         if (rank[a] == rank[b])
             ++rank[a];
     }
 }
 
-bool is_bipartite (int v) {
-    return bipartite[ find_set(v) .first ];
-}
+bool is_bipartite(int v) { return bipartite[find_set(v).first]; }
 ```
 
 ### Алгоритм нахождения RMQ (минимум на отрезке) за $O(\alpha(n))$ в среднем в оффлайне
@@ -444,26 +440,24 @@ bool is_bipartite (int v) {
 vector<int> lst[MAXN];
 int parent[MAXN];
 
-void make_set (int v) {
-    lst[v] = vector<int> (1, v);
+void make_set(int v) {
+    lst[v] = vector<int>(1, v);
     parent[v] = v;
 }
 
-int find_set (int v) {
-    return parent[v];
-}
+int find_set(int v) { return parent[v]; }
 
-void union_sets (int a, int b) {
-    a = find_set (a);
-    b = find_set (b);
+void union_sets(int a, int b) {
+    a = find_set(a);
+    b = find_set(b);
     if (a != b) {
         if (lst[a].size() < lst[b].size())
-            swap (a, b);
+            swap(a, b);
         while (!lst[b].empty()) {
             int v = lst[b].back();
             lst[b].pop_back();
             parent[v] = a;
-            lst[a].push_back (v);
+            lst[a].push_back(v);
         }
     }
 }

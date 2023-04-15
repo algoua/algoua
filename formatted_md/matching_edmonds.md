@@ -59,23 +59,17 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 void edmonds() {
-    for (int i=0; i<n; ++i)
+    for (int i = 0; i < n; ++i)
         if (вершина i не в паросочетании) {
-            int last_v = find_augment_path (i);
+            int last_v = find_augment_path(i);
             if (last_v != -1)
                 выполнить чередование вдоль пути из i в last_v;
         }
 }
 
-int find_augment_path (int root) {
-    обход в ширину:
-        int v = текущая_вершина;
-        перебрать все рёбра из v
-            если обнаружили цикл нечётной длины, сжать его
-            если пришли в свободную вершину, return
-            если пришли в несвободную вершину, то добавить
-                в очередь смежную ей в паросочетании
-    return -1;
+int find_augment_path(int root) {
+    обход в ширину : int v = текущая_вершина;
+    перебрать все рёбра из v если обнаружили цикл нечётной длины, сжать его если пришли в свободную вершину, return если пришли в несвободную вершину, то добавить в очередь смежную ей в паросочетании return -1;
 }
 ```
 
@@ -95,19 +89,21 @@ int find_augment_path (int root) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int lca (int a, int b) {
-    bool used[MAXN] = { 0 };
+int lca(int a, int b) {
+    bool used[MAXN] = {0};
     // поднимаемся от вершины a до корня, помечая все чётные вершины
     for (;;) {
         a = base[a];
         used[a] = true;
-        if (match[a] == -1)  break; // дошли до корня
+        if (match[a] == -1)
+            break; // дошли до корня
         a = p[match[a]];
     }
     // поднимаемся от вершины b, пока не найдём помеченную вершину
     for (;;) {
         b = base[b];
-        if (used[b])  return b;
+        if (used[b])
+            return b;
         b = p[match[b]];
     }
 }
@@ -124,17 +120,17 @@ int lca (int a, int b) {
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int v, u; // ребро (v,u), при рассмотрении которого был обнаружен цветок
-int b = lca (v, u);
-memset (blossom, 0, sizeof blossom);
-mark_path (v, b, u);
-mark_path (u, b, v);
+int b = lca(v, u);
+memset(blossom, 0, sizeof blossom);
+mark_path(v, b, u);
+mark_path(u, b, v);
 ```
 
 где функция $\rm mark\_path()$ проходит по пути от вершины до базы цветка, проставляет в специальном массиве $\rm blossom[]$ для них $\rm true$ и проставляет предков для чётных вершин. Параметр $\rm children$ - сын для самой вершины $v$ (с помощью этого параметра мы замкнём цикл в предках).
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void mark_path (int v, int b, int children) {
+void mark_path(int v, int b, int children) {
     while (base[v] != b) {
         blossom[base[v]] = blossom[base[match[v]]] = true;
         p[v] = children;
@@ -150,10 +146,10 @@ void mark_path (int v, int b, int children) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int find_path (int root) {
-    memset (used, 0, sizeof used);
-    memset (p, -1, sizeof p);
-    for (int i=0; i<n; ++i)
+int find_path(int root) {
+    memset(used, 0, sizeof used);
+    memset(p, -1, sizeof p);
+    for (int i = 0; i < n; ++i)
         base[i] = i;
 ```
 
@@ -163,7 +159,8 @@ int find_path (int root) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-if (base[v] == base[to] || match[v] == to)  continue;
+if (base[v] == base[to] || match[v] == to)
+    continue;
 ```
 
 * Ребро замыкает цикл нечётной длины, т.е. обнаруживается цветок. Как уже упоминалось выше, цикл нечётной длины обнаруживается при выполнении условия:
@@ -177,11 +174,11 @@ if (to == root || match[to] != -1 && p[match[to]] != -1)
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int curbase = lca (v, to);
-memset (blossom, 0, sizeof blossom);
-mark_path (v, curbase, to);
-mark_path (to, curbase, v);
-for (int i=0; i<n; ++i)
+int curbase = lca(v, to);
+memset(blossom, 0, sizeof blossom);
+mark_path(v, curbase, to);
+mark_path(to, curbase, v);
+for (int i = 0; i < n; ++i)
     if (blossom[base[i]]) {
         base[i] = curbase;
         if (!used[i]) {
@@ -209,10 +206,10 @@ if (p[to] == -1) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int find_path (int root) {
-    memset (used, 0, sizeof used);
-    memset (p, -1, sizeof p);
-    for (int i=0; i<n; ++i)
+int find_path(int root) {
+    memset(used, 0, sizeof used);
+    memset(p, -1, sizeof p);
+    for (int i = 0; i < n; ++i)
         base[i] = i;
 
     used[root] = true;
@@ -222,7 +219,8 @@ int find_path (int root) {
         int v = q[qh++];
         for (size_t i=0; i<g[v].size(); ++i) {
             int to = g[v][i];
-            if (base[v] == base[to] || match[v] == to)  continue;
+            if (base[v] == base[to] || match[v] == to)
+    continue;
             if (to == root || match[to] != -1 && p[match[to]] != -1) {
                 int curbase = lca (v, to);
                 memset (blossom, 0, sizeof blossom);
@@ -264,16 +262,17 @@ bool used[MAXN], blossom[MAXN];
 
 ...
 
-int main() {
-    ... чтение графа ...
+    int
+    main() {
+    ... чтение графа...
 
-    memset (match, -1, sizeof match);
-    for (int i=0; i<n; ++i)
+        memset(match, -1, sizeof match);
+    for (int i = 0; i < n; ++i)
         if (match[i] == -1) {
-            int v = find_path (i);
+            int v = find_path(i);
             while (v != -1) {
-                int pv = p[v],  ppv = match[pv];
-                match[v] = pv,  match[pv] = v;
+                int pv = p[v], ppv = match[pv];
+                match[v] = pv, match[pv] = v;
                 v = ppv;
             }
         }
@@ -285,9 +284,9 @@ int main() {
 Как и в случае [Алгоритма Куна](kuhn_matching), перед выполнением алгоритма Эдмондса можно каким-нибудь простым алгоритмом построить предварительное паросочетание. Например, таким жадным алгоритмом:
 <!--- TODO: specify code snippet id -->
 ``` cpp
-for (int i=0; i<n; ++i)
+for (int i = 0; i < n; ++i)
     if (match[i] == -1)
-        for (size_t j=0; j<g[i].size(); ++j)
+        for (size_t j = 0; j < g[i].size(); ++j)
             if (match[g[i][j]] == -1) {
                 match[g[i][j]] = i;
                 match[i] = g[i][j];

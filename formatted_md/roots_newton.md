@@ -46,10 +46,11 @@ const double EPS = 1E-15;
 double x = 1;
 for (;;) {
     double nx = (x + n / x) / 2;
-    if (abs (x - nx) < EPS)  break;
+    if (abs(x - nx) < EPS)
+        break;
     x = nx;
 }
-printf ("%.15lf", x);
+printf("%.15lf", x);
 ```
 
 Другой распространённый вариант задачи - когда требуется посчитать целочисленный корень (для данного $n$ найти наибольшее $x$ такое, что $x^2 \le n$). Здесь приходится немного изменять условие останова алгоритма, поскольку может случиться, что $x$ начнёт "скакать" возле ответа. Поэтому мы добавляем условие, что если значение $x$ на предыдущем шаге уменьшилось, а на текущем шаге пытается увеличиться, то алгоритм надо остановить.
@@ -62,7 +63,8 @@ int x = 1;
 bool decreased = false;
 for (;;) {
     int nx = (x + n / x) >> 1;
-    if (x == nx || nx > x && decreased)  break;
+    if (x == nx || nx > x && decreased)
+        break;
     decreased = nx < x;
     x = nx;
 }
@@ -75,11 +77,12 @@ cout << x;
 ``` cpp
 BigInteger n; // входные данные
 
-BigInteger a = BigInteger.ONE.shiftLeft (n.bitLength() / 2);
+BigInteger a = BigInteger.ONE.shiftLeft(n.bitLength() / 2);
 boolean p_dec = false;
 for (;;) {
     BigInteger b = n.divide(a).add(a).shiftRight(1);
-    if (a.compareTo(b) == 0 || a.compareTo(b) < 0 && p_dec)  break;
+    if (a.compareTo(b) == 0 || a.compareTo(b) < 0 && p_dec)
+        break;
     p_dec = a.compareTo(b) > 0;
     a = b;
 }

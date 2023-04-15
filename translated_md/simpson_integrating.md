@@ -50,13 +50,13 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-double a, b; // вхідні дані
-const int N = 1000*1000; // кількість кроків (вже помножене на 2)
+double a, b;               // вхідні дані
+const int N = 1000 * 1000; // кількість кроків (вже помножене на 2)
 double s = 0;
 double h = (b - a) / N;
-for (int i=0; i<=N; ++i) {
+for (int i = 0; i <= N; ++i) {
     double x = a + h * i;
-    s += f(x) * ((i==0 || i==N) ? 1 : ((i&1)==0) ? 2 : 4);
+    s += f(x) * ((i == 0 || i == N) ? 1 : ((i & 1) == 0) ? 2 : 4);
 }
 s *= h / 3;
 ```

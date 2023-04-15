@@ -70,21 +70,21 @@
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int n, t[4*MAXN];
+int n, t[4 * MAXN];
 ```
 
 Процедура **построения дерева отрезков** по заданному массиву $a[]$ выглядит следующим образом: это рекурсивная функция, ей передаётся сам массив $a[]$, номер $v$ текущей вершины дерева, и границы $tl$ и $tr$ отрезка, соответствующего текущей вершине дерева. Из основной программы вызывать эту функцию следует с параметрами $v=1$, $tl=0$, $tr=n-1$.
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void build (int a[], int v, int tl, int tr) {
+void build(int a[], int v, int tl, int tr) {
     if (tl == tr)
         t[v] = a[tl];
     else {
         int tm = (tl + tr) / 2;
-        build (a, v*2, tl, tm);
-        build (a, v*2+1, tm+1, tr);
-        t[v] = t[v*2] + t[v*2+1];
+        build(a, v * 2, tl, tm);
+        build(a, v * 2 + 1, tm + 1, tr);
+        t[v] = t[v * 2] + t[v * 2 + 1];
     }
 }
 ```
@@ -93,14 +93,13 @@ void build (int a[], int v, int tl, int tr) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int sum (int v, int tl, int tr, int l, int r) {
+int sum(int v, int tl, int tr, int l, int r) {
     if (l > r)
         return 0;
     if (l == tl && r == tr)
         return t[v];
     int tm = (tl + tr) / 2;
-    return sum (v*2, tl, tm, l, min(r,tm))
-        + sum (v*2+1, tm+1, tr, max(l,tm+1), r);
+    return sum(v * 2, tl, tm, l, min(r, tm)) + sum(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r);
 }
 ```
 
@@ -108,16 +107,16 @@ int sum (int v, int tl, int tr, int l, int r) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void update (int v, int tl, int tr, int pos, int new_val) {
+void update(int v, int tl, int tr, int pos, int new_val) {
     if (tl == tr)
         t[v] = new_val;
     else {
         int tm = (tl + tr) / 2;
         if (pos <= tm)
-            update (v*2, tl, tm, pos, new_val);
+            update(v * 2, tl, tm, pos, new_val);
         else
-            update (v*2+1, tm+1, tr, pos, new_val);
-        t[v] = t[v*2] + t[v*2+1];
+            update(v * 2 + 1, tm + 1, tr, pos, new_val);
+        t[v] = t[v * 2] + t[v * 2 + 1];
     }
 }
 ```
@@ -150,49 +149,46 @@ void update (int v, int tl, int tr, int pos, int new_val) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-pair<int,int> t[4*MAXN];
+pair<int, int> t[4 * MAXN];
 
-pair<int,int> combine (pair<int,int> a, pair<int,int> b) {
+pair<int, int> combine(pair<int, int> a, pair<int, int> b) {
     if (a.first > b.first)
         return a;
     if (b.first > a.first)
         return b;
-    return make_pair (a.first, a.second + b.second);
+    return make_pair(a.first, a.second + b.second);
 }
 
-void build (int a[], int v, int tl, int tr) {
+void build(int a[], int v, int tl, int tr) {
     if (tl == tr)
-        t[v] = make_pair (a[tl], 1);
+        t[v] = make_pair(a[tl], 1);
     else {
         int tm = (tl + tr) / 2;
-        build (a, v*2, tl, tm);
-        build (a, v*2+1, tm+1, tr);
-        t[v] = combine (t[v*2], t[v*2+1]);
+        build(a, v * 2, tl, tm);
+        build(a, v * 2 + 1, tm + 1, tr);
+        t[v] = combine(t[v * 2], t[v * 2 + 1]);
     }
 }
 
-pair<int,int> get_max (int v, int tl, int tr, int l, int r) {
+pair<int, int> get_max(int v, int tl, int tr, int l, int r) {
     if (l > r)
-        return make_pair (-INF, 0);
+        return make_pair(-INF, 0);
     if (l == tl && r == tr)
         return t[v];
     int tm = (tl + tr) / 2;
-    return combine (
-        get_max (v*2, tl, tm, l, min(r,tm)),
-        get_max (v*2+1, tm+1, tr, max(l,tm+1), r)
-    );
+    return combine(get_max(v * 2, tl, tm, l, min(r, tm)), get_max(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r));
 }
 
-void update (int v, int tl, int tr, int pos, int new_val) {
+void update(int v, int tl, int tr, int pos, int new_val) {
     if (tl == tr)
-        t[v] = make_pair (new_val, 1);
+        t[v] = make_pair(new_val, 1);
     else {
         int tm = (tl + tr) / 2;
         if (pos <= tm)
-            update (v*2, tl, tm, pos, new_val);
+            update(v * 2, tl, tm, pos, new_val);
         else
-            update (v*2+1, tm+1, tr, pos, new_val);
-        t[v] = combine (t[v*2], t[v*2+1]);
+            update(v * 2 + 1, tm + 1, tr, pos, new_val);
+        t[v] = combine(t[v * 2], t[v * 2 + 1]);
     }
 }
 ```
@@ -215,16 +211,16 @@ void update (int v, int tl, int tr, int pos, int new_val) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int find_kth (int v, int tl, int tr, int k) {
+int find_kth(int v, int tl, int tr, int k) {
     if (k > t[v])
         return -1;
     if (tl == tr)
         return tl;
     int tm = (tl + tr) / 2;
-    if (t[v*2] >= k)
-        return find_kth (v*2, tl, tm, k);
+    if (t[v * 2] >= k)
+        return find_kth(v * 2, tl, tm, k);
     else
-        return find_kth (v*2+1, tm+1, tr, k - t[v*2]);
+        return find_kth(v * 2 + 1, tm + 1, tr, k - t[v * 2]);
 }
 ```
 
@@ -256,12 +252,12 @@ struct data {
     int sum, pref, suff, ans;
 };
 
-data combine (data l, data r) {
+data combine(data l, data r) {
     data res;
     res.sum = l.sum + r.sum;
-    res.pref = max (l.pref, l.sum + r.pref);
-    res.suff = max (r.suff, r.sum + l.suff);
-    res.ans = max (max (l.ans, r.ans), l.suff + r.pref);
+    res.pref = max(l.pref, l.sum + r.pref);
+    res.suff = max(r.suff, r.sum + l.suff);
+    res.ans = max(max(l.ans, r.ans), l.suff + r.pref);
     return res;
 }
 ```
@@ -270,34 +266,34 @@ data combine (data l, data r) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-data make_data (int val) {
+data make_data(int val) {
     data res;
     res.sum = val;
-    res.pref = res.suff = res.ans = max (0, val);
+    res.pref = res.suff = res.ans = max(0, val);
     return res;
 }
 
-void build (int a[], int v, int tl, int tr) {
+void build(int a[], int v, int tl, int tr) {
     if (tl == tr)
-        t[v] = make_data (a[tl]);
+        t[v] = make_data(a[tl]);
     else {
         int tm = (tl + tr) / 2;
-        build (a, v*2, tl, tm);
-        build (a, v*2+1, tm+1, tr);
-        t[v] = combine (t[v*2], t[v*2+1]);
+        build(a, v * 2, tl, tm);
+        build(a, v * 2 + 1, tm + 1, tr);
+        t[v] = combine(t[v * 2], t[v * 2 + 1]);
     }
 }
 
-void update (int v, int tl, int tr, int pos, int new_val) {
+void update(int v, int tl, int tr, int pos, int new_val) {
     if (tl == tr)
-        t[v] = make_data (new_val);
+        t[v] = make_data(new_val);
     else {
         int tm = (tl + tr) / 2;
         if (pos <= tm)
-            update (v*2, tl, tm, pos, new_val);
+            update(v * 2, tl, tm, pos, new_val);
         else
-            update (v*2+1, tm+1, tr, pos, new_val);
-        t[v] = combine (t[v*2], t[v*2+1]);
+            update(v * 2 + 1, tm + 1, tr, pos, new_val);
+        t[v] = combine(t[v * 2], t[v * 2 + 1]);
     }
 }
 ```
@@ -306,18 +302,15 @@ void update (int v, int tl, int tr, int pos, int new_val) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-data query (int v, int tl, int tr, int l, int r) {
+data query(int v, int tl, int tr, int l, int r) {
     if (l == tl && tr == r)
         return t[v];
     int tm = (tl + tr) / 2;
     if (r <= tm)
-        return query (v*2, tl, tm, l, r);
+        return query(v * 2, tl, tm, l, r);
     if (l > tm)
-        return query (v*2+1, tm+1, tr, l, r);
-    return combine (
-        query (v*2, tl, tm, l, tm),
-        query (v*2+1, tm+1, tr, tm+1, r)
-    );
+        return query(v * 2 + 1, tm + 1, tr, l, r);
+    return combine(query(v * 2, tl, tm, l, tm), query(v * 2 + 1, tm + 1, tr, tm + 1, r));
 }
 ```
 
@@ -341,17 +334,16 @@ data query (int v, int tl, int tr, int l, int r) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector<int> t[4*MAXN];
+vector<int> t[4 * MAXN];
 
-void build (int a[], int v, int tl, int tr) {
+void build(int a[], int v, int tl, int tr) {
     if (tl == tr)
-        t[v] = vector<int> (1, a[tl]);
+        t[v] = vector<int>(1, a[tl]);
     else {
         int tm = (tl + tr) / 2;
-        build (a, v*2, tl, tm);
-        build (a, v*2+1, tm+1, tr);
-        merge (t[v*2].begin(), t[v*2].end(), t[v*2+1].begin(), t[v*2+1].end(),
-            back_inserter (t[v]));
+        build(a, v * 2, tl, tm);
+        build(a, v * 2 + 1, tm + 1, tr);
+        merge(t[v * 2].begin(), t[v * 2].end(), t[v * 2 + 1].begin(), t[v * 2 + 1].end(), back_inserter(t[v]));
     }
 }
 ```
@@ -366,20 +358,17 @@ void build (int a[], int v, int tl, int tr) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int query (int v, int tl, int tr, int l, int r, int x) {
+int query(int v, int tl, int tr, int l, int r, int x) {
     if (l > r)
         return INF;
     if (l == tl && tr == r) {
-        vector<int>::iterator pos = lower_bound (t[v].begin(), t[v].end(), x);
+        vector<int>::iterator pos = lower_bound(t[v].begin(), t[v].end(), x);
         if (pos != t[v].end())
             return *pos;
         return INF;
     }
     int tm = (tl + tr) / 2;
-    return min (
-        query (v*2, tl, tm, l, min(r,tm), x),
-        query (v*2+1, tm+1, tr, max(l,tm+1), r, x)
-    );
+    return min(query(v * 2, tl, tm, l, min(r, tm), x), query(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r, x));
 }
 ```
 
@@ -399,17 +388,16 @@ int query (int v, int tl, int tr, int l, int r, int x) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void update (int v, int tl, int tr, int pos, int new_val) {
-    t[v].erase (t[v].find (a[pos]));
-    t[v].insert (new_val);
+void update(int v, int tl, int tr, int pos, int new_val) {
+    t[v].erase(t[v].find(a[pos]));
+    t[v].insert(new_val);
     if (tl != tr) {
         int tm = (tl + tr) / 2;
         if (pos <= tm)
-            update (v*2, tl, tm, pos, new_val);
+            update(v * 2, tl, tm, pos, new_val);
         else
-            update (v*2+1, tm+1, tr, pos, new_val);
-    }
-    else
+            update(v * 2 + 1, tm + 1, tr, pos, new_val);
+    } else
         a[pos] = new_val;
 }
 ```
@@ -458,36 +446,36 @@ void update (int v, int tl, int tr, int pos, int new_val) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void build (int a[], int v, int tl, int tr) {
+void build(int a[], int v, int tl, int tr) {
     if (tl == tr)
         t[v] = a[tl];
     else {
         int tm = (tl + tr) / 2;
-        build (a, v*2, tl, tm);
-        build (a, v*2+1, tm+1, tr);
+        build(a, v * 2, tl, tm);
+        build(a, v * 2 + 1, tm + 1, tr);
     }
 }
 
-void update (int v, int tl, int tr, int l, int r, int add) {
+void update(int v, int tl, int tr, int l, int r, int add) {
     if (l > r)
         return;
     if (l == tl && tr == r)
         t[v] += add;
     else {
         int tm = (tl + tr) / 2;
-        update (v*2, tl, tm, l, min(r,tm), add);
-        update (v*2+1, tm+1, tr, max(l,tm+1), r, add);
+        update(v * 2, tl, tm, l, min(r, tm), add);
+        update(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r, add);
     }
 }
 
-int get (int v, int tl, int tr, int pos) {
+int get(int v, int tl, int tr, int pos) {
     if (tl == tr)
         return t[v];
     int tm = (tl + tr) / 2;
     if (pos <= tm)
-        return t[v] + get (v*2, tl, tm, pos);
+        return t[v] + get(v * 2, tl, tm, pos);
     else
-        return t[v] + get (v*2+1, tm+1, tr, pos);
+        return t[v] + get(v * 2 + 1, tm + 1, tr, pos);
 }
 ```
 
@@ -511,35 +499,35 @@ int get (int v, int tl, int tr, int pos) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void push (int v) {
+void push(int v) {
     if (t[v] != -1) {
-        t[v*2] = t[v*2+1] = t[v];
+        t[v * 2] = t[v * 2 + 1] = t[v];
         t[v] = -1;
     }
 }
 
-void update (int v, int tl, int tr, int l, int r, int color) {
+void update(int v, int tl, int tr, int l, int r, int color) {
     if (l > r)
         return;
     if (l == tl && tr == r)
         t[v] = color;
     else {
-        push (v);
+        push(v);
         int tm = (tl + tr) / 2;
-        update (v*2, tl, tm, l, min(r,tm), color);
-        update (v*2+1, tm+1, tr, max(l,tm+1), r, color);
+        update(v * 2, tl, tm, l, min(r, tm), color);
+        update(v * 2 + 1, tm + 1, tr, max(l, tm + 1), r, color);
     }
 }
 
-int get (int v, int tl, int tr, int pos) {
+int get(int v, int tl, int tr, int pos) {
     if (tl == tr)
         return t[v];
-    push (v);
+    push(v);
     int tm = (tl + tr) / 2;
     if (pos <= tm)
-        return get (v*2, tl, tm, pos);
+        return get(v * 2, tl, tm, pos);
     else
-        return get (v*2+1, tm+1, tr, pos);
+        return get(v * 2 + 1, tm + 1, tr, pos);
 }
 ```
 
@@ -577,27 +565,27 @@ int get (int v, int tl, int tr, int pos) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void build_y (int vx, int lx, int rx, int vy, int ly, int ry) {
+void build_y(int vx, int lx, int rx, int vy, int ly, int ry) {
     if (ly == ry)
         if (lx == rx)
             t[vx][vy] = a[lx][ly];
         else
-            t[vx][vy] = t[vx*2][vy] + t[vx*2+1][vy];
+            t[vx][vy] = t[vx * 2][vy] + t[vx * 2 + 1][vy];
     else {
         int my = (ly + ry) / 2;
-        build_y (vx, lx, rx, vy*2, ly, my);
-        build_y (vx, lx, rx, vy*2+1, my+1, ry);
-        t[vx][vy] = t[vx][vy*2] + t[vx][vy*2+1];
+        build_y(vx, lx, rx, vy * 2, ly, my);
+        build_y(vx, lx, rx, vy * 2 + 1, my + 1, ry);
+        t[vx][vy] = t[vx][vy * 2] + t[vx][vy * 2 + 1];
     }
 }
 
-void build_x (int vx, int lx, int rx) {
+void build_x(int vx, int lx, int rx) {
     if (lx != rx) {
         int mx = (lx + rx) / 2;
-        build_x (vx*2, lx, mx);
-        build_x (vx*2+1, mx+1, rx);
+        build_x(vx * 2, lx, mx);
+        build_x(vx * 2 + 1, mx + 1, rx);
     }
-    build_y (vx, lx, rx, 1, 0, m-1);
+    build_y(vx, lx, rx, 1, 0, m - 1);
 }
 ```
 
@@ -607,24 +595,22 @@ void build_x (int vx, int lx, int rx) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int sum_y (int vx, int vy, int tly, int try_, int ly, int ry) {
+int sum_y(int vx, int vy, int tly, int try_, int ly, int ry) {
     if (ly > ry)
         return 0;
     if (ly == tly && try_ == ry)
         return t[vx][vy];
     int tmy = (tly + try_) / 2;
-    return sum_y (vx, vy*2, tly, tmy, ly, min(ry,tmy))
-        + sum_y (vx, vy*2+1, tmy+1, try_, max(ly,tmy+1), ry);
+    return sum_y(vx, vy * 2, tly, tmy, ly, min(ry, tmy)) + sum_y(vx, vy * 2 + 1, tmy + 1, try_, max(ly, tmy + 1), ry);
 }
 
-int sum_x (int vx, int tlx, int trx, int lx, int rx, int ly, int ry) {
+int sum_x(int vx, int tlx, int trx, int lx, int rx, int ly, int ry) {
     if (lx > rx)
         return 0;
     if (lx == tlx && trx == rx)
-        return sum_y (vx, 1, 0, m-1, ly, ry);
+        return sum_y(vx, 1, 0, m - 1, ly, ry);
     int tmx = (tlx + trx) / 2;
-    return sum_x (vx*2, tlx, tmx, lx, min(rx,tmx), ly, ry)
-        + sum_x (vx*2+1, tmx+1, trx, max(lx,tmx+1), rx, ly, ry);
+    return sum_x(vx * 2, tlx, tmx, lx, min(rx, tmx), ly, ry) + sum_x(vx * 2 + 1, tmx + 1, trx, max(lx, tmx + 1), rx, ly, ry);
 }
 ```
 
@@ -634,32 +620,31 @@ int sum_x (int vx, int tlx, int trx, int lx, int rx, int ly, int ry) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void update_y (int vx, int lx, int rx, int vy, int ly, int ry, int x, int y, int new_val) {
+void update_y(int vx, int lx, int rx, int vy, int ly, int ry, int x, int y, int new_val) {
     if (ly == ry) {
         if (lx == rx)
             t[vx][vy] = new_val;
         else
-            t[vx][vy] = t[vx*2][vy] + t[vx*2+1][vy];
-    }
-    else {
+            t[vx][vy] = t[vx * 2][vy] + t[vx * 2 + 1][vy];
+    } else {
         int my = (ly + ry) / 2;
         if (y <= my)
-            update_y (vx, lx, rx, vy*2, ly, my, x, y, new_val);
+            update_y(vx, lx, rx, vy * 2, ly, my, x, y, new_val);
         else
-            update_y (vx, lx, rx, vy*2+1, my+1, ry, x, y, new_val);
-        t[vx][vy] = t[vx][vy*2] + t[vx][vy*2+1];
+            update_y(vx, lx, rx, vy * 2 + 1, my + 1, ry, x, y, new_val);
+        t[vx][vy] = t[vx][vy * 2] + t[vx][vy * 2 + 1];
     }
 }
 
-void update_x (int vx, int lx, int rx, int x, int y, int new_val) {
+void update_x(int vx, int lx, int rx, int x, int y, int new_val) {
     if (lx != rx) {
         int mx = (lx + rx) / 2;
         if (x <= mx)
-            update_x (vx*2, lx, mx, x, y, new_val);
+            update_x(vx * 2, lx, mx, x, y, new_val);
         else
-            update_x (vx*2+1, mx+1, rx, x, y, new_val);
+            update_x(vx * 2 + 1, mx + 1, rx, x, y, new_val);
     }
-    update_y (vx, lx, rx, 1, 0, m-1, x, y, new_val);
+    update_y(vx, lx, rx, 1, 0, m - 1, x, y, new_val);
 }
 ```
 
@@ -688,55 +673,43 @@ Persistent-структурой данных называется такая с�
 <!--- TODO: specify code snippet id -->
 ``` cpp
 struct vertex {
-    vertex * l, * r;
+    vertex *l, *r;
     int sum;
 
-    vertex (int val)
-        : l(NULL), r(NULL), sum(val)
-    { }
+    vertex(int val) : l(NULL), r(NULL), sum(val) {}
 
-    vertex (vertex * l, vertex * r)
-        : l(l), r(r), sum(0)
-    {
-        if (l)  sum += l->sum;
-        if (r)  sum += r->sum;
+    vertex(vertex *l, vertex *r) : l(l), r(r), sum(0) {
+        if (l)
+            sum += l->sum;
+        if (r)
+            sum += r->sum;
     }
 };
 
-vertex * build (int a[], int tl, int tr) {
+vertex *build(int a[], int tl, int tr) {
     if (tl == tr)
-        return new vertex (a[tl]);
+        return new vertex(a[tl]);
     int tm = (tl + tr) / 2;
-    return new vertex (
-        build (a, tl, tm),
-        build (a, tm+1, tr)
-    );
+    return new vertex(build(a, tl, tm), build(a, tm + 1, tr));
 }
 
-int get_sum (vertex * t, int tl, int tr, int l, int r) {
+int get_sum(vertex *t, int tl, int tr, int l, int r) {
     if (l > r)
         return 0;
     if (l == tl && tr == r)
         return t->sum;
     int tm = (tl + tr) / 2;
-    return get_sum (t->l, tl, tm, l, min(r,tm))
-        + get_sum (t->r, tm+1, tr, max(l,tm+1), r);
+    return get_sum(t->l, tl, tm, l, min(r, tm)) + get_sum(t->r, tm + 1, tr, max(l, tm + 1), r);
 }
 
-vertex * update (vertex * t, int tl, int tr, int pos, int new_val) {
+vertex *update(vertex *t, int tl, int tr, int pos, int new_val) {
     if (tl == tr)
-        return new vertex (new_val);
+        return new vertex(new_val);
     int tm = (tl + tr) / 2;
     if (pos <= tm)
-        return new vertex (
-                update (t->l, tl, tm, pos, new_val),
-                t->r
-            );
+        return new vertex(update(t->l, tl, tm, pos, new_val), t->r);
     else
-        return new vertex (
-                t->l,
-                update (t->r, tm+1, tr, pos, new_val)
-            );
+        return new vertex(t->l, update(t->r, tm + 1, tr, pos, new_val));
 }
 ```
 

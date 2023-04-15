@@ -41,65 +41,53 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 //! Модуль 64-битного числа
-long long **abs** (long long n);
-unsigned long long abs (unsigned long long n);
+long long **abs **(long long n);
+unsigned long long abs(unsigned long long n);
 
 //! Повертає true, якщо n четное
-template <class T>
-bool **even** (const T & n);
+template <class T> bool **even **(const T &n);
 
 //! Делит число на 2
-template <class T>
-void **bisect** (T & n);
+template <class T> void **bisect **(T &n);
 
 //! Примножує число на 2
-template <class T>
-void **redouble** (T & n);
+template <class T> void **redouble **(T &n);
 
 //! Повертає true, якщо n - точный квадрат простого числа
-template <class T>
-bool **perfect_square** (const T & n);
+template <class T> bool **perfect_square **(const T &n);
 
 //! Обчислює корінь з числа, округляя його вниз
-template <class T>
-T **sq_root** (const T & n);
+template <class T> T **sq_root **(const T &n);
 
 //! Повертає кількість біт в числі
-template <class T>
-unsigned **bits_in_number** (T n);
+template <class T> unsigned **bits_in_number **(T n);
 
 //! Повертає значення k-го біта числа (біти нумеруються з нуля)
-template <class T>
-bool **test_bit** (const T & n, unsigned k);
+template <class T> bool **test_bit **(const T &n, unsigned k);
 
 //! Примножує a *= b (mod n)
-template <class T>
-void **mulmod** (T & a, T b, const T & n);
+template <class T> void **mulmod **(T &a, T b, const T &n);
 
 //! Обчислює a^k (mod n)
-template <class T, class T2>
-T **powmod** (T a, T2 k, const T & n);
+template <class T, class T2> T **powmod **(T a, T2 k, const T &n);
 
 //! Переводит число n в форму q*2^p
-template <class T>
-void **transform_num** (T n, T & p, T & q);
+template <class T> void **transform_num **(T n, T &p, T &q);
 
 //! Алгоритм Евкліда
-template <class T, class T2>
-T **gcd** (const T & a, const T2 & b);
+template <class T, class T2> T **gcd **(const T &a, const T2 &b);
 
 //! Обчислює jacobi(a,b) - символ Якобі
 template <class T>
-T **jacobi** (T a, T b)
+T **jacobi **(T a, T b)
 
-//! Обчислює pi(b) перших простих чисел. Повертає вектор з простими і в pi - pi(b)
-template <class T, class T2>
-const std::vector<T> & **get_primes** (const T & b, T2 & pi);
+    //! Обчислює pi(b) перших простих чисел. Повертає вектор з простими і в pi - pi(b)
+    template <class T, class T2>
+    const std::vector<T> &**get_primes **(const T &b, T2 &pi);
 
 //! Тривиальная перевірка n на простоту, перебираются всі подільники до m.
 //! Результат: 1 - якщо n точно просте, p - його знайдений дільник, 0 - якщо неизвестно
-template <class T, class T2>
-T2 **prime_div_trivial** (const T & n, T2 m);
+template <class T, class T2> T2 **prime_div_trivial **(const T &n, T2 m);
 ```
 
 ## Тест Міллера-Рабіна
@@ -110,21 +98,18 @@ T2 **prime_div_trivial** (const T & n, T2 m);
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-template <class T, class T2>
-bool miller_rabin (T n, T2 b)
-{
-
+template <class T, class T2> bool miller_rabin(T n, T2 b) {
     // спочатку перевіряємо тривіальні випадки
     if (n == 2)
         return true;
-    if (n < 2 || even (n))
+    if (n < 2 || even(n))
         return false;
 
     // перевіряємо, що n і b взаємно прості (інакше це приведет до ошибке)
     // якщо вони не взаємно прості, то або n не просто, або потрібно збільшити b
     if (b < 2)
         b = 2;
-    for (T g; (g = gcd (n, b)) != 1; ++b)
+    for (T g; (g = gcd(n, b)) != 1; ++b)
         if (n > g)
             return false;
 
@@ -132,24 +117,22 @@ bool miller_rabin (T n, T2 b)
     T n_1 = n;
     --n_1;
     T p, q;
-    transform_num (n_1, p, q);
+    transform_num(n_1, p, q);
 
     // обчислюємо b^q mod n, якщо воно рівне 1 або n-1, то n просте (або псевдопросте)
-    T rem = powmod (T(b), q, n);
+    T rem = powmod(T(b), q, n);
     if (rem == 1 || rem == n_1)
         return true;
 
     // тепер обчислюємо b^2q, b^4q, ... , b^((n-1)/2)
     // якщо яке-або з них рівне n-1, то n просте (або псевдопросте)
-    for (T i=1; i<p; i++)
-    {
-        mulmod (rem, rem, n);
+    for (T i = 1; i < p; i++) {
+        mulmod(rem, rem, n);
         if (rem == n_1)
             return true;
     }
 
     return false;
-
 }
 ```
 
@@ -288,91 +271,76 @@ D = b<sup>2</sup>, звідси J(D,N) = 1, P = b + 2, Q = b + 1, звідси U
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-template <class T, class T2>
-bool lucas_selfridge (const T & n, T2 unused)
-{
-
+template <class T, class T2> bool lucas_selfridge(const T &n, T2 unused) {
     // спочатку перевіряємо тривіальні випадки
     if (n == 2)
         return true;
-    if (n < 2 || even (n))
+    if (n < 2 || even(n))
         return false;
 
     // перевіряємо, що n не є точним квадратом, інакше алгоритм дасть ошибку
-    if (perfect_square (n))
+    if (perfect_square(n))
         return false;
 
     // алгоритм Селфрідж: знаходимо перший число d таке, що:
     // jacobi(d,n)=-1 і воно належить ряду { 5,-7,9,-11,13,... }
     T2 dd;
-    for (T2 d_abs = 5, d_sign = 1; ; d_sign = -d_sign, ++++d_abs)
-    {
+    for (T2 d_abs = 5, d_sign = 1;; d_sign = -d_sign, ++ ++d_abs) {
         dd = d_abs * d_sign;
-        T g = gcd (n, d_abs);
+        T g = gcd(n, d_abs);
         if (1 < g && g < n)
             // знайшли дільник - d_abs
             return false;
-        if (jacobi (T(dd), n) == -1)
+        if (jacobi(T(dd), n) == -1)
             break;
     }
 
     // параметри Селфрідж
-    T2
-        p = 1,
-        q = (p*p - dd) / 4;
-    
+    T2 p = 1, q = (p * p - dd) / 4;
+
     // розкладаємо n+1 = d*2^s
     T n_1 = n;
     ++n_1;
     T s, d;
-    transform_num (n_1, s, d);
+    transform_num(n_1, s, d);
 
     // алгоритм Лукаса
-    T
-        u = 1,
-        v = p,
-        u2m = 1,
-        v2m = p,
-        qm = q,
-        qm2 = q*2,
-        qkd = q;
-    for (unsigned bit = 1, bits = bits_in_number(d); bit < bits; bit++)
-    {
-        mulmod (u2m, v2m, n);
-        mulmod (v2m, v2m, n);
+    T u = 1, v = p, u2m = 1, v2m = p, qm = q, qm2 = q * 2, qkd = q;
+    for (unsigned bit = 1, bits = bits_in_number(d); bit < bits; bit++) {
+        mulmod(u2m, v2m, n);
+        mulmod(v2m, v2m, n);
         while (v2m < qm2)
             v2m += n;
         v2m -= qm2;
-        mulmod (qm, qm, n);
+        mulmod(qm, qm, n);
         qm2 = qm;
-        redouble (qm2);
-        if (test_bit (d, bit))
-        {
+        redouble(qm2);
+        if (test_bit(d, bit)) {
             T t1, t2;
             t1 = u2m;
-            mulmod (t1, v, n);
+            mulmod(t1, v, n);
             t2 = v2m;
-            mulmod (t2, u, n);
-            
+            mulmod(t2, u, n);
+
             T t3, t4;
             t3 = v2m;
-            mulmod (t3, v, n);
+            mulmod(t3, v, n);
             t4 = u2m;
-            mulmod (t4, u, n);
-            mulmod (t4, (T)dd, n);
+            mulmod(t4, u, n);
+            mulmod(t4, (T)dd, n);
 
             u = t1 + t2;
-            if (!even (u))
+            if (!even(u))
                 u += n;
-            bisect (u);
+            bisect(u);
             u %= n;
 
             v = t3 + t4;
-            if (!even (v))
+            if (!even(v))
                 v += n;
-            bisect (v);
+            bisect(v);
             v %= n;
-            mulmod (qkd, qm, n);
+            mulmod(qkd, qm, n);
         }
     }
 
@@ -382,27 +350,28 @@ bool lucas_selfridge (const T & n, T2 unused)
 
     // довычисляем залишилися члены
     T qkd2 = qkd;
-    redouble (qkd2);
-    for (T2 r = 1; r < s; ++r)
-    {
-        mulmod (v, v, n);
+    redouble(qkd2);
+    for (T2 r = 1; r < s; ++r) {
+        mulmod(v, v, n);
         v -= qkd2;
-        if (v < 0) v += n;
-        if (v < 0) v += n;
-        if (v >= n) v -= n;
-        if (v >= n) v -= n;
+        if (v < 0)
+            v += n;
+        if (v < 0)
+            v += n;
+        if (v >= n)
+            v -= n;
+        if (v >= n)
+            v -= n;
         if (v == 0)
             return true;
-        if (r < s-1)
-        {
-            mulmod (qkd, qkd, n);
+        if (r < s - 1) {
+            mulmod(qkd, qkd, n);
             qkd2 = qkd;
-            redouble (qkd2);
+            redouble(qkd2);
         }
     }
 
     return false;
-
 }
 ```
 
@@ -412,24 +381,20 @@ bool lucas_selfridge (const T & n, T2 unused)
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-template <class T>
-bool baillie_pomerance_selfridge_wagstaff (T n)
-{
-
+template <class T> bool baillie_pomerance_selfridge_wagstaff(T n) {
     // спочатку перевіряємо на тривіальні подільники - наприклад, до 29
-    int div = prime_div_trivial (n, 29);
+    int div = prime_div_trivial(n, 29);
     if (div == 1)
         return true;
     if (div > 1)
         return false;
 
     // тест Міллера-Рабіна по основи 2
-    if (!miller_rabin (n, 2))
+    if (!miller_rabin(n, 2))
         return false;
 
     // сильний тест Лукаса-Селфрідж
-    return lucas_selfridge (n, 0);
-
+    return lucas_selfridge(n, 0);
 }
 ```
 <a href=BPSW_main.zip>Звідси</a> можна завантажити програму (код + exe), що містить повну реалізацію тесту BPSW. [77 КБ]
@@ -443,50 +408,50 @@ bool baillie_pomerance_selfridge_wagstaff (T n)
 const int trivial_limit = 50;
 int p[1000];
 
-int gcd (int a, int b) {
-    return a ? gcd (b%a, a) : b;
-}
+int gcd(int a, int b) { return a ? gcd(b % a, a) : b; }
 
-int powmod (int a, int b, int m) {
+int powmod(int a, int b, int m) {
     int res = 1;
     while (b)
         if (b & 1)
-            res = (res * 1ll * a) % m,  --b;
+            res = (res * 1ll * a) % m, --b;
         else
-            a = (a * 1ll * a) % m,  b >>= 1;
+            a = (a * 1ll * a) % m, b >>= 1;
     return res;
 }
 
-bool miller_rabin (int n) {
+bool miller_rabin(int n) {
     int b = 2;
-    for (int g; (g = gcd (n, b)) != 1; ++b)
+    for (int g; (g = gcd(n, b)) != 1; ++b)
         if (n > g)
             return false;
-    int p=0, q=n-1;
+    int p = 0, q = n - 1;
     while ((q & 1) == 0)
-        ++p,  q >>= 1;
-    int rem = powmod (b, q, n);
-    if (rem == 1 || rem == n-1)
+        ++p, q >>= 1;
+    int rem = powmod(b, q, n);
+    if (rem == 1 || rem == n - 1)
         return true;
-    for (int i=1; i<p; ++i) {
+    for (int i = 1; i < p; ++i) {
         rem = (rem * 1ll * rem) % n;
-        if (rem == n-1)  return true;
+        if (rem == n - 1)
+            return true;
     }
     return false;
 }
 
-int jacobi (int a, int b)
-{
-    if (a == 0)  return 0;
-    if (a == 1)  return 1;
+int jacobi(int a, int b) {
+    if (a == 0)
+        return 0;
+    if (a == 1)
+        return 1;
     if (a < 0)
         if ((b & 2) == 0)
-            return jacobi (-a, b);
+            return jacobi(-a, b);
         else
-            return - jacobi (-a, b);
-    int a1=a,  e=0;
+            return -jacobi(-a, b);
+    int a1 = a, e = 0;
     while ((a1 & 1) == 0)
-        a1 >>= 1,  ++e;
+        a1 >>= 1, ++e;
     int s;
     if ((e & 1) == 0 || (b & 7) == 1 || (b & 7) == 7)
         s = 1;
@@ -496,52 +461,63 @@ int jacobi (int a, int b)
         s = -s;
     if (a1 == 1)
         return s;
-    return s * jacobi (b % a1, a1);
+    return s * jacobi(b % a1, a1);
 }
 
-bool bpsw (int n) {
-    if ((int)sqrt(n+0.0) * (int)sqrt(n+0.0) == n)  return false;
-    int dd=5;
+bool bpsw(int n) {
+    if ((int)sqrt(n + 0.0) * (int)sqrt(n + 0.0) == n)
+        return false;
+    int dd = 5;
     for (;;) {
-        int g = gcd (n, abs(dd));
-        if (1<g && g<n)  return false;
-        if (jacobi (dd, n) == -1)  break;
-        dd = dd<0 ? -dd+2 : -dd-2;
+        int g = gcd(n, abs(dd));
+        if (1 < g && g < n)
+            return false;
+        if (jacobi(dd, n) == -1)
+            break;
+        dd = dd < 0 ? -dd + 2 : -dd - 2;
     }
-    int p=1,  q=(p*p-dd)/4;
-    int d=n+1,  s=0;
+    int p = 1, q = (p * p - dd) / 4;
+    int d = n + 1, s = 0;
     while ((d & 1) == 0)
-        ++s,  d>>=1;
-    long long u=1, v=p, u2m=1, v2m=p, qm=q, qm2=q*2, qkd=q;
-    for (int mask=2; mask<=d; mask<<=1) {
+        ++s, d >>= 1;
+    long long u = 1, v = p, u2m = 1, v2m = p, qm = q, qm2 = q * 2, qkd = q;
+    for (int mask = 2; mask <= d; mask <<= 1) {
         u2m = (u2m * v2m) % n;
         v2m = (v2m * v2m) % n;
-        while (v2m < qm2)   v2m += n;
+        while (v2m < qm2)
+            v2m += n;
         v2m -= qm2;
         qm = (qm * qm) % n;
         qm2 = qm * 2;
         if (d & mask) {
-            long long t1 = (u2m * v) % n,  t2 = (v2m * u) % n,
-                t3 = (v2m * v) % n,  t4 = (((u2m * u) % n) * dd) % n;
+            long long t1 = (u2m * v) % n, t2 = (v2m * u) % n, t3 = (v2m * v) % n, t4 = (((u2m * u) % n) * dd) % n;
             u = t1 + t2;
-            if (u & 1)  u += n;
+            if (u & 1)
+                u += n;
             u = (u >> 1) % n;
             v = t3 + t4;
-            if (v & 1)  v += n;
+            if (v & 1)
+                v += n;
             v = (v >> 1) % n;
             qkd = (qkd * qm) % n;
         }
     }
-    if (u==0 || v==0)  return true;
-    long long qkd2 = qkd*2;
-    for (int r=1; r<s; ++r) {
+    if (u == 0 || v == 0)
+        return true;
+    long long qkd2 = qkd * 2;
+    for (int r = 1; r < s; ++r) {
         v = (v * v) % n - qkd2;
-        if (v < 0)  v += n;
-        if (v < 0)  v += n;
-        if (v >= n)  v -= n;
-        if (v >= n)  v -= n;
-        if (v == 0)  return true;
-        if (r < s-1) {
+        if (v < 0)
+            v += n;
+        if (v < 0)
+            v += n;
+        if (v >= n)
+            v -= n;
+        if (v >= n)
+            v -= n;
+        if (v == 0)
+            return true;
+        if (r < s - 1) {
             qkd = (qkd * 1ll * qkd) % n;
             qkd2 = qkd * 2;
         }
@@ -549,21 +525,21 @@ bool bpsw (int n) {
     return false;
 }
 
-bool prime (int n) { // цю функцію потрібно викликати для перевірки на простоту
-    for (int i=0; i<trivial_limit && p[i]<n; ++i)
+bool prime(int n) { // цю функцію потрібно викликати для перевірки на простоту
+    for (int i = 0; i < trivial_limit && p[i] < n; ++i)
         if (n % p[i] == 0)
             return false;
-    if (p[trivial_limit-1]*p[trivial_limit-1] >= n)
+    if (p[trivial_limit - 1] * p[trivial_limit - 1] >= n)
         return true;
-    if (!miller_rabin (n))
+    if (!miller_rabin(n))
         return false;
-    return bpsw (n);
+    return bpsw(n);
 }
 
 void prime_init() { // викликати до першого виклику prime() !
-    for (int i=2, j=0; j<trivial_limit; ++i) {
+    for (int i = 2, j = 0; j < trivial_limit; ++i) {
         bool pr = true;
-        for (int k=2; k*k<=i; ++k)
+        for (int k = 2; k * k <= i; ++k)
             if (i % k == 0)
                 pr = false;
         if (pr)

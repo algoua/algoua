@@ -97,21 +97,19 @@ $$
 struct item {
     int a, b, id;
 
-    bool operator< (item p) const {
-        return min(a,b) < min(p.a,p.b);
-    }
+    bool operator<(item p) const { return min(a, b) < min(p.a, p.b); }
 };
 
-sort (v.begin(), v.end());
+sort(v.begin(), v.end());
 vector<item> a, b;
-for (int i=0; i<n; ++i)
-    (v[i].a<=v[i].b ? a : b) .push_back (v[i]);
-a.insert (a.end(), b.rbegin(), b.rend());
+for (int i = 0; i < n; ++i)
+    (v[i].a <= v[i].b ? a : b).push_back(v[i]);
+a.insert(a.end(), b.rbegin(), b.rend());
 
-int t1=0, t2=0;
-for (int i=0; i<n; ++i) {
+int t1 = 0, t2 = 0;
+for (int i = 0; i < n; ++i) {
     t1 += a[i].a;
-    t2 = max(t2,t1) + a[i].b;
+    t2 = max(t2, t1) + a[i].b;
 }
 ```
 

@@ -124,11 +124,10 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-void build (int a = 0, int b = 1, int c = 1, int d = 0, int level = 1) {
-    int x = a+c,  y = b+d;
-    ... висновок поточній дроби x/y на рівні дерева level
-    build (a, b, x, y, level + 1);
-    build (x, y, c, d, level + 1);
+void build(int a = 0, int b = 1, int c = 1, int d = 0, int level = 1) {
+    int x = a + c, y = b + d;
+    ... висновок поточній дроби x / y на рівні дерева level build(a, b, x, y, level + 1);
+    build(x, y, c, d, level + 1);
 }
 ```
 
@@ -142,14 +141,14 @@ void build (int a = 0, int b = 1, int c = 1, int d = 0, int level = 1) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-string find (int x, int y, int a = 0, int b = 1, int c = 1, int d = 0) {
-    int m = a+c,  n = b+d;
+string find(int x, int y, int a = 0, int b = 1, int c = 1, int d = 0) {
+    int m = a + c, n = b + d;
     if (x == m && y == n)
         return "";
     if (x * n < y * m)
-        return 'L' + find (x, y, a, b, m, n);
+        return 'L' + find(x, y, a, b, m, n);
     else
-        return 'R' + find (x, y, m, n, c, d);
+        return 'R' + find(x, y, m, n, c, d);
 }
 ```
 

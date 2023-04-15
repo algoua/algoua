@@ -21,14 +21,14 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-stack< pair<int,int> > st;
+stack<pair<int, int>> st;
 ```
 
 * Додавання елементу:
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int minima = st.empty() ? new_element : min (new_element, st.top().second);
-st.push (make_pair (new_element, minima));
+int minima = st.empty() ? new_element : min(new_element, st.top().second);
+st.push(make_pair(new_element, minima));
 ```
 * Витяг елементу:
 <!--- TODO: specify code snippet id -->
@@ -65,7 +65,7 @@ current_minimum = q.front();
 ``` cpp
 while (!q.empty() && q.back() > added_element)
     q.pop_back();
-q.push_back (added_element);
+q.push_back(added_element);
 ```
 * Витяг елементу:
 <!--- TODO: specify code snippet id -->
@@ -90,7 +90,7 @@ if (!q.empty() && q.front() == removed_element)
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-stack< pair<int,int> > s1, s2;
+stack<pair<int, int>> s1, s2;
 ```
 
 * Знаходження мінімуму:
@@ -99,13 +99,13 @@ stack< pair<int,int> > s1, s2;
 if (s1.empty() || s2.empty())
     current_minimum = s1.empty ? s2.top().second : s1.top().second;
 else
-    current_minimum = min (s1.top().second, s2.top().second);
+    current_minimum = min(s1.top().second, s2.top().second);
 ```
 * Додавання елементу:
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int minima = s1.empty() ? new_element : min (new_element, s1.top().second);
-s1.push (make_pair (new_element, minima));
+int minima = s1.empty() ? new_element : min(new_element, s1.top().second);
+s1.push(make_pair(new_element, minima));
 ```
 * Витяг елементу:
 <!--- TODO: specify code snippet id -->
@@ -114,8 +114,8 @@ if (s2.empty())
     while (!s1.empty()) {
         int element = s1.top().first;
         s1.pop();
-        int minima = s2.empty() ? element : min (element, s2.top().second);
-        s2.push (make_pair (element, minima));
+        int minima = s2.empty() ? element : min(element, s2.top().second);
+        s2.push(make_pair(element, minima));
     }
 result = s2.top().first;
 s2.pop();

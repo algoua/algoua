@@ -186,7 +186,7 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-const int INF = 1000*1000*1000;
+const int INF = 1000 * 1000 * 1000;
 
 struct rib {
     int v, c, id;
@@ -197,35 +197,35 @@ struct rib2 {
 };
 
 int main() {
-
     int n, m;
     cin >> n >> m;
-    vector < vector<rib> > g (n); // граф в формате списків суміжності
-    vector<rib2> ribs (m); // всі ребра в одному списку
-    ... читання графа ...
+    vector<vector<rib>> g(n); // граф в формате списків суміжності
+    vector<rib2> ribs(m);     // всі ребра в одному списку
+    ... читання графа...
 
-    int nn = m+2,  s = nn-2,  t = nn-1;
-    vector < vector<int> > f (nn, vector<int> (nn));
-    vector < vector<int> > u (nn, vector<int> (nn));
-    vector < vector<int> > c (nn, vector<int> (nn));
-    for (int i=n-1; i<m; ++i) {
-        vector<int> q (n);
-        int h=0, t=0;
-        rib2 & cur = ribs[i];
+        int nn = m + 2,
+            s = nn - 2, t = nn - 1;
+    vector<vector<int>> f(nn, vector<int>(nn));
+    vector<vector<int>> u(nn, vector<int>(nn));
+    vector<vector<int>> c(nn, vector<int>(nn));
+    for (int i = n - 1; i < m; ++i) {
+        vector<int> q(n);
+        int h = 0, t = 0;
+        rib2 &cur = ribs[i];
         q[t++] = cur.a;
-        vector<int> rib_id (n, -1);
+        vector<int> rib_id(n, -1);
         rib_id[cur.a] = -2;
         while (h < t) {
             int v = q[h++];
-            for (size_t j=0; j<g[v].size(); ++j)
-                if (g[v][j].id >= n-1)
+            for (size_t j = 0; j < g[v].size(); ++j)
+                if (g[v][j].id >= n - 1)
                     break;
-                else if (rib_id [ g[v][j].v ] == -1) {
-                    rib_id [ g[v][j].v ] = g[v][j].id;
+                else if (rib_id[g[v][j].v] == -1) {
+                    rib_id[g[v][j].v] = g[v][j].id;
                     q[t++] = g[v][j].v;
                 }
         }
-        for (int v=cur.b, pv; v!=cur.a; v=pv) {
+        for (int v = cur.b, pv; v != cur.a; v = pv) {
             int r = rib_id[v];
             pv = v != ribs[r].a ? ribs[r].a : ribs[r].b;
             u[r][i] = n;
@@ -233,65 +233,66 @@ int main() {
             c[i][r] = -c[r][i];
         }
     }
-    u[s][t] = n+1;
-    for (int i=0; i<n-1; ++i)
+    u[s][t] = n + 1;
+    for (int i = 0; i < n - 1; ++i)
         u[s][i] = 1;
-    for (int i=n-1; i<m; ++i)
+    for (int i = n - 1; i < m; ++i)
         u[i][t] = 1;
 
-    vector<int> pi (nn);
+    vector<int> pi(nn);
     pi[s] = INF;
-    for (int i=0; i<n-1; ++i) {
+    for (int i = 0; i < n - 1; ++i) {
         pi[i] = INF;
-        for (int j=n-1; j<m; ++j)
+        for (int j = n - 1; j < m; ++j)
             if (u[i][j])
-                pi[i] = min (pi[i], ribs[j].c-ribs[i].c);
-        pi[s] = min (pi[s], pi[i]);
+                pi[i] = min(pi[i], ribs[j].c - ribs[i].c);
+        pi[s] = min(pi[s], pi[i]);
     }
 
     for (;;) {
-        vector<int> id (nn);
+        vector<int> id(nn);
         deque<int> q;
-        q.push_back (s);
-        vector<int> d (nn, INF);
+        q.push_back(s);
+        vector<int> d(nn, INF);
         d[s] = 0;
-        vector<int> p (nn, -1);
+        vector<int> p(nn, -1);
         while (!q.empty()) {
-            int v = q.front();  q.pop_front();
+            int v = q.front();
+            q.pop_front();
             id[v] = 2;
-            for (int i=0; i<nn; ++i)
+            for (int i = 0; i < nn; ++i)
                 if (f[v][i] < u[v][i]) {
                     int new_d = d[v] + c[v][i] - pi[v] + pi[i];
                     if (new_d < d[i]) {
                         d[i] = new_d;
                         if (id[i] == 0)
-                            q.push_back (i);
+                            q.push_back(i);
                         else if (id[i] == 2)
-                            q.push_front (i);
+                            q.push_front(i);
                         id[i] = 1;
                         p[i] = v;
                     }
                 }
         }
-        for (int i=0; i<nn; ++i)
+        for (int i = 0; i < nn; ++i)
             pi[i] -= d[i];
-        for (int v=t; v!=s; v=p[v]) {
+        for (int v = t; v != s; v = p[v]) {
             int pv = p[v];
-            ++f[pv][v],  --f[v][pv];
+            ++f[pv][v], --f[v][pv];
         }
-        if (p[t] == s)  break;
+        if (p[t] == s)
+            break;
     }
 
-    for (int i=0; i<m; ++i)
+    for (int i = 0; i < m; ++i)
         pi[i] -= pi[s];
-    for (int i=0; i<n-1; ++i)
+    for (int i = 0; i < n - 1; ++i)
         if (f[s][i])
             ribs[i].c += pi[i];
-    for (int i=n-1; i<m; ++i)
+    for (int i = n - 1; i < m; ++i)
         if (f[i][t])
             ribs[i].c += pi[i];
 
-    ... висновок графа ...
-    
+    ... висновок графа...
 }
 ```

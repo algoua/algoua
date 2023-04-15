@@ -35,10 +35,10 @@
 <!--- TODO: specify code snippet id -->
 ``` cpp
 string s; // вхідні стрічка
-int n = (int) s.length();
-int i=0;
+int n = (int)s.length();
+int i = 0;
 while (i < n) {
-    int j=i+1, k=i;
+    int j = i + 1, k = i;
     while (j < n && s[k] <= s[j]) {
         if (s[k] < s[j])
             k = i;
@@ -47,7 +47,7 @@ while (i < n) {
         ++j;
     }
     while (i <= k) {
-        cout << s.substr (i, j-k) << ' ';
+        cout << s.substr(i, j - k) << ' ';
         i += j - k;
     }
 }
@@ -77,13 +77,13 @@ while (i < n) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-string min_cyclic_shift (string s) {
+string min_cyclic_shift(string s) {
     s += s;
-    int n = (int) s.length();
-    int i=0, ans=0;
-    while (i < n/2) {
+    int n = (int)s.length();
+    int i = 0, ans = 0;
+    while (i < n / 2) {
         ans = i;
-        int j=i+1, k=i;
+        int j = i + 1, k = i;
         while (j < n && s[k] <= s[j]) {
             if (s[k] < s[j])
                 k = i;
@@ -91,9 +91,10 @@ string min_cyclic_shift (string s) {
                 ++k;
             ++j;
         }
-        while (i <= k)  i += j - k;
+        while (i <= k)
+            i += j - k;
     }
-    return s.substr (ans, n/2);
+    return s.substr(ans, n / 2);
 }
 ```
 

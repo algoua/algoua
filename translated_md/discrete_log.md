@@ -94,27 +94,26 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int powmod (int a, int b, int m) {
+int powmod(int a, int b, int m) {
     int res = 1;
     while (b > 0)
         if (b & 1) {
             res = (res * a) % m;
             --b;
-        }
-        else {
+        } else {
             a = (a * a) % m;
             b >>= 1;
         }
     return res % m;
 }
 
-int solve (int a, int b, int m) {
-    int n = (int) sqrt (m + .0) + 1;
-    map<int,int> vals;
-    for (int i=n; i>=1; --i)
-        vals[ powmod (a, i * n, m) ] = i;
-    for (int i=0; i<=n; ++i) {
-        int cur = (powmod (a, i, m) * b) % m;
+int solve(int a, int b, int m) {
+    int n = (int)sqrt(m + .0) + 1;
+    map<int, int> vals;
+    for (int i = n; i >= 1; --i)
+        vals[powmod(a, i * n, m)] = i;
+    for (int i = 0; i <= n; ++i) {
+        int cur = (powmod(a, i, m) * b) % m;
         if (vals.count(cur)) {
             int ans = vals[cur] * n - i;
             if (ans < m)
@@ -143,21 +142,21 @@ int solve (int a, int b, int m) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int solve (int a, int b, int m) {
-    int n = (int) sqrt (m + .0) + 1;
+int solve(int a, int b, int m) {
+    int n = (int)sqrt(m + .0) + 1;
 
     int an = 1;
-    for (int i=0; i<n; ++i)
+    for (int i = 0; i < n; ++i)
         an = (an * a) % m;
 
-    map<int,int> vals;
-    for (int i=1, cur=an; i<=n; ++i) {
+    map<int, int> vals;
+    for (int i = 1, cur = an; i <= n; ++i) {
         if (!vals.count(cur))
             vals[cur] = i;
         cur = (cur * an) % m;
     }
 
-    for (int i=0, cur=b; i<=n; ++i) {
+    for (int i = 0, cur = b; i <= n; ++i) {
         if (vals.count(cur)) {
             int ans = vals[cur] * n - i;
             if (ans < m)

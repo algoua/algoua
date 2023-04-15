@@ -39,10 +39,10 @@ $$
 <!--- TODO: specify code snippet id -->
 ``` cpp
 char *s; // входная строка
-int n; // длина строки
+int n;   // длина строки
 
 // константы
-const int maxlen = ...; // максимальная длина строки
+const int maxlen = ...;   // максимальная длина строки
 const int alphabet = 256; // размер алфавита, <= maxlen
 ```
 
@@ -51,18 +51,19 @@ const int alphabet = 256; // размер алфавита, <= maxlen
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int p[maxlen], cnt[maxlen], c[maxlen];
-memset (cnt, 0, alphabet * sizeof(int));
-for (int i=0; i<n; ++i)
+memset(cnt, 0, alphabet * sizeof(int));
+for (int i = 0; i < n; ++i)
     ++cnt[s[i]];
-for (int i=1; i<alphabet; ++i)
-    cnt[i] += cnt[i-1];
-for (int i=0; i<n; ++i)
+for (int i = 1; i < alphabet; ++i)
+    cnt[i] += cnt[i - 1];
+for (int i = 0; i < n; ++i)
     p[--cnt[s[i]]] = i;
 c[p[0]] = 0;
 int classes = 1;
-for (int i=1; i<n; ++i) {
-    if (s[p[i]] != s[p[i-1]])  ++classes;
-    c[p[i]] = classes-1;
+for (int i = 1; i < n; ++i) {
+    if (s[p[i]] != s[p[i - 1]])
+        ++classes;
+    c[p[i]] = classes - 1;
 }
 ```
 
@@ -89,27 +90,28 @@ $$
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int pn[maxlen], cn[maxlen];
-for (int h=0; (1<<h)<n; ++h) {
-    for (int i=0; i<n; ++i) {
-        pn[i] = p[i] - (1<<h);
-        if (pn[i] < 0)  pn[i] += n;
+for (int h = 0; (1 << h) < n; ++h) {
+    for (int i = 0; i < n; ++i) {
+        pn[i] = p[i] - (1 << h);
+        if (pn[i] < 0)
+            pn[i] += n;
     }
-    memset (cnt, 0, classes * sizeof(int));
-    for (int i=0; i<n; ++i)
+    memset(cnt, 0, classes * sizeof(int));
+    for (int i = 0; i < n; ++i)
         ++cnt[c[pn[i]]];
-    for (int i=1; i<classes; ++i)
-        cnt[i] += cnt[i-1];
-    for (int i=n-1; i>=0; --i)
+    for (int i = 1; i < classes; ++i)
+        cnt[i] += cnt[i - 1];
+    for (int i = n - 1; i >= 0; --i)
         p[--cnt[c[pn[i]]]] = pn[i];
     cn[p[0]] = 0;
     classes = 1;
-    for (int i=1; i<n; ++i) {
-        int mid1 = (p[i] + (1<<h)) % n,  mid2 = (p[i-1] + (1<<h)) % n;
-        if (c[p[i]] != c[p[i-1]] || c[mid1] != c[mid2])
+    for (int i = 1; i < n; ++i) {
+        int mid1 = (p[i] + (1 << h)) % n, mid2 = (p[i - 1] + (1 << h)) % n;
+        if (c[p[i]] != c[p[i - 1]] || c[mid1] != c[mid2])
             ++classes;
-        cn[p[i]] = classes-1;
+        cn[p[i]] = classes - 1;
     }
-    memcpy (c, cn, n * sizeof(int));
+    memcpy(c, cn, n * sizeof(int));
 }
 ```
 
@@ -147,9 +149,9 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int compare (int i, int j, int l, int k) {
-    pair<int,int> a = make_pair (c[k][i], c[k][i+l-(1<<k)]);
-    pair<int,int> b = make_pair (c[k][j], c[k][j+l-(1<<k)]);
+int compare(int i, int j, int l, int k) {
+    pair<int, int> a = make_pair(c[k][i], c[k][i + l - (1 << k)]);
+    pair<int, int> b = make_pair(c[k][j], c[k][j + l - (1 << k)]);
     return a == b ? 0 : a < b ? -1 : 1;
 }
 ```
@@ -168,13 +170,13 @@ int compare (int i, int j, int l, int k) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int lcp (int i, int j) {
+int lcp(int i, int j) {
     int ans = 0;
-    for (int k=log_n; k>=0; --k)
+    for (int k = log_n; k >= 0; --k)
         if (c[k][i] == c[k][j]) {
-            ans += 1<<k;
-            i += 1<<k;
-            j += 1<<k;
+            ans += 1 << k;
+            i += 1 << k;
+            j += 1 << k;
         }
     return ans;
 }
@@ -211,29 +213,29 @@ int lcp (int i, int j) {
 <!--- TODO: specify code snippet id -->
 ``` cpp
 int lcp[maxlen], lcpn[maxlen], lpos[maxlen], rpos[maxlen];
-memset (lcp, 0, sizeof lcp);
-for (int h=0; (1<<h)<n; ++h) {
-    for (int i=0; i<n; ++i)
+memset(lcp, 0, sizeof lcp);
+for (int h = 0; (1 << h) < n; ++h) {
+    for (int i = 0; i < n; ++i)
         rpos[c[p[i]]] = i;
-    for (int i=n-1; i>=0; --i)
+    for (int i = n - 1; i >= 0; --i)
         lpos[c[p[i]]] = i;
 
-    ... все действия по построению суфф. массива, кроме последней строки (memcpy) ...
+    ... все действия по построению суфф.массива, кроме последней строки(memcpy)...
 
-    rmq_build (lcp, n-1);
-    for (int i=0; i<n-1; ++i) {
-        int a = p[i],  b = p[i+1];
+        rmq_build(lcp, n - 1);
+    for (int i = 0; i < n - 1; ++i) {
+        int a = p[i], b = p[i + 1];
         if (c[a] != c[b])
             lcpn[i] = lcp[rpos[c[a]]];
         else {
-            int aa = (a + (1<<h)) % n,  bb = (b + (1<<h)) % n;
-            lcpn[i] = (1<<h) + rmq (lpos[c[aa]], rpos[c[bb]]-1);
-            lcpn[i] = min (n, lcpn[i]);
+            int aa = (a + (1 << h)) % n, bb = (b + (1 << h)) % n;
+            lcpn[i] = (1 << h) + rmq(lpos[c[aa]], rpos[c[bb]] - 1);
+            lcpn[i] = min(n, lcpn[i]);
         }
     }
-    memcpy (lcp, lcpn, (n-1) * sizeof(int));
+    memcpy(lcp, lcpn, (n - 1) * sizeof(int));
 
-    memcpy (c, cn, n * sizeof(int));
+    memcpy(c, cn, n * sizeof(int));
 }
 ```
 
@@ -245,20 +247,20 @@ for (int h=0; (1<<h)<n; ++h) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-for (int i=0; i<n-1; ++i)
-    lcp[i] = min (lcp[i], min (n-p[i], n-p[i+1]));
+for (int i = 0; i < n - 1; ++i)
+    lcp[i] = min(lcp[i], min(n - p[i], n - p[i + 1]));
 ```
 
 Для **любых** двух суффиксов длину их наибольшего общего префикса теперь можно найти как минимум на соответствующем отрезке массива $\rm lcp$:
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-for (int i=0; i<n; ++i)
+for (int i = 0; i < n; ++i)
     pos[p[i]] = i;
-rmq_build (lcp, n-1);
+rmq_build(lcp, n - 1);
 
-... поступил запрос (i,j) на нахождение LCP ...
-int result = rmq (min(i,j), max(i,j)-1);
+... поступил запрос(i, j)
+на нахождение LCP... int result = rmq(min(i, j), max(i, j) - 1);
 ```
 
 ### Количество различных подстрок

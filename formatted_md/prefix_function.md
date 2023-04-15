@@ -28,12 +28,12 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector<int> prefix_function (string s) {
-    int n = (int) s.length();
-    vector<int> pi (n);
-    for (int i=0; i<n; ++i)
-        for (int k=0; k<=i; ++k)
-            if (s.substr(0,k) == s.substr(i-k+1,k))
+vector<int> prefix_function(string s) {
+    int n = (int)s.length();
+    vector<int> pi(n);
+    for (int i = 0; i < n; ++i)
+        for (int k = 0; k <= i; ++k)
+            if (s.substr(0, k) == s.substr(i - k + 1, k))
                 pi[i] = k;
     return pi;
 }
@@ -107,14 +107,15 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector<int> prefix_function (string s) {
-    int n = (int) s.length();
-    vector<int> pi (n);
-    for (int i=1; i<n; ++i) {
-        int j = pi[i-1];
+vector<int> prefix_function(string s) {
+    int n = (int)s.length();
+    vector<int> pi(n);
+    for (int i = 1; i < n; ++i) {
+        int j = pi[i - 1];
         while (j > 0 && s[i] != s[j])
-            j = pi[j-1];
-        if (s[i] == s[j])  ++j;
+            j = pi[j - 1];
+        if (s[i] == s[j])
+            ++j;
         pi[i] = j;
     }
     return pi;
@@ -149,11 +150,11 @@ vector<int> prefix_function (string s) {
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-vector<int> ans (n+1);
-for (int i=0; i<n; ++i)
+vector<int> ans(n + 1);
+for (int i = 0; i < n; ++i)
     ++ans[pi[i]];
-for (int i=n-1; i>0; --i)
-    ans[pi[i-1]] += ans[i];
+for (int i = n - 1; i > 0; --i)
+    ans[pi[i - 1]] += ans[i];
 ```
 
 Здесь мы для каждого значения префикс-функции сначала посчитали, сколько раз он встречался в массиве $\pi[]$, а затем посчитали такую в некотором роде динамику: если мы знаем, что префикс длины $i$ встречался ровно ${\rm ans}[i]$ раз, то именно такое количество надо прибавить к числу вхождений его длиннейшего собственного суффикса, совпадающего с его префиксом; затем уже из этого суффикса (конечно, меньшей чем $i$ длины) выполнится "пробрасывание" этого количества к своему суффиксу, и т.д.
@@ -222,20 +223,21 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-string s; // входная строка
+string s;                 // входная строка
 const int alphabet = 256; // мощность алфавита символов, обычно меньше
 
 s += '#';
 
-int n = (int) s.length();
-vector<int> pi = prefix_function (s);
-vector < vector<int> > aut (n, vector<int> (alphabet));
-for (int i=0; i<n; ++i)
-    for (char c=0; c<alphabet; ++c) {
+int n = (int)s.length();
+vector<int> pi = prefix_function(s);
+vector<vector<int>> aut(n, vector<int>(alphabet));
+for (int i = 0; i < n; ++i)
+    for (char c = 0; c < alphabet; ++c) {
         int j = i;
         while (j > 0 && c != s[j])
-            j = pi[j-1];
-        if (c == s[j])  ++j;
+            j = pi[j - 1];
+        if (c == s[j])
+            ++j;
         aut[i][c] = j;
     }
 ```
@@ -244,18 +246,18 @@ for (int i=0; i<n; ++i)
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-string s; // входная строка
+string s;                 // входная строка
 const int alphabet = 256; // мощность алфавита символов, обычно меньше
 
 s += '#';
 
-int n = (int) s.length();
-vector<int> pi = prefix_function (s);
-vector < vector<int> > aut (n, vector<int> (alphabet));
-for (int i=0; i<n; ++i)
-    for (char c=0; c<alphabet; ++c)
+int n = (int)s.length();
+vector<int> pi = prefix_function(s);
+vector<vector<int>> aut(n, vector<int>(alphabet));
+for (int i = 0; i < n; ++i)
+    for (char c = 0; c < alphabet; ++c)
         if (i > 0 && c != s[i])
-            aut[i][c] = aut[pi[i-1]][c];
+            aut[i][c] = aut[pi[i - 1]][c];
         else
             aut[i][c] = i + (c == s[i]);
 ```

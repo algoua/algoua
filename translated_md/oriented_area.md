@@ -55,34 +55,26 @@ $$
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-int triangle_area_2 (int x1, int y1, int x2, int y2, int x3, int y3) {
-    return (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1);
-}
+int triangle_area_2(int x1, int y1, int x2, int y2, int x3, int y3) { return (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1); }
 ```
 
 Функція, возвращающая звичайну площа трикутника:
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-double triangle_area (int x1, int y1, int x2, int y2, int x3, int y3) {
-    return abs (triangle_area_2 (x1, y1, x2, y2, x3, y3)) / 2.0;
-}
+double triangle_area(int x1, int y1, int x2, int y2, int x3, int y3) { return abs(triangle_area_2(x1, y1, x2, y2, x3, y3)) / 2.0; }
 ```
 
 Функція, проверяющая, утворює або указанная трійка точок поворот по годинний стрілкою:
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-bool clockwise (int x1, int y1, int x2, int y2, int x3, int y3) {
-    return triangle_area_2 (x1, y1, x2, y2, x3, y3) < 0;
-}
+bool clockwise(int x1, int y1, int x2, int y2, int x3, int y3) { return triangle_area_2(x1, y1, x2, y2, x3, y3) < 0; }
 ```
 
 Функція, проверяющая, утворює або указанная трійка точок поворот проти годинний стрілки:
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-bool counter_clockwise (int x1, int y1, int x2, int y2, int x3, int y3) {
-    return triangle_area_2 (x1, y1, x2, y2, x3, y3) > 0;
-}
+bool counter_clockwise(int x1, int y1, int x2, int y2, int x3, int y3) { return triangle_area_2(x1, y1, x2, y2, x3, y3) > 0; }
 ```

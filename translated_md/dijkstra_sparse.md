@@ -32,27 +32,24 @@ const int INF = 1000000000;
 
 int main() {
     int n;
-    ... читання n ...
-    vector < vector < pair<int,int> > > g (n);
-    ... читання графа ...
-    int s = ...; // стартова вершина
+    ... читання n... vector<vector<pair<int, int>>> g(n);
+    ... читання графа... int s = ...; // стартова вершина
 
-    vector<int> d (n, INF),  p (n);
+    vector<int> d(n, INF), p(n);
     d[s] = 0;
-    set < pair<int,int> > q;
-    q.insert (make_pair (d[s], s));
+    set<pair<int, int>> q;
+    q.insert(make_pair(d[s], s));
     while (!q.empty()) {
         int v = q.begin()->second;
-        q.erase (q.begin());
+        q.erase(q.begin());
 
-        for (size_t j=0; j<g[v].size(); ++j) {
-            int to = g[v][j].first,
-                len = g[v][j].second;
+        for (size_t j = 0; j < g[v].size(); ++j) {
+            int to = g[v][j].first, len = g[v][j].second;
             if (d[v] + len < d[to]) {
-                q.erase (make_pair (d[to], to));
+                q.erase(make_pair(d[to], to));
                 d[to] = d[v] + len;
                 p[to] = v;
-                q.insert (make_pair (d[to], to));
+                q.insert(make_pair(d[to], to));
             }
         }
     }
@@ -73,27 +70,25 @@ const int INF = 1000000000;
 
 int main() {
     int n;
-    ... читання n ...
-    vector < vector < pair<int,int> > > g (n);
-    ... читання графа ...
-    int s = ...; // стартова вершина
+    ... читання n... vector<vector<pair<int, int>>> g(n);
+    ... читання графа... int s = ...; // стартова вершина
 
-    vector<int> d (n, INF),  p (n);
+    vector<int> d(n, INF), p(n);
     d[s] = 0;
-    priority_queue < pair<int,int> > q;
-    q.push (make_pair (0, s));
+    priority_queue<pair<int, int>> q;
+    q.push(make_pair(0, s));
     while (!q.empty()) {
-        int v = q.top().second,  cur_d = -q.top().first;
+        int v = q.top().second, cur_d = -q.top().first;
         q.pop();
-        if (cur_d > d[v])  continue;
+        if (cur_d > d[v])
+            continue;
 
-        for (size_t j=0; j<g[v].size(); ++j) {
-            int to = g[v][j].first,
-                len = g[v][j].second;
+        for (size_t j = 0; j < g[v].size(); ++j) {
+            int to = g[v][j].first, len = g[v][j].second;
             if (d[v] + len < d[to]) {
                 d[to] = d[v] + len;
                 p[to] = v;
-                q.push (make_pair (-d[to], to));
+                q.push(make_pair(-d[to], to));
             }
         }
     }

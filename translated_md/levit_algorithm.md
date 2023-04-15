@@ -50,46 +50,42 @@ Cпершу всі вершини помещаются в множину M<sub>2
 
 <!--- TODO: specify code snippet id -->
 ``` cpp
-typedef pair<int,int> rib;
-typedef vector < vector<rib> > graph;
+typedef pair<int, int> rib;
+typedef vector<vector<rib>> graph;
 
-const int inf = 1000*1000*1000;
+const int inf = 1000 * 1000 * 1000;
 
-int main()
-{
+int main() {
     int n, v1, v2;
-    graph g (n);
+    graph g(n);
 
-    ... читання графа ...
+    ... читання графа...
 
-    vector<int> d (n, inf);
+        vector<int>
+            d(n, inf);
     d[v1] = 0;
-    vector<int> id (n);
+    vector<int> id(n);
     deque<int> q;
-    q.push_back (v1);
-    vector<int> p (n, -1);
+    q.push_back(v1);
+    vector<int> p(n, -1);
 
-    while (!q.empty())
-    {
-        int v = q.front(),  q.pop_front();
+    while (!q.empty()) {
+        int v = q.front(), q.pop_front();
         id[v] = 1;
-        for (size_t i=0; i<g[v].size(); ++i)
-        {
+        for (size_t i = 0; i < g[v].size(); ++i) {
             int to = g[v][i].first, len = g[v][i].second;
-            if (d[to] > d[v] + len)
-            {
+            if (d[to] > d[v] + len) {
                 d[to] = d[v] + len;
                 if (id[to] == 0)
-                    q.push_back (to);
+                    q.push_back(to);
                 else if (id[to] == 1)
-                    q.push_front (to);
+                    q.push_front(to);
                 p[to] = v;
                 id[to] = 1;
             }
         }
     }
 
-    ... висновок результату ...
-
+    ... висновок результату...
 }
 ```
