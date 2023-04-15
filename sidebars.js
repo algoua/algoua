@@ -13,14 +13,15 @@ module.exports = {
           label: 'Основи',
           collapsed: false,
           items: [
-        'algorithms/algebra/binary_pow',
-        'algorithms/algebra/euler_function',
-        'algorithms/algebra/euclid_algorithm',
-        'algorithms/algebra/extended_euclid_algorithm',
-      ],
-    },
-    {
-      type: 'category',
+            'algorithms/algebra/binary_pow',
+            'algorithms/algebra/euler_function',
+            'algorithms/algebra/euclid_algorithm',
+            'algorithms/algebra/extended_euclid_algorithm',
+            'algorithms/algebra/big_integer',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Комбінаторика',
           collapsed: false,
           items: [
