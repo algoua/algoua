@@ -146,7 +146,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [remarkAbbr, remarkMath],
           rehypePlugins: [rehypeKatex],
-          showLastUpdateTime: true,
+          showLastUpdateTime: false,
           editUrl: 'https://github.com/algoua/algoua/edit/main/',
         },
         theme: {
