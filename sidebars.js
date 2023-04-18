@@ -17,7 +17,6 @@ module.exports = {
             'algorithms/algebra/euler_function',
             'algorithms/algebra/euclid_algorithm',
             'algorithms/algebra/extended_euclid_algorithm',
-            'algorithms/algebra/big_integer',
           ],
         },
         {
