@@ -91,7 +91,7 @@ module.exports = {
     navbar: {
       title: 'Algoua',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Algoua Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -99,12 +99,6 @@ module.exports = {
           to: 'algorithms/',
           activeBasePath: 'algorithms',
           label: 'Алгоритми',
-          position: 'left',
-        },
-        {
-          to: 'courses/',
-          activeBasePath: 'courses',
-          label: 'Курси',
           position: 'left',
         },
         {
@@ -136,7 +130,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Logo is based on icon made by <a href="https://www.flaticon.com/authors/becris" title="Becris" class="copyright-link">Becris</a><br/>
+      copyright: `Logo is based on an icon made by <a href="https://www.flaticon.com/authors/becris" title="Becris" class="copyright-link">Becris</a><br/>
                   Copyright © ${new Date().getFullYear()} Algoua`,
     },
   },

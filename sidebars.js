@@ -76,10 +76,4 @@ module.exports = {
       ],
     },
   ],
-  courses: [
-    {
-      type: 'doc',
-      id: 'courses/intro',
-    },
-  ],
 };
