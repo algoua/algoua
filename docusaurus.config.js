@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const lodash = require('lodash');
 const remarkAbbr = require('remark-abbr');
 const remarkMath = require('remark-math');
 const rehypeKatex = require('rehype-katex');
@@ -68,14 +67,18 @@ module.exports = {
   projectName: 'algoua',
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css',
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
       type: 'text/css',
-      integrity: 'sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X',
+      integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
   ],
   themeConfig: {
-    hideableSidebar: true,
+    docs: {
+      sidebar: {
+        hideable: true,
+      }
+    },
     announcementBar: {
       id: 'announcementBar-1', // Increment on change
       content:

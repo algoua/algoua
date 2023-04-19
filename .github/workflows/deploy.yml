@@ -39,4 +39,4 @@ jobs:
           else
           npm i
           fi
-          npx docusaurus deploy
+          yarn deploy

@@ -12,17 +12,17 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.3",
-    "@docusaurus/preset-classic": "^2.0.0-beta.3",
-    "@mdx-js/react": "^1.6.21",
-    "clsx": "^1.1.1",
-    "docusaurus-lunr-search": "^2.1.14",
-    "lodash": "^4.17.20",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "rehype-katex": "^4.0.0",
-    "remark-abbr": "^1.4.0",
-    "remark-math": "3.0.1"
+    "@docusaurus/core": "^2.4.0",
+    "@docusaurus/preset-classic": "^2.4.0",
+    "@mdx-js/react": "^1.6.22",
+    "clsx": "^1.2.1",
+    "docusaurus-lunr-search": "^2.3.2",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rehype-katex": "5",
+    "remark-abbr": "^1.4.1",
+    "remark-math": "3"
   },
   "browserslist": {
     "production": [
@@ -35,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=16.14"
   }
 }
