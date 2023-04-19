@@ -1,8 +1,8 @@
 ---
-id: intro
+id: index
 title: Алгоритми
-slug: /algorithms
-description: Збірка алгоритмів
+slug: /
+description: Алгоритмічні навчальні матеріали
 keywords:
   - Алгоритми
 ---

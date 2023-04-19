@@ -2,7 +2,7 @@ module.exports = {
   algorithms: [
     {
       type: 'doc',
-      id: 'algorithms/intro',
+      id: 'index',
     },
     {
       type: 'category',

@@ -96,12 +96,6 @@ module.exports = {
       },
       items: [
         {
-          to: 'algorithms/',
-          activeBasePath: 'algorithms',
-          label: 'Алгоритми',
-          position: 'left',
-        },
-        {
           to: 'books/',
           activeBasePath: 'books',
           label: 'Література',
