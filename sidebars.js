@@ -75,5 +75,20 @@ module.exports = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Рядки',
+      items: [
+        {
+          type: 'category',
+          label: 'Основи',
+          collapsed: false,
+          items: [
+            'algorithms/strings/prefix_function',
+            'algorithms/strings/kmp',
+          ],
+        },
+      ],
+    },
   ],
 };
