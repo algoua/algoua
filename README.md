@@ -1,6 +1,6 @@
 # Algoua
 
-![deploy](https://github.com/algoua/algoua/workflows/deploy/badge.svg?branch=main)
+![Deployment Status](https://github.com/algoua/algoua/actions/workflows/deploy.yml/badge.svg?branch=main)
 
 Алгоритмічні навчальні матеріали.
 
