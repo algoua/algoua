@@ -95,12 +95,12 @@ module.exports = {
         src: 'img/logo.svg',
       },
       items: [
-        {
-          to: 'books/',
-          activeBasePath: 'books',
-          label: 'Література',
-          position: 'left',
-        },
+        // {
+        //   to: 'books/',
+        //   activeBasePath: 'books',
+        //   label: 'Література',
+        //   position: 'left',
+        // },
         {
           href: 'https://github.com/algoua/algoua',
           label: 'GitHub',
