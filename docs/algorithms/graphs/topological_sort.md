@@ -83,8 +83,8 @@ void topological_sort() {
 
 * [Spoj - RPLA - **Answer the boss!**](https://www.spoj.com/problems/RPLA) | Розв'язки: [C++](https://github.com/pedropaiola/unesp-progcomp/blob/527969dc54a0bf47c556d4060e63f666c053b4a6/Solu%C3%A7%C3%B5es/spoj/RPLA.cpp)
 
-* [Online Judge - 124 - **Following Orders**](https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=60) | Розв'язки: [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-124-following-orders-tFfX-K4c2)
+* [Online Judge - 124 - **Following Orders**](https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=60)
 
-* [Online Judge - 200 - **Rare Order**](https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=136) | Розв'язки: [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-200-rare-order-sMvr-PMkC)
+* [Online Judge - 200 - **Rare Order**](https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=136)
 
-* [Online Judge - 10305 - **Ordering Tasks**](https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1246) | Розв'язки: [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-10305-ordering-tasks-6a9n-AYhf), [Python](https://shareablecode.com/snippets/python-solution-for-uva-online-judge-10305-ordering-tasks-gw1b-QJ3i)
+* [Online Judge - 10305 - **Ordering Tasks**](https://onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=1246)

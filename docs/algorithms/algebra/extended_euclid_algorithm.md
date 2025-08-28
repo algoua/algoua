@@ -93,6 +93,6 @@ TODO: add applications
 
 ## Задачі
 
-* [Online Judge - 10104 - **Euclid Problem**](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1045) | Розв'язки: [C++](https://shareablecode.com/snippets/c-solution-for-uva-problem-euclid-problem-10104-cpp-TA3e-A8Xp), [Go](https://shareablecode.com/snippets/golang-solution-for-uva-online-judge-10104-euclid-problem-5sm1-gSWg)
+* [Online Judge - 10104 - **Euclid Problem**](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1045)
 
 * [Online Judge - 12775 - **Gift Dilemma**](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=4628)
